@@ -1,0 +1,96 @@
+:host {
+  --width: 44px;
+  --knob-size: var(--gup-component-6);
+  --padding: 2px;
+  --transition-animation: cubic-bezier(0.2, 0, 1, 0.9);
+  --transition-time: 70ms;
+
+  display: block;
+  color: var(--gup-color-content-primary);
+}
+
+.track {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding-block: var(--gup-component-3);
+  border-radius: var(--gup-radius-component-default);
+
+}
+
+:host(:not([disabled]:not([readonly]))) {
+  .track:hover {
+    background-color: var(--gup-color-states-secondary-hover);
+  }
+}
+
+.native-input {
+  @mixin screenreader-text;
+}
+
+.box {
+  position: relative;
+  background-color: var(--gup-color-neutral-low);
+  border-radius: var(--gup-radius-button);
+  display: flex;
+  transition: background-color var(--transition-time) var(--transition-animation);
+  align-items: center;
+  width: var(--width);
+  flex-shrink: 0;
+  padding: var(--padding);
+  box-sizing: border-box;
+  &:hover {
+    background-color: var(--gup-color-states-primary-hover);
+  }
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gup-component-3);
+  text-wrap: balance;
+  line-height: var(--line-height-500);
+}
+
+:host(:focus-within) .box {
+  @mixin focus-outline 4px, 3px;
+}
+
+.knob {
+  width: var(--knob-size);
+  height: var(--knob-size);
+  border-radius: 51%;
+  background-color: var(--gup-color-neutral-contrast);
+}
+
+:host([checked]) {
+  .box {
+    background-color: var(--gup-color-brand-high);
+  }
+
+  .knob {
+    /* We need to use a hacky method of detecting RTL because Safari 18 apparently still doesn't support :dir() pseudoselector inside shadow DOM  */
+    transform: translateX(calc((var(--width) * var(--gup--is-ltr)) - (100% * var(--gup--is-ltr)) - (var(--padding) * 2 * var(--gup--is-ltr))));
+  }
+}
+
+:host([disabled]),
+:host([readonly]) {
+  .text-container {
+    color: var(--gup-color-content-tertiary);
+  }
+
+  .hint {
+    color: var(--gup-color-content-tertiary);
+  }
+
+  .box {
+    background-color: var(--gup-color-states-disabled-low);
+    cursor: default;
+  }
+
+  .knob {
+    background-color: var(--gup-color-states-disabled-medium);
+  }
+}

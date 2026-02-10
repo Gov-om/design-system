@@ -1,0 +1,18 @@
+.label {
+  padding-bottom: var(--gup-component-5);
+  font-weight: var(--font-weight-base-beta);
+  color: var(--gup-color-content-primary);
+
+  &.has-error {
+    color: var(--gup-color-negative-medium);
+    padding-bottom: var(--gup-component-3);
+  }
+}
+
+.error {
+  padding-bottom: var(--gup-component-5);
+}
+
+.hint {
+  padding-top: var(--gup-component-4);
+}

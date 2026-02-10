@@ -1,0 +1,56 @@
+:host {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+:host([size="s"]) {
+  --font-size: var(--font-size-200);
+  --size: 16px;
+}
+
+:host([size="m"]) {
+  --font-size: var(--font-size-300);
+  --size: 24px;
+}
+
+:host([size="l"]) {
+  --font-size: var(--font-size-400);
+  --size: 40px;
+}
+
+:host([size="xl"]) {
+  --font-size: var(--font-size-400);
+  --size: 64px;
+}
+
+.label {
+  color: var(--gup-color-content-secondary);
+  font-size: var(--gup-spinner--font-size, var(--font-size));
+}
+
+.circle {
+  color: var(--gup-color-brand-accent-low);
+}
+
+.indicator {
+  flex-shrink: 0;
+  animation: spin 1s infinite linear;
+  transform-origin: center;
+  color: var(--gup-color-brand-high);
+}
+
+.svg {
+  width: var(--gup-spinner--size, var(--size));
+  height: var(--gup-spinner--size, var(--size));
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

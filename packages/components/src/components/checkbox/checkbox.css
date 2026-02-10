@@ -1,0 +1,111 @@
+:host {
+  --border-color: var(--gup-color-states-base-border);
+  --second-border-color: transparent;
+  --size: 32px;
+
+  color: var(--gup-color-content-primary);
+
+  * {
+    outline: none;
+  }
+}
+
+.native-label {
+  display: flex;
+  position: relative;
+  gap: var(--gup-spacing-component-default);
+  cursor: pointer;
+  user-select: none;
+}
+
+.native-input {
+  @mixin screenreader-text;
+}
+
+.error {
+  padding-bottom: var(--gup-spacing-component-default);
+}
+
+.check-mark {
+  flex-shrink: 0;
+  border: 1px solid var(--border-color);
+  background-color: var(--border-color);
+  border-radius: var(--gup-checkbox--check-mark--border-radius, var(--gup-radius-component-default));
+  color: var(--gup-color-content-primary);
+  width: var(--size);
+  height: var(--size);
+}
+
+.check-mark-inner {
+  background-color: var(--gup-color-states-base-bg);
+  display: flex;
+  gap: var(--gup-spacing-component-default);
+  cursor: pointer;
+  user-select: none;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--second-border-color);
+  border-radius: inherit;
+  height: 100%;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gup-component-2);
+  text-wrap: balance;
+  line-height: var(--line-height-500);
+  padding-top: 3px;
+}
+
+:host([appearance="circle"]) .check-mark {
+  border-radius: var(--gup-radius-component-full);
+}
+
+:host(:hover:not([disabled], [checked], [indeterminate])) {
+  --second-border-color: var(--gup-color-states-base-border);
+}
+
+:host([size="s"]) {
+  --size: 24px;
+
+  font-size: var(--font-size-300);
+
+  .check-mark {
+    border-radius: var(--gup-radius-component-small);
+  }
+}
+
+:host([size="s"][appearance="circle"]) .check-mark {
+  border-radius: var(--gup-radius-component-full);
+}
+
+:host(:is([checked], [indeterminate])) {
+  --border-color: transparent;
+
+  .check-mark-inner {
+    background-color: var(--gup-color-brand-high);
+  }
+
+  .icon {
+    --gup-icon--fill-color: var(--gup-color-neutral-contrast);
+  }
+}
+
+:host([disabled]) {
+  --border-color: transparent;
+
+  pointer-events: none;
+
+  .check-mark-inner {
+    background-color: var(--gup-color-states-disabled-low);
+  }
+
+  .icon {
+    --gup-icon--fill-color: var(--gup-color-states-disabled-medium);
+  }
+}
+
+:host(:not([disabled])) input:focus + .check-mark {
+  @mixin focus-outline 4px, 3px;
+}

@@ -1,0 +1,151 @@
+:host {
+  --border-color: var(--gup-color-neutral-low);
+  --icon-color: var(--gup-color-neutral-medium);
+  --background-color: transparent;
+  --close-color: var(--gup-color-brand-xhigh);
+
+  display: block;
+  max-width: var(--gup-banner--width, 600px);
+  padding: var(--gup-padding-md);
+  border-radius: var(--gup-radius-card);
+  border: 1px solid var(--border-color);
+  color: var(--gup-color-content-primary);
+  background-color: var(--background-color);
+  line-height: var(--line-height-500);
+  text-wrap: pretty;
+}
+
+.inner {
+  position: relative;
+}
+
+.track {
+  gap: var(--gup-spacing-between-text);
+}
+
+:host(:not([hide-icon])) {
+  .track {
+    display: grid;
+    grid-template-areas: 'icon title' '. body';
+    grid-template-columns: 0fr auto;
+    grid-template-rows: auto auto;
+  }
+}
+
+:host([hide-icon]) {
+  .track {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.title {
+  grid-area: title;
+  display: flex;
+  gap: var(--component-4, 12px);
+  font-weight: var(--font-weight-base-beta);
+  padding-inline-end: 24px;
+}
+
+.icon {
+  --gup-icon--fill-color: var(--icon-color);
+
+  grid-area: icon;
+}
+
+.content {
+  grid-area: body;
+}
+
+.close-button {
+  position: absolute;
+  inset-inline-end: 0;
+  inset-block-start: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close {
+  --gup-icon--fill-color: var(--close-color);
+}
+
+::slotted([slot="action-buttons"]) {
+  display: block;
+  margin-top: var(--gup-spacing-content-to-cta);
+}
+
+:host([type="success"]) {
+  --border-color: var(--gup-color-positive-low);
+  --icon-color: var(--gup-color-positive-medium);
+  --background-color: var(--gup-color-positive-xlow);
+}
+
+:host([type="warning"]) {
+  --border-color: var(--gup-color-warning-low);
+  --icon-color: var(--gup-color-warning-contrast);
+  --background-color: var(--gup-color-warning-xlow);
+
+  .icon {
+    position: relative;
+    z-index: 2;
+    padding-block-start: 8px;
+    margin-inline: 6px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: calc(50% + 8px);
+      inset-inline-start: 50%;
+      transform: translate(-50%, -50%);
+      width: 28px;
+      height: 28px;
+      background-color: var(--gup-color-warning-medium);
+      border-radius: var(--gup-radius-component-full);
+      z-index: -1;
+    }
+  }
+}
+
+:host([type="error"]) {
+  --border-color: var(--gup-color-negative-low);
+  --icon-color: var(--gup-color-negative-medium);
+  --background-color: var(--gup-color-negative-xlow);
+}
+
+:host([appearance="filled"]) {
+  --border-color: transparent;
+  --icon-color: var(--gup-color-neutral-contrast);
+  --background-color: var(--gup-color-neutral-high);
+  --close-color: var(--gup-color-neutral-contrast);
+
+  color: var(--gup-color-content-inverted-primary);
+
+  &:host([type="success"]) {
+    --icon-color: var(--gup-color-neutral-contrast);
+    --background-color: var(--gup-color-positive-high);
+
+    color: var(--gup-color-content-inverted-primary);
+  }
+
+  &:host([type="warning"]) {
+    --icon-color: var(--gup-color-warning-contrast);
+    --background-color: var(--gup-color-warning-low);
+    --close-color: var(--gup-color-brand-xhigh);
+
+    color: var(--gup-color-content-primary);
+
+    .icon {
+      &::before {
+        background-color: var(--gup-color-warning-high);
+      }
+    }
+  }
+
+  &:host([type="error"]) {
+    --icon-color: var(--gup-color-neutral-contrast);
+    --background-color: var(--gup-color-negative-high);
+
+    color: var(--gup-color-content-inverted-primary);
+  }
+}

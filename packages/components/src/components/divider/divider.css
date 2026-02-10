@@ -1,0 +1,28 @@
+:host {
+  --border-color: var(--gup-color-border-medium);
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-block-end: 1px solid var(--border-color);
+  padding-block-end: var(--gap);
+}
+
+:host([appearance="secondary"]) {
+  --border-color: var(--gup-color-border-low);
+}
+
+:host([appearance="inverse"]) {
+  --border-color: var(--gup-color-border-inverted-medium);
+}
+
+:host([location="top"]) {
+  border-block-start: 1px solid var(--border-color);
+  padding-block-start: var(--gap);
+  border-block-end: none;
+}
+
+:host([location="top-and-bottom"]) {
+  border-block: 1px solid var(--border-color);
+  padding-block: var(--gap);
+}

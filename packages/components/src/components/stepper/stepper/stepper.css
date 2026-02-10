@@ -1,0 +1,16 @@
+:host {
+  --gup-stepper--continued: 0;
+}
+
+:host([continued]) {
+  --gup-stepper--continued: 1;
+}
+
+.list {
+  display: block;
+  overflow: hidden;
+
+  :host(:not([static-mode])) & {
+    border-bottom: 1px solid var(--gup-color-border-medium);
+  }
+}

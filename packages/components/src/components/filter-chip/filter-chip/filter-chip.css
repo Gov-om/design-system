@@ -1,0 +1,32 @@
+:host {
+  --color: var(--gup-color-content-link);
+  --background: var(--gup-color-states-base-bg-control);
+  --gup-icon--fill-color: var(--color);
+}
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gup-component-3);
+  padding: 8px var(--gup-component-5);
+  border-radius: var(--gup-radius-component-full);
+  background: var(--background);
+  color: var(--color);
+  line-height: 24px;
+
+  :host(:not([disabled])) &:hover {
+    --background: linear-gradient(var(--gup-color-states-secondary-hover), var(--gup-color-states-secondary-hover)), linear-gradient(var(--gup-color-brand-accent-xlow), var(--gup-color-brand-accent-xlow));
+  }
+
+  :host(:not([disabled])) &:active {
+    --background: linear-gradient(0deg, var(--gup-color-states-secondary-active) 0%, var(--gup-color-states-secondary-active) 100%), var(--gup-color-states-base-bg-control);
+  }
+
+  @mixin focus-visible;
+}
+
+:host([disabled]) {
+  --color: var(--gup-color-states-disabled-medium);
+  --background: var(--gup-color-states-disabled-low);
+}

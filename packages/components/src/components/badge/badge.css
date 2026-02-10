@@ -1,0 +1,20 @@
+.badge {
+  border: 1px solid var(--gup-color-content-inverted-primary);
+  aspect-ratio: 1;
+  width: 12px;
+  border-radius: 51%;
+  background-color: var(--bg-color);
+
+  &--type-neutral {
+    --bg-color: var(--gup-color-warning-medium);
+  }
+  &--type-positive {
+    --bg-color: var(--gup-color-positive-medium);
+  }
+  &--type-negative {
+    --bg-color: var(--gup-color-negative-medium);
+  }
+  &--type-offline {
+    --bg-color: var(--gup-color-neutral-low);
+  }
+}

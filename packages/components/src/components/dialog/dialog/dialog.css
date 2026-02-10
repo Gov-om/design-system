@@ -1,0 +1,84 @@
+:host {
+  max-width: var(--gup-modal--width, 420px);
+  max-height: var(--gup-modal--height, 80vh);
+  display: flex;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: calc(var(--gup-modal--z-index, 100) + 1);
+  border: 1px solid var(--gup-color-neutral-low);
+  background-color: var(--gup-color-neutral-xlow);
+  border-radius: var(--gup-radius-card);
+  box-shadow: 0 16px var(--gup-color-shadow-blur-7, 32px) 0 var(--gup-color-shadow-color-5), 0 8px var(--gup-color-shadow-blur-6, 16px) 0 var(--gup-color-shadow-color-4), 0 3px var(--gup-color-shadow-blur-4, 6px) 0 var(--gup-color-shadow-color-3), 0 1px var(--gup-color-shadow-blur-2, 2px) 0 var(--gup-color-shadow-color-2);
+  padding: var(--gup-padding-md);
+}
+
+.modal {
+  display: grid;
+  grid-template-areas: 'icon title' '. body' '. footer';
+  grid-template-columns: 0fr auto;
+  grid-template-rows: auto auto auto;
+  row-gap: var(--gup-spacing-text-to-component);
+  color: var(--gup-color-content-primary);
+  width: 100%;
+}
+
+.modal-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.modal-heading {
+  margin: 0;
+  font-size: var(--font-size-550);
+  font-weight: var(--font-weight-base-beta);
+  color: var(--gup-color-content-primary);
+  padding-inline-end: var(--gup-padding-xxl);
+  grid-area: title;
+}
+
+.icon {
+  --gup-icon--fill-color: var(--gup-color-neutral-medium);
+  --gup-icon--width: var(--gup-icon-lg);
+  --gup-icon--height: var(--gup-icon-lg);
+
+  grid-area: icon;
+}
+
+.close-button {
+  position: absolute;
+  inset-inline-end: 0;
+  inset-block-start: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-icon {
+  --gup-icon--fill-color: var(--gup-color-content-primary);
+  --gup-icon--width: var(--gup-icon-md);
+  --gup-icon--height: var(--gup-icon-md);
+}
+
+.modal-content {
+  grid-area: body;
+  max-height: var(--gup-modal--content-max-height, 400px);
+  color: var(--gup-color-content-primary);
+  display: flex;
+  flex-direction: column;
+  padding-inline-end: var(--gup-icon-md);
+  overflow-y: auto;
+  padding-block-end: var(--gup-spacing-text-to-component);
+}
+
+.modal-footer {
+  grid-area: footer;
+}
+
+.modal-footer,
+.modal-content,
+.modal-header {
+  padding-inline-start: var(--gup-spacing-text-to-component);
+}

@@ -1,0 +1,111 @@
+:host {
+  --color: var(--gup-color-brand-xhigh);
+  --item-padding: var(--gup-component-2) var(--gup-component-5);
+  --gup-icon--fill-color: var(--gup-color-brand-xhigh);
+}
+
+.pagination {
+  display: flex;
+  gap: var(--gup-spacing-component-default);
+  justify-content: center;
+  align-items: center;
+  color: var(--color);
+}
+
+.directional-button {
+  display: flex;
+  align-items: center;
+  gap: var(--gup-component-3);
+}
+
+.text {
+  text-decoration: underline;
+  &--is-disabled {
+    border-color: transparent;
+    pointer-events: none;
+    text-decoration: none;
+  }
+}
+
+.arrow-icon {
+  flex-shrink: 0;
+  transform: scaleX(calc(-1 * (var(--gup--is-ltr) * -1)));
+}
+
+.page-button {
+  width: var(--gup-component-8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--item-padding);
+  line-height: 24px;
+  border-radius: var(--gup-radius-component-default);
+
+  &:focus {
+    @mixin focus-outline;
+  }
+
+  &:hover:not(&--is-current, :disabled) {
+    background-color: var(--gup-color-states-secondary-hover);
+  }
+
+  &--is-current {
+    color: var(--gup-color-brand-contrast);
+    background-color: var(--color);
+
+    .text {
+      text-decoration: none;
+    }
+  }
+}
+
+
+
+.links-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gup-radius-component-default);
+  justify-content: space-between;
+}
+
+.label {
+  font-weight: var(--font-weight-base-beta);
+  line-height: var(--line-height-500);
+  width: 100%;
+}
+
+.title {
+  text-wrap: wrap;
+}
+
+.title, .label {
+  text-decoration-line: underline;
+}
+
+.nav-link {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: var(--gup-component-3);
+  width: 50%;
+
+  &--direction-next {
+    margin-inline-start: auto;
+    text-align: end;
+  }
+
+  &--direction-prev {
+    margin-inline-end: auto;
+  }
+}
+
+.text-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: var(--font-size-400);
+  color: var(--color);
+  &:hover {
+    --color: var(--gup-color-content-link);
+  }
+}

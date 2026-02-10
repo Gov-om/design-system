@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  width: 100%;
+  border-top: 1px solid var(--gup-color-border-low);
+  background-color: var(--gup-color-background-wizard-bar);
+  padding-inline: var(--gup-component-8);
+  padding-block: var(--gup-component-5);
+}
+
+.inner {
+  max-width: 1024px;
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  flex: 1 0 0;
+}
+
+::slotted([slot="start"]) {
+  margin-inline-end: auto;
+}
+
+::slotted([slot="end"]) {
+  margin-inline-start: auto;
+}
+
+::slotted([slot="start"]),
+::slotted([slot="end"]) {
+  display: flex;
+  gap: var(--gup-spacing-component-default);
+}

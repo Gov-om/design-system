@@ -1,0 +1,3 @@
+.inner {
+  padding: calc(var(--unit) * 3);
+}

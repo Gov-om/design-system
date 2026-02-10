@@ -1,0 +1,36 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Using without bundler" />
+
+# Explainer
+
+When not bundling components through an independent bundler (such as Vite or Webpack) at build-time and instead loading them directly as separate ES6 modules in browser run-time, the library supports several different approaches.
+
+**The first approach** is to import only the components we need and their dependencies. Eg, if we need to use `gup-avatar` component, we need to look its dependencies up on a component's dedicated Documentation page in the Storybook and then import both the component and its dependencies:
+
+```html
+<script type="module" src="https://myurl.com/gup-components/dist/avatar.js"></script>
+<script type="module" src="https://myurl.com/gup-components/dist/icon.js"></script>
+<script type="module" src="https://myurl.com/gup-components/dist/badge.js"></script>
+```
+
+**Another approach** is to import all components at once with a single entry file called `components.js`. This will load all of them at once to the page. However, this would lead to loading all of them without any consideration to the current contents of the page or the whole website. The first thing to suffer is performance - instead of 10-50 kb users will be loading up to 1Mb, which is not ideal.
+
+```html
+<script type="module" src="https://myurl.com/gup-components/dist/components.js"></script>
+```
+
+**Experimental autoloader** is the third approach and presents a way to deal with this problem. It will try to guess which components are actually used on your page and then load them. The user won't have to spend their web traffic to load components that they don't see, and you won't have to keep track of which components you are utilising.
+
+Note with this approach it is necessary to set a `GUP_AUTOLOADER_SOURCE_DIR` constant on your page first. It informs the autoloader at which URL it will find the components (the `dist` folder). Otherwise the default GUP server will be used (which is very slow).
+
+Keep in mind that a `defer` attribute needs to be added to the script that loads the autoloader.
+
+```html
+<script>
+  const GUP_AUTOLOADER_SOURCE_DIR = "https://myurl.com/gup-components/dist/";
+</script>
+<script src="https://myurl.com/gup-components/dist/autoloader.js" defer></script>
+```
+
+Note all three approaches are mutually exclusive. Eg. you don't need to load `components.js` when using `autoloader.js`, and vice versa.

@@ -1,0 +1,23 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Using with React" />
+
+## React pre-19
+
+React versions prior to 19 had limited support for Web components, requiring workarounds to ensure proper integration. For example, to subscribe to component events one would need to utilise `useRef` hook along with manually adding an event listener.
+
+You can utilise the automatic wrapper components packaged as `@gup-ds/react` to avoid these issues.
+
+A component can be imported the same way as any other React component, with its name in PascalCase (without the `gup-` prefix). Eg. `gup-button-group` can be imported as `ButtonGroup`.
+
+Note that every event name also changes in the React wrapper version of a component: it is converted from kebab-case to camelCase, loses the `gup-` prefix and is prepended instead with `on` (eg `gup-click` becomes `onClick`, and so on).
+
+Also, named slots [can only be used with real HTML elements](https://lit.dev/docs/frameworks/react/#using-slots), not other React components.
+
+Prop/attribute names and everything else follows the Web components conventions seen in this Storybook.
+
+The icon component is not exported as a React component, but you can use the underlying [material-design-icons](https://www.npmjs.com/package/@material-design-icons/svg) package directly in your project instead (with convenience importing middleware such as [vite-plugin-svgr](https://www.npmjs.com/package/vite-plugin-svgr) if necessary).
+
+## React 19
+
+React 19 has full support for Web components, therefore we advise to use them directly (by installing the `@gup-ds/components` package instead of `@gup-ds/react`).

@@ -1,0 +1,8 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gup-padding-md);
+  border: 1px solid var(--gup-color-border-low);
+  padding: var(--gup-padding-md);
+  border-radius: var(--gup-radius-card);
+}

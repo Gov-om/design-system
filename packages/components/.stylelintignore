@@ -1,0 +1,7 @@
+*
+
+!*/
+
+!/src/styles/**/*.css
+!/src/components/**/*.css
+!/src/components/**/*.styles.ts

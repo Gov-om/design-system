@@ -1,0 +1,86 @@
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  gap: var(--gup-component-4);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.box,
+.box-inner,
+.box-pupil {
+  border-radius: var(--gup-radius-component-full);
+
+}
+
+.box {
+  background-color: var(--gup-color-states-base-bg);
+  border: 1px solid var(--gup-color-states-base-border);
+  width: var(--box-size);
+  height: var(--box-size);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.label {
+  min-height: var(--box-size);
+  display: flex;
+  align-items: center;
+}
+
+:host([disabled]) {
+  pointer-events: none;
+
+  .box {
+    background-color: var(--gup-color-states-disabled-low);
+    border: 1px solid var(--gup-color-states-disabled-low);
+  }
+
+  .box-pupil {
+    background-color: var(--gup-color-states-disabled-medium);
+  }
+
+  .label {
+    color: var(--gup-color-content-tertiary);
+  }
+
+}
+
+.box-pupil {
+  visibility: hidden;
+  background-color: var(--gup-color-brand-high);
+  width: var(--pupil-size);
+  height: var(--pupil-size);
+}
+
+:host([selected]) .box {
+  .box-pupil {
+    visibility: visible;
+  }
+}
+
+:host(:not([disabled])) .wrapper:focus .box {
+  box-shadow: 0 0 0 2px var(--gup-color-neutral-contrast), 0 0 0 6px var(--gup-color-states-base-focus-ring);
+}
+
+.box-inner {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    border: 2px solid var(--gup-color-states-base-border);
+
+  }
+}
+
+.labels {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gup-component-1);
+}

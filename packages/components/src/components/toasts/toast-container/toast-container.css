@@ -1,0 +1,9 @@
+:host {
+  position: fixed;
+  bottom: 0;
+  inset-inline-end: 0;
+  padding: 20px;
+  max-width: 600px;
+  width: 100%;
+  z-index: var(--gup-toast-container--z-index, 1000);
+}

@@ -1,0 +1,51 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Upgrade guide" />
+
+# Version 3.0
+
+Here are the general changes in `@gup-ds/components`@3.0.0.
+
+The update largely touches dropdown-related components – `gup-dropdown-field`, `gup-dropdown-menu`, `gup-dropdown-menu-item`. It also removes some unused or internal properties which were exposed to the public API.
+
+In this update we have also made sure that as much of public API for each component is visible on their documentation pages or in the Controls panel.
+
+NB! Note that the stories for dropdown-related components were moved to `Form` folder in the Storybook.
+
+## Breaking changes
+
+1. ⚠️ Most of the private methods of `gup-dropdown-field` and `gup-dropdown-menu` were marked as such and should not work anymore. From now on only the methods and properties appearing in the Controls panel or listed on the component Documentation pages will work. Note that these methods were never advertised or documented anyway.
+2. ⚠️ We have removed `gup-input` event from `gup-dropdown-field` (it was not producing any meaningful results anyway).
+3. ⚠️ `gup-stepper-item` has had its `wizardmode` attribute renamed to `wizard-mode`.
+4. ⚠️ `gup-tab` has had its `isSelected` prop renamed to `selected`.
+5. ⚠️ `isHidden` prop was removed from `gup-tab-panel`.
+6. ⚠️ `index` props were removed from `gup-tab-panel` and `gup-tab`.
+
+## Improvements
+
+0. We have deprecated `id` attribute of `gup-dropdown-menu-item` in favor of `value` attribute. This `value` attribute works in the same way as [a value property of an HTML `option`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#value), setting a programmatically readable name for an item.
+1. We have added a `value` property to `gup-dropdown-field` (similar to [HTML `select` element](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/value)). It can be `set` programmatically or used to `get` the current value. Note it returns a `string[]` format with an array of values of selected items, even when `multiple=false`. This is a property and not an attribute, so only setting it from Javascript code is available.
+2. We are emitting now a `gup-value-change` event to `gup-dropdown-field` that allows to subscribe to value changes.
+3. We have added a `gup-search-input` event to `gup-dropdown-menu` which emits the value of the search input.
+4. `gup-dropdown-field` can participate in an HTML form submission now. Remember to add a `novalidate` attribute to a `form` tag if you want to handle the errors yourself (eg when using `required` prop).
+5. You can make a `gup-dropdown-field` `required` (this is needed by default), and you can set a custom error to it with `error-message` prop.
+6. There's no need anymore to add an Apply button to the `controls` slot of `gup-dropdown-menu` – it will appear automatically. There're new props to customise its label as well.
+7. `gup-dropdown-menu` fires a `gup-apply` event when the default Apply button is clicked.
+8. `gup-dropdown-field` fires a `gup-invalid` event if an error is displayed.
+9. Much more useful information appears now on a component documentation page - we have added tag name, JS class name, public fields, parameters and return types to it.
+
+## Upgrade guide
+
+1. In `gup-dropdown-menu-item`: replace `id` attribute with `value` attribute. Eg. before you might have had:
+
+   ```html
+   <gup-dropdown-menu-item id="item-1" label="Item 1"></gup-dropdown-menu-item>
+   ```
+
+   And now it should be changed to:
+
+   ```html
+   <gup-dropdown-menu-item value="item-1" label="Item 1"></gup-dropdown-menu-item>
+   ```
+
+2. If you have used any undocumented methods of `gup-dropdown-field`, `gup-dropdown-menu`, `gup-dropdown-menu-item`, those will stop working. Check the documentation pages for these components in the Storybook to see the available public methods.

@@ -1,0 +1,32 @@
+/* stylelint-disable custom-property-empty-line-before */
+
+:root {
+  --font-base-ltr: 'Readex Pro', sans-serif;
+
+  /* We might switch to another RTL-specific font in future */
+  --font-base-rtl: var(--font-base-ltr);
+
+  --font-size-90: 8px;
+  --font-size-200: 12px;
+  --font-size-250: 13px;
+  --font-size-300: 14px;
+  --font-size-400: 16px;
+  --font-size-525: 19px;
+  --font-size-550: 20px;
+  --font-size-600: 24px;
+  --font-size-700: 32px;
+
+  --line-height-400: 1.4;
+  --line-height-500: 1.5;
+
+  --font-weight-base-beta: bold;
+
+  --font-base: var(--font-base-ltr);
+
+  --font-size-body: var(--font-size-400);
+  --line-height-body: var(--line-height-500);
+}
+
+:root:dir(rtl) {
+  --font-base: var(--font-base-rtl);
+}

@@ -1,0 +1,77 @@
+/* This file contains CSS modifications to appear only in the Storybook */
+/* stylelint-disable plugin/no-unsupported-browser-features */
+
+#storybook-docs {
+  /* fix missing numbers in numbered lists in MDX files of the Storybook */
+  ol,
+  ul {
+    list-style: revert;
+  }
+
+  storybook-comment {
+    display: none;
+  }
+}
+
+html:has(.sb-main-fullscreen),
+.sb-main-fullscreen,
+.sb-main-fullscreen #storybook-root,
+.sb-main-fullscreen #root-inner {
+  height: 100%;
+}
+
+/* Allow popups/dropdowns to overflow the story container (needed for wiki iframe embedding) */
+#storybook-root,
+#root-inner {
+  overflow: visible !important;
+}
+
+.sb-main-fullscreen .sb-attachment-canvas {
+  display: flex;
+  height: 96vh;
+  padding: 10px;
+  resize: both;
+  overflow: auto;
+
+  &--position-top,
+  &--position-top-start,
+  &--position-top-end {
+    align-items: flex-start;
+  }
+  &--position-top {
+    justify-content: center;
+  }
+  &--position-top-end {
+    justify-content: flex-end;
+  }
+  &--position-center,
+  &--position-center-start,
+  &--position-center-end {
+    align-items: center;
+  }
+  &--position-center {
+    justify-content: center;
+  }
+  &--position-center-end {
+    justify-content: flex-end;
+  }
+  &--position-bottom,
+  &--position-bottom-start,
+  &--position-bottom-end {
+    align-items: flex-end;
+  }
+  &--position-bottom {
+    justify-content: center;
+  }
+  &--position-bottom-end {
+    justify-content: flex-end;
+  }
+}
+
+.sbdocs-content:not(:has(.sbdocs-title)) + div:has(.toc-wrapper) {
+  display: none;
+}
+
+.sb-story [data-name="RTL"] {
+  direction: rtl;
+}

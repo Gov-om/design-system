@@ -1,0 +1,53 @@
+:host {
+  display: flex;
+  gap: var(--gup-spacing-component-default);
+  align-items: center;
+  font-size: var(--font-size-400);
+  line-height: var(--line-height-500);
+  color: var(--color);
+
+  &::after {
+    --border-width: 2px;
+    --size: 6px;
+    --rotation: 45deg;
+
+    content: '';
+
+    /* We need to use a hacky method of detecting RTL because Safari 18 apparently still doesn't support :dir() pseudoselector inside shadow DOM  */
+    transform: rotate(calc(var(--rotation) * var(--gup--is-ltr)));
+    display: inline-block;
+    width: var(--size);
+    height: var(--size);
+    border-style: solid;
+    border-color: var(--gup-color-content-tertiary);
+    border-width: 0;
+    border-inline-end-width: var(--border-width);
+    border-block-start-width: var(--border-width);
+
+    /* Fixes a Safari 18 bug where a 1px gap appears between the two borders */
+    will-change: transform;
+  }
+}
+
+:host(:not(:first-child, :last-child)) {
+  @media (max-width: $bp-small-max) {
+    display: none;
+  }
+}
+
+:host(:last-child) {
+  &::after {
+    display: none;
+  }
+}
+
+.link {
+  color: var(--color);
+  text-decoration: underline;
+
+  &:hover {
+    --color: var(--gup-color-brand-strong);
+
+    text-decoration-thickness: 2px;
+  }
+}

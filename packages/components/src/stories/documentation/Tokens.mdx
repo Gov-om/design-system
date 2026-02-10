@@ -1,0 +1,16 @@
+import { Meta } from "@storybook/blocks";
+
+import float from '../../../../tokens/src/transformed-tokens/float.json';
+import color from '../../../../tokens/src/transformed-tokens/color.json';
+import { TokensTable } from '../../../.storybook/components/tokens-table';
+
+<Meta title="Design tokens" />
+
+# Tokens reference
+
+This page serves as a reference for all CSS tokens that the library uses and exports.
+
+<div style={{'display': 'flex', 'gap': '16px', 'flexWrap': 'wrap'}}>
+  <TokensTable data={float.float} type="float"></TokensTable>
+  <TokensTable data={color.color} type="color"></TokensTable>
+</div>

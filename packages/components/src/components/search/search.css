@@ -1,0 +1,70 @@
+:host {
+  --controls-container-gap: 10px;
+  --close-width: calc(20px + var(--controls-container-gap));
+  --search-width: calc(24px + var(--controls-container-gap));
+
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  font-size: var(--font-size-400);
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: var(--gup-component-4);
+  border: 1px solid var(--gup-color-states-base-border);
+  border-radius: var(--gup-radius-component-full);
+  background: var(--gup-color-states-base-bg);
+  padding-block: var(--gup-component-4);
+  padding-inline-start: var(--gup-component-5);
+  padding-inline-end: var(--gup-component-4);
+  outline: 1px solid var(--second-border-color);
+
+  &:hover {
+    --second-border-color: var(--gup-color-states-base-border);
+  }
+}
+
+.input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 100%;
+  min-height: 23px;
+  cursor: inherit;
+  padding-inline-end: calc(var(--controls-container-gap) + var(--close-width) + var(--search-width));
+}
+
+.close-icon {
+  --gup-icon--fill-color: var(--gup-color-content-link);
+}
+
+.controls-container {
+  position: absolute;
+  inset-inline-end: 4px;
+  inset-block-start: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--gup-component-3);
+}
+
+:host([disabled]) {
+  .input-container {
+    --gup-icon--fill-color: var(--gup-color-states-disabled-medium);
+    --second-border-color: var(--gup-color-states-disabled-low);
+
+    background-color: var(--gup-color-states-disabled-low);
+    border-color: var(--gup-color-states-disabled-low);
+    color: var(--gup-color-states-disabled-medium);
+    cursor: not-allowed;
+  }
+}
+
+:host(:focus-within) .input-container {
+  @mixin focus-outline;
+
+  border-color: transparent;
+}

@@ -1,0 +1,10 @@
+:host {
+  --gup-icon--fill-color: var(--gup-color-negative-medium);
+
+  display: block;
+  color: var(--gup-color-negative-medium);
+}
+
+.icon {
+  flex-shrink: 0;
+}
