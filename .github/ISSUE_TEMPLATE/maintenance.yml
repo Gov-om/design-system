@@ -1,0 +1,48 @@
+name: Maintenance Task
+description: Internal task for maintainers (refactoring, CI fixes, dependency updates, etc.)
+labels: ["maintenance"]
+body:
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Accessibility fix
+        - CI/CD
+        - Dependency update
+        - Refactoring
+        - Performance
+        - Build / tooling
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: component
+    attributes:
+      label: Component or area
+      description: Which component or area of the codebase is affected?
+      placeholder: e.g. gup-dropdown-menu, CI workflow, build config
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to be done and why?
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: How do we know this task is complete?
+      value: |
+        - [ ]
+        - [ ]
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Links to CI logs, related issues, or any other relevant information.

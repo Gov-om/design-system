@@ -1,0 +1,95 @@
+name: Bug Report
+description: Report a bug in a component
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug. Please fill in the details below.
+
+  - type: input
+    id: component
+    attributes:
+      label: Component
+      description: Which component is affected?
+      placeholder: e.g. gup-dropdown-field, gup-button
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear description of the bug.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: How can we reproduce this issue?
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What actually happened?
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Package version
+      placeholder: e.g. @gup-ds/components@3.26.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: framework
+    attributes:
+      label: Framework
+      options:
+        - Vanilla JS / No framework
+        - React 19+
+        - React <19 (@gup-ds/react)
+        - Angular
+        - Vue
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      placeholder: e.g. Chrome 120, Safari 17
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction link
+      description: |
+        A link to a CodePen, CodeSandbox, or Storybook story that reproduces the issue.
+        You can fork the [playground](https://codepen.io/certainlyakey/pen/LYKxrjw) to create one.
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots to help explain the problem.
