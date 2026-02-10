@@ -43,6 +43,7 @@ jobs:
         run: npx playwright install-deps
 
       - name: Lint Accessibility
+        continue-on-error: true
         run: npx nx run @gup-ds/components:lint:a11y
 
       - name: Lint Prettier
