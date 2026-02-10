@@ -1,0 +1,7 @@
+FROM caddy:latest
+
+COPY ./Caddyfile-new-url /etc/caddy/Caddyfile
+
+COPY ./packages/components/storybook-static /usr/share/caddy
+
+EXPOSE 80
