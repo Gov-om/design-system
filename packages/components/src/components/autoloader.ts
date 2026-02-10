@@ -6,10 +6,7 @@ const animationStyles = `
   :not(:defined) { animation: ${ANIMATION_NAME} }
   @keyframes ${ANIMATION_NAME} { to { visibility: visible } }
 `;
-const SOURCE_DIR =
-  typeof GUP_AUTOLOADER_SOURCE_DIR !== 'undefined'
-    ? GUP_AUTOLOADER_SOURCE_DIR
-    : 'https://unpkg.com/@gup-ds/components/dist/';
+const SOURCE_DIR = typeof GUP_AUTOLOADER_SOURCE_DIR !== 'undefined' ? GUP_AUTOLOADER_SOURCE_DIR : 'https://unpkg.com/@gup-ds/components/dist/';
 
 (function registrar() {
   const elements = new Set();
