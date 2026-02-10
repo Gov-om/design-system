@@ -1,0 +1,24 @@
+#!/bin/sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+message="$(head -1 $1)"
+commit_types="chore|ci|docs|feat|fix|refactor|revert|style|bump|test|format|merge"
+commit_message_regex="^((${commit_types}){1}(\([a-zA-Z0-9.-]+\))?!?:([[:space:]][a-zA-Z',.-]+)+)|(Merge([[:space:]][a-zA-Z0-9/':.-]+)+)$"
+
+if ! [[ $message =~ $commit_message_regex ]];
+then
+  echo "---"
+  echo "message $message"
+  echo "Violation of commit message format!"
+  echo "The commit message must be in a Angular commit format https://github.com/angular/angular/blob/main/CONTRIBUTING.md#type:"
+  echo "<commit-type>(<package-name>): <description>"
+  echo "Example: feat(components): added Arabic language"
+  echo "where: "
+  echo "1. 'feat' is one of these allowed commit types:"
+  echo "$commit_types,"
+  echo "2. 'components' is the package name (found in each package.json, without '@gup-ds' prefix), or 'all',"
+  echo "3. and the rest is a description of the change"
+  echo "For more information, check the script in /.husky/commit-msg"
+  echo "---"
+  exit 1
+fi

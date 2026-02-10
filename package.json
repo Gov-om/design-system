@@ -1,0 +1,27 @@
+{
+  "name": "@gup-ds/root",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "prepare": "husky install",
+    "release": "npx nx release --skip-publish",
+    "generate-react-components": "node helpers/generate-react.mjs",
+    "lint:prettier": "npx prettier . --check",
+    "lint:prettier:format": "npx prettier . --write"
+  },
+  "private": false,
+  "devDependencies": {
+    "@nx/js": "^18.3.5",
+    "husky": "^8.0.0",
+    "nx": "^18.3.5"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "overrides": {
+    "caniuse-lite": "1.0.30001653"
+  }
+}

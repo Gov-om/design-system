@@ -1,0 +1,94 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "outputs": ["{projectRoot}/./packages/components/dist"],
+      "cache": true
+    },
+    "build:docs": {
+      "outputs": ["{projectRoot}/./packages/components/custom-elements.json"],
+      "cache": true
+    },
+    "build-storybook": {
+      "outputs": ["{projectRoot}/./packages/components/storybook-static"],
+      "cache": true
+    },
+    "lint:all": {
+      "cache": true
+    }
+  },
+  "release": {
+    "projects": ["packages/*"],
+    "projectsRelationship": "independent",
+    "changelog": {
+      "projectChangelogs": true
+    },
+    "version": {
+      "conventionalCommits": true
+    },
+    "git": {
+      "commitArgs": "--no-verify"
+    },
+    "conventionalCommits": {
+      "types": {
+        "chore": {
+          "semverBump": "none",
+          "changelog": {
+            "title": "🧹 Chores"
+          }
+        },
+        "ci": {
+          "semverBump": "none",
+          "changelog": {
+            "title": "📦 CI/CD Changes"
+          }
+        },
+        "docs": {
+          "semverBump": "none",
+          "changelog": {
+            "title": "📝 Documentation Changes"
+          }
+        },
+        "refactor": {
+          "semverBump": "patch",
+          "changelog": {
+            "title": "🛠️ Refactorings"
+          }
+        },
+        "revert": {
+          "semverBump": "patch",
+          "changelog": {
+            "title": "🔙 Reverted Changes"
+          }
+        },
+        "style": {
+          "semverBump": "none",
+          "changelog": {
+            "title": "💅 Code Style Improvements"
+          }
+        },
+        "bump": {
+          "semverBump": "minor",
+          "changelog": {
+            "title": "🚚 Dependency Updates"
+          }
+        },
+        "test": {
+          "semverBump": "none",
+          "changelog": {
+            "title": "🧪 Tests"
+          }
+        },
+        "format": {
+          "semverBump": "none",
+          "changelog": {
+            "title": "✏️ Formatting and Automatically Generated Files"
+          }
+        }
+      }
+    }
+  },
+  "affected": {
+    "defaultBase": "main"
+  }
+}
