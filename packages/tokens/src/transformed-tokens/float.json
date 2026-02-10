@@ -1,0 +1,130 @@
+{
+  "float": {
+    "gup/spacing/component-default": {
+      "value": 12
+    },
+    "gup/spacing/content-to-cta": {
+      "value": 32
+    },
+    "gup/spacing/between-content": {
+      "value": 24
+    },
+    "gup/spacing/between-form-fields": {
+      "value": 20
+    },
+    "gup/spacing/between-items": {
+      "value": 8
+    },
+    "gup/spacing/between-options": {
+      "value": 0
+    },
+    "gup/spacing/between-sections": {
+      "value": 48
+    },
+    "gup/spacing/between-text": {
+      "value": 16
+    },
+    "gup/spacing/horizontal/between-columns": {
+      "value": 24
+    },
+    "gup/spacing/image-bottom": {
+      "value": 8
+    },
+    "gup/spacing/text-to-component": {
+      "value": 16
+    },
+    "gup/radius/button": {
+      "value": 999
+    },
+    "gup/radius/component-default": {
+      "value": 8
+    },
+    "gup/radius/component-small": {
+      "value": 4
+    },
+    "gup/radius/component-full": {
+      "value": 999
+    },
+    "gup/radius/card": {
+      "value": 12
+    },
+    "gup/padding/xs": {
+      "value": 8
+    },
+    "gup/padding/sm": {
+      "value": 16
+    },
+    "gup/padding/md": {
+      "value": 24
+    },
+    "gup/padding/lg": {
+      "value": 32
+    },
+    "gup/padding/xl": {
+      "value": 40
+    },
+    "gup/icon/xs": {
+      "value": 16
+    },
+    "gup/component/0": {
+      "value": 0
+    },
+    "gup/component/1": {
+      "value": 2
+    },
+    "gup/component/2": {
+      "value": 4
+    },
+    "gup/universal/space-4": {
+      "value": 20
+    },
+    "gup/component/3": {
+      "value": 8
+    },
+    "gup/component/4": {
+      "value": 12
+    },
+    "gup/universal/space-5": {
+      "value": 24
+    },
+    "gup/component/5": {
+      "value": 16
+    },
+    "gup/component/6": {
+      "value": 20
+    },
+    "gup/universal/space-7": {
+      "value": 40
+    },
+    "gup/component/7": {
+      "value": 24
+    },
+    "gup/component/8": {
+      "value": 32
+    },
+    "gup/universal/space-9": {
+      "value": 64
+    },
+    "gup/universal/space-10": {
+      "value": 80
+    },
+    "gup/component/9": {
+      "value": 40
+    },
+    "gup/icon/sm": {
+      "value": 20
+    },
+    "gup/icon/md": {
+      "value": 24
+    },
+    "gup/icon/lg": {
+      "value": 28
+    },
+    "gup/icon/xl": {
+      "value": 32
+    },
+    "gup/stroke/focus-ring": {
+      "value": 6
+    }
+  }
+}

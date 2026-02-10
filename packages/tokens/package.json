@@ -1,0 +1,15 @@
+{
+  "name": "@gup-ds/tokens",
+  "version": "0.2.2",
+  "description": "Oman GUP design tokens",
+  "license": "MIT",
+  "main": "src/tokens.css",
+  "scripts": {
+    "sync-tokens": "node ./utils/fetch-figma-vars.js && npm run build",
+    "build": "node transform.js && node build.js"
+  },
+  "devDependencies": {
+    "style-dictionary": "^3.9.2"
+  },
+  "dependencies": {}
+}
