@@ -1,0 +1,16 @@
+{
+  "name": "@gup-ds/angular",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/angular/src",
+  "targets": {
+    "nx-release-publish": {
+      "dependsOn": [
+        "build"
+      ],
+      "options": {
+        "packageRoot": "{projectRoot}/dist"
+      }
+    }
+  }
+}
