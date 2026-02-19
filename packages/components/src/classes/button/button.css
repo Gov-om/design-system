@@ -1,0 +1,223 @@
+/**
+ * GUP Button - Class-based approach
+ *
+ * Usage with native elements:
+ * <button class="gup-button gup-button--primary">Click me</button>
+ * <a href="#" class="gup-button gup-button--secondary">Link button</a>
+ *
+ * Modifiers:
+ * - Appearance: gup-button--primary, gup-button--secondary, gup-button--text, gup-button--danger
+ * - State: gup-button--inverted, gup-button--disabled, gup-button--icon-only
+ */
+
+.gup-button {
+  /* CSS Custom Properties for theming */
+  --_color: var(--gup-color-brand-medium);
+  --_background: transparent;
+  --_border-color: transparent;
+  --_icon-fill: var(--gup-color-brand-contrast);
+  --_hover-overlay: linear-gradient(
+    0deg,
+    var(--gup-color-states-primary-hover) 0%,
+    var(--gup-color-states-primary-hover) 100%
+  );
+  --_active-overlay: color-mix(in srgb, var(--gup-color-states-primary-active) 90%, transparent);
+
+  /* Reset */
+  appearance: none;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+
+  /* Layout */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gup-component-4);
+
+  /* Sizing */
+  padding-block: calc(var(--unit) * 2);
+  padding-inline: var(--gup-component-5);
+
+  /* Visual */
+  border: 1px solid var(--_border-color);
+  border-radius: var(--gup-radius-button);
+  background: var(--_background);
+  color: var(--_color);
+
+  /* Typography */
+  font-size: var(--font-size-400);
+  line-height: var(--line-height-500);
+  text-align: center;
+
+  /* Focus */
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 6px solid var(--gup-color-states-base-focus-ring);
+    outline-offset: 3px;
+  }
+}
+
+/* Icon styling within button */
+.gup-button .gup-button__icon,
+.gup-button gup-icon {
+  --gup-icon--fill-color: var(--_icon-fill);
+}
+
+/* Screenreader-only label for icon-only buttons */
+.gup-button__label--sr-only {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: none;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   APPEARANCE VARIANTS
+   ========================================================================== */
+
+/* Primary (default) */
+.gup-button--primary {
+  --_background: var(--gup-color-brand-medium);
+  --_color: var(--gup-color-neutral-contrast);
+  --_icon-fill: var(--gup-color-brand-contrast);
+
+  &:hover:not(:disabled):not(.gup-button--disabled) {
+    --_background: var(--_hover-overlay), var(--gup-color-brand-medium);
+  }
+
+  &:active:not(:disabled):not(.gup-button--disabled) {
+    --_background: color-mix(in srgb, var(--gup-color-brand-medium), var(--_active-overlay));
+  }
+}
+
+/* Secondary */
+.gup-button--secondary {
+  --_background: transparent;
+  --_border-color: var(--gup-color-brand-xhigh);
+  --_color: var(--gup-color-brand-xhigh);
+  --_icon-fill: var(--gup-color-brand-xhigh);
+
+  &:hover:not(:disabled):not(.gup-button--disabled) {
+    --_border-color: transparent;
+    --_background: var(--gup-color-brand-medium);
+    --_color: var(--gup-color-brand-contrast);
+    --_icon-fill: var(--gup-color-brand-contrast);
+  }
+
+  &:active:not(:disabled):not(.gup-button--disabled) {
+    --_background: color-mix(in srgb, var(--gup-color-brand-medium), var(--_active-overlay));
+    --_color: var(--gup-color-brand-contrast);
+  }
+}
+
+/* Text */
+.gup-button--text {
+  --_color: var(--gup-color-brand-xhigh);
+  --_icon-fill: var(--gup-color-brand-default);
+
+  text-decoration: var(--gup-button--underline, underline);
+  text-underline-offset: 2px;
+
+  &:hover:not(:disabled):not(.gup-button--disabled) {
+    --_background: var(--gup-color-states-secondary-hover);
+  }
+
+  &:active:not(:disabled):not(.gup-button--disabled) {
+    --_background: color-mix(in srgb, var(--gup-color-states-secondary-active) 18%, transparent);
+  }
+}
+
+/* Danger */
+.gup-button--danger {
+  --_color: var(--gup-color-neutral-contrast);
+  --_background: var(--gup-color-negative-medium);
+  --_icon-fill: var(--gup-color-brand-contrast);
+
+  &:hover:not(:disabled):not(.gup-button--disabled) {
+    --_background: var(--_hover-overlay), var(--gup-color-negative-medium);
+  }
+
+  &:active:not(:disabled):not(.gup-button--disabled) {
+    --_background: color-mix(in srgb, var(--gup-color-negative-medium), color-mix(in srgb, var(--gup-color-states-primary-active) 70%, transparent));
+  }
+}
+
+/* ==========================================================================
+   STATE MODIFIERS
+   ========================================================================== */
+
+/* Disabled */
+.gup-button--disabled,
+.gup-button:disabled {
+  --_icon-fill: var(--gup-color-states-disabled-medium);
+  --_background: var(--gup-color-states-disabled-low);
+  --_color: var(--gup-color-states-disabled-medium);
+  --_border-color: transparent;
+
+  pointer-events: none;
+  cursor: not-allowed;
+
+  &.gup-button--text {
+    text-decoration: none;
+  }
+}
+
+/* Icon Only */
+.gup-button--icon-only {
+  padding: var(--gup-spacing-between-items);
+  border-radius: 51%;
+}
+
+/* ==========================================================================
+   INVERTED VARIANTS (for dark backgrounds)
+   ========================================================================== */
+
+.gup-button--inverted {
+  --_color: var(--gup-color-neutral-contrast);
+
+  &.gup-button--primary {
+    --_icon-fill: var(--gup-color-neutral-xhigh);
+    --_background: var(--gup-color-neutral-contrast);
+    --_color: var(--gup-color-neutral-xhigh);
+
+    &:hover:not(:disabled):not(.gup-button--disabled) {
+      --_background: color-mix(in srgb, var(--gup-color-states-inverted-primary-hover) 80%, transparent);
+    }
+
+    &:active:not(:disabled):not(.gup-button--disabled) {
+      --_background: color-mix(in srgb, var(--gup-color-states-inverted-primary-active) 60%, transparent);
+    }
+  }
+
+  &.gup-button--secondary {
+    --_border-color: var(--gup-color-neutral-contrast);
+    --_background: var(--gup-color-neutral-contrast);
+
+    &:hover:not(:disabled):not(.gup-button--disabled) {
+      --_background: color-mix(in srgb, var(--gup-color-states-inverted-primary-hover) 80%, transparent);
+    }
+
+    &:active:not(:disabled):not(.gup-button--disabled) {
+      --_background: color-mix(in srgb, var(--gup-color-states-inverted-primary-active) 60%, transparent);
+    }
+  }
+
+  &.gup-button--text {
+    &:hover:not(:disabled):not(.gup-button--disabled) {
+      --_background: color-mix(in srgb, var(--gup-color-states-primary-hover) 26%, transparent);
+    }
+
+    &:active:not(:disabled):not(.gup-button--disabled) {
+      --_background: color-mix(in srgb, var(--gup-color-states-inverted-secondary-active) 70%, transparent);
+    }
+  }
+}

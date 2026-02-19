@@ -1,0 +1,106 @@
+:host {
+  display: flex;
+  min-height: var(--gup-icon-md);
+  padding: 0 var(--gup-component-3);
+  justify-content: center;
+  align-items: center;
+  gap: var(--gup-component-3);
+  border-radius: calc(var(--gup-icon-md) / 2);
+  line-height: var(--line-height-500);
+  font-size: var(--font-size-300);
+}
+
+:host([has-thumbnail]) {
+  padding: var(--gup-component-0) var(--gup-component-3) var(--gup-component-0) var(--gup-component-1);
+}
+
+:host([with-icon-only]) {
+  padding: 0;
+  width: var(--gup-component-7);
+  height: var(--gup-component-7);
+}
+
+:host([appearance="neutral"]) {
+  border: 1px solid var(--gup-color-neutral-low);
+  background: var(--gup-color-neutral-contrast);
+  color: var(--gup-color-neutral-high);
+
+  --gup-icon--fill-color: var(--gup-color-neutral-high);
+
+  &:host([is-filled]) {
+    background: var(--gup-color-neutral-medium);
+    color: var(--gup-color-negative-contrast);
+
+    --gup-icon--fill-color: var(--gup-color-negative-contrast);
+  }
+}
+
+:host([appearance="positive"]) {
+  border: 1px solid var(--gup-color-positive-low);
+  background: var(--gup-color-positive-xlow);
+  color: var(--gup-color-positive-xhigh);
+
+  --gup-icon--fill-color: var(--gup-color-positive-high);
+
+  &:host([is-filled]) {
+    background: var(--gup-color-positive-high);
+    color: var(--gup-color-negative-contrast);
+
+    --gup-icon--fill-color: var(--gup-color-negative-contrast);
+  }
+}
+
+:host([appearance="warning"]) {
+  border: 1px solid var(--gup-color-warning-low);
+  background: var(--gup-color-warning-xlow);
+  color: var(--gup-color-warning-xhigh);
+
+  --gup-icon--fill-color: var(--gup-color-warning-high);
+
+  &:host([is-filled]) {
+    background: var(--gup-color-warning-low);
+    color: var(--gup-color-warning-xhigh);
+
+    --gup-icon--fill-color: var(--gup-color-warning-xhigh);
+  }
+}
+
+:host([appearance="negative"]) {
+  border: 1px solid var(--gup-color-negative-low);
+  background: var(--gup-color-negative-xlow);
+  color: var(--gup-color-negative-xhigh);
+
+  --gup-icon--fill-color: var(--gup-color-negative-high);
+
+  &:host([is-filled]) {
+    background: var(--gup-color-negative-high);
+    color: var(--gup-color-negative-contrast);
+
+    --gup-icon--fill-color: var(--gup-color-negative-contrast);
+  }
+}
+
+:host([appearance="brand"]) {
+  border: 1px solid var(--gup-color-brand-low);
+  background: var(--gup-color-brand-xlow);
+  color: var(--gup-color-brand-xhigh);
+
+  --gup-icon--fill-color: var(--gup-color-brand-high);
+
+  &:host([is-filled]) {
+    background: var(--gup-color-brand-high);
+    color: var(--gup-color-negative-contrast);
+
+    --gup-icon--fill-color: var(--gup-color-negative-contrast);
+  }
+}
+
+.thumbnail {
+  display: flex;
+  width: var(--gup-component-5);
+  height: var(--gup-component-5);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--gup-radius-component-full);
+}

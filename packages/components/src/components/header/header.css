@@ -1,0 +1,51 @@
+:host {
+  --gup-logo--color: var(--gup-color-neutral-contrast);
+  --gup-button--underline: none;
+
+  /* Inside of flex container, this makes sure the logo overhang is still visible */
+  position: relative;
+}
+
+.inner {
+  background: var(--gup-color-background-navigation-bar) linear-gradient(180deg, #eff5ff -66.34%, #f7f5f1 100%);
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--gup-color-border-low);
+}
+
+.navigation {
+  max-width: 1024px;
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  min-height: 60px;
+  width: 100%;
+  font-size: 16px;
+  color: var(--gup-color-brand-xhigh);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.logo-wrapper {
+  --overhang: 10px;
+
+  display: flex;
+  margin-bottom: calc(var(--overhang) * -1);
+  width: 72px;
+  height: calc(60px + var(--overhang));
+  padding: 11px 18px 13px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 var(--gup-radius-component-default) var(--gup-radius-component-default);
+  background-color: var(--gup-color-brand-medium);
+}
+
+::slotted([slot="start"]),
+::slotted([slot="end"]) {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+::slotted([slot="end"]) {
+  justify-content: flex-end;
+}

@@ -1,0 +1,67 @@
+@define-mixin screenreader-text {
+  --comment: 'screenreader-text mixin';
+
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: none;
+  white-space: nowrap;
+
+  --comment-end: 'screenreader-text mixin';
+}
+
+@define-mixin focus-outline $outline-size: 6px, $outline-offset: 3px {
+  --comment: 'focus-outline mixin';
+
+  outline: $outline-size solid var(--gup-color-states-base-focus-ring);
+  outline-offset: $outline-offset;
+
+  --comment-end: 'focus-outline mixin';
+}
+
+@define-mixin focus-visible $outline-size: 6px, $outline-offset: 3px {
+  --comment: 'focus-visible mixin';
+
+  @supports selector(:focus-visible) {
+    &:focus {
+      outline: none;
+    }
+    /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+    &:focus-visible {
+      @mixin focus-outline $outline-size, $outline-offset;
+    }
+  }
+
+  --comment-end: 'focus-visible mixin';
+}
+
+@define-mixin link {
+  --comment: 'link mixin';
+
+  padding-block: 2px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  border-radius: calc(var(--unit) * 2);
+
+  &:hover {
+    background-color: var(--gup-color-brand-tertiary);
+  }
+
+  --comment-end: 'link mixin';
+}
+
+@define-mixin reset-input {
+  --comment: 'reset-input mixin';
+
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 100%;
+  cursor: inherit;
+
+  --comment-end: 'reset-input mixin';
+}

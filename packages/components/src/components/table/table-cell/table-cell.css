@@ -1,0 +1,21 @@
+:host {
+  display: table-cell;
+  height: 100%;
+  border-bottom: 1px solid var(--gup-color-border-low);
+}
+
+.wrapper {
+  padding-block: var(--gup-component-3);
+  padding-inline-end: var(--gup-component-7);
+  min-width: 60px;
+  color: var(--gup-color-content-primary);
+  text-align: start;
+  text-wrap: wrap;
+}
+
+:host([type="header"]),
+:host([type="rowheader"]) {
+  .wrapper {
+    font-weight: var(--font-weight-base-beta);
+  }
+}

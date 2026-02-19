@@ -1,0 +1,382 @@
+<!-- The contents of this file is mirrored in the official playground for the components: https://codepen.io/certainlyakey/pen/LYKxrjw (components.js version), https://codepen.io/certainlyakey/pen/ByaVgvP?editors=1111 (autoloader version). -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      padding: 1rem
+    }
+  </style>
+  <!-- You can also load all components at once with /dist/components.js (not recommended for performance reasons) -->
+  <!-- When loading only necessary components, you must load components they depend on too -->
+  <script type="module" src="/dist/accordion-item.js"></script>
+  <script type="module" src="/dist/accordion.js"></script>
+  <script type="module" src="/dist/avatar.js"></script>
+  <script type="module" src="/dist/badge.js"></script>
+  <script type="module" src="/dist/banner.js"></script>
+  <script type="module" src="/dist/breadcrumbs-item.js"></script>
+  <script type="module" src="/dist/breadcrumbs.js"></script>
+  <script type="module" src="/dist/button-group.js"></script>
+  <script type="module" src="/dist/button.js"></script>
+  <script type="module" src="/dist/callout.js"></script>
+  <script type="module" src="/dist/details.js"></script>
+  <script type="module" src="/dist/dialog-container.js"></script>
+  <script type="module" src="/dist/dialog.js"></script>
+  <script type="module" src="/dist/divider.js"></script>
+  <script type="module" src="/dist/dropdown-field.js"></script>
+  <script type="module" src="/dist/dropdown-menu-item.js"></script>
+  <script type="module" src="/dist/dropdown-menu.js"></script>
+  <script type="module" src="/dist/file-item.js"></script>
+  <script type="module" src="/dist/file-upload.js"></script>
+  <script type="module" src="/dist/filter-chip-wrapper.js"></script>
+  <script type="module" src="/dist/filter-chip.js"></script>
+  <script type="module" src="/dist/flag.js"></script>
+  <script type="module" src="/dist/form-hint.js"></script>
+  <script type="module" src="/dist/form-list.js"></script>
+  <script type="module" src="/dist/form-validation-message.js"></script>
+  <script type="module" src="/dist/icon.js"></script>
+  <script type="module" src="/dist/image.js"></script>
+  <script type="module" src="/dist/input-field.js"></script>
+  <script type="module" src="/dist/link.js"></script>
+  <script type="module" src="/dist/pagination.js"></script>
+  <script type="module" src="/dist/radio-button-group.js"></script>
+  <script type="module" src="/dist/radio-button.js"></script>
+  <script type="module" src="/dist/screenreader-text.js"></script>
+  <script type="module" src="/dist/search.js"></script>
+  <script type="module" src="/dist/spinner.js"></script>
+  <script type="module" src="/dist/stepper-item.js"></script>
+  <script type="module" src="/dist/stepper.js"></script>
+  <script type="module" src="/dist/tab-panel.js"></script>
+  <script type="module" src="/dist/tab.js"></script>
+  <script type="module" src="/dist/table-cell.js"></script>
+  <script type="module" src="/dist/table-row.js"></script>
+  <script type="module" src="/dist/table.js"></script>
+  <script type="module" src="/dist/tabs-navigation.js"></script>
+  <script type="module" src="/dist/tabs.js"></script>
+  <script type="module" src="/dist/textarea-field.js"></script>
+  <script type="module" src="/dist/toast-container.js"></script>
+  <script type="module" src="/dist/toast.js"></script>
+  <script type="module" src="/dist/toggle.js"></script>
+  <script type="module" src="/dist/track.js"></script>
+  <link rel="stylesheet" href="/dist/styles.css">
+  <title>Production build preview</title>
+</head>
+
+<body>
+  <div id="dialog-backdrop">
+    <gup-track direction="vertical" gap="12">
+      <div>
+        <gup-accordion>
+          <gup-accordion-item>
+            <span slot="label">Click me</span>
+            Some hidden content
+          </gup-accordion-item>
+          <gup-accordion-item>
+            <span slot="label">Click me too but also saddle top buy rule river
+              division anywhere dawn push front needed headed
+              blanket reason yourself bigger table result
+              replied level began mean curve air</span>
+            Some other hidden content where map questions itself
+            mood cutting ride rear story pay stood observe smell
+            anybody tie rise greatly four visitor recently
+            beginning source grade pig command
+          </gup-accordion-item>
+        </gup-accordion>
+      </div>
+
+      <div>
+        <gup-table>
+          <gup-table-cell type="header">Header 1</gup-table-cell>
+          <gup-table-cell type="header">Header 2</gup-table-cell>
+          <gup-table-cell type="header">Header 3</gup-table-cell>
+          <gup-table-row>
+            <gup-table-cell>Data 1 visit sail include equally birth come
+              attack play mother garden him select go number
+              major collect cap brave giving creature mix soil
+              pass orbit</gup-table-cell>
+            <gup-table-cell>Data 2 because do model represent actually
+              driving observe troops bit furniture failed sure
+              desk rise greatest review mirror finest
+              mathematics locate dried native drawn
+              believed</gup-table-cell>
+            <gup-table-cell>Data 3</gup-table-cell>
+          </gup-table-row>
+          <gup-table-row>
+            <gup-table-cell type="strong">Data 4</gup-table-cell>
+            <gup-table-cell>Data 5 show fifty visitor shaking recall help
+              reason evening nature hit on information couple
+              free write active member spend beat if touch
+              probably opinion typical with some
+              sünnipäevanädalalõpupeopärastlõunaväsimatus</gup-table-cell>
+            <gup-table-cell>Data 6</gup-table-cell>
+          </gup-table-row>
+        </gup-table>
+      </div>
+
+      <div>
+        <gup-avatar label="Babu Daduda" status="positive"></gup-avatar>
+      </div>
+
+      <div>
+        <gup-badge></gup-badge>
+      </div>
+
+      <div>
+        <gup-banner>
+          <span slot="title">Normality is the gentrification of ordinary madness
+            – ask an Surrealist</span>
+          But couldn’t there be a definition of the normal which
+          didn’t equate it with the ordinary or uninspiring? Or
+          which wasn’t coercive or ridiculously prim?
+        </gup-banner>
+      </div>
+
+      <div>
+        <gup-breadcrumbs>
+          <gup-breadcrumbs-item href="https://google.com">Home</gup-breadcrumbs-item>
+          <gup-breadcrumbs-item href="https://store.google.com">Store</gup-breadcrumbs-item>
+          <gup-breadcrumbs-item href="https://store.google.com/us/category/phones">Category</gup-breadcrumbs-item>
+          <gup-breadcrumbs-item href="https://store.google.com/us/product/pixel_8a">Phone</gup-breadcrumbs-item>
+          <gup-breadcrumbs-item href="https://store.google.com/us/product/pixel_8a_specs" current>Phone specs</gup-breadcrumbs-item>
+        </gup-breadcrumbs>
+      </div>
+
+      <div>
+        <gup-button-group>
+          <gup-button>Button 1</gup-button>
+          <gup-button>Some other button 2</gup-button>
+        </gup-button-group>
+      </div>
+      <gup-stepper toggle-all-displayed="">
+        <gup-stepper-item step-number="1" step-type="done" role="listitem">
+          <span slot="label">Step 1</span>
+          Step 1 content
+        </gup-stepper-item>
+        <gup-stepper-item step-number="2" step-type="selected" role="listitem" open="">
+          <span slot="label">Step 2</span>
+          Step 2 content carefully joy older point pure halfway
+          mirror touch cent by yourself pleasure chose figure
+          fifteen cage cook rain discussion been hearing think
+          expect bee
+        </gup-stepper-item>
+        <gup-stepper-item step-number="3" role="listitem">
+          <span slot="label">Step 3</span>
+          Step 3 content
+        </gup-stepper-item>
+        <gup-stepper-item step-number="4.5" step-type="and" role="listitem">
+          <span slot="label">Step 4.5</span>
+          Step 4.5 content
+        </gup-stepper-item>
+        <gup-stepper-item step-number="5" role="listitem">
+          <span slot="label">Step 5</span>
+          Step 5 content
+        </gup-stepper-item>
+      </gup-stepper>
+      <div>
+        <gup-callout>
+          It is a long established fact that a reader will be
+          distracted by the readable content of a page when
+          looking at its layout.
+          <span slot="title">Quote title</span>
+          <span slot="footer">- Author</span>
+        </gup-callout>
+      </div>
+
+      <div>
+        <gup-details>
+          It is a long established fact that a reader will be
+          distracted by the readable content of a page when
+          looking at its layout.
+          <span slot="label">I am a label for the button</span>
+        </gup-details>
+      </div>
+
+      <div>
+        <gup-divider gap="4">
+          <span>Element 1</span>
+          <span>Element 2 with some word</span>
+          <span>Element 3 with so many words that they talk from
+            were split happened someone dead tide joy stranger
+            air bark applied should thank if already where went
+            waste slightly orange tent boy</span>
+        </gup-divider>
+      </div>
+
+      <div>
+        <gup-filter-chip-wrapper clear-label="Clear all">
+          <span slot="label">Search in:</span>
+          <gup-filter-chip>Filter 1</gup-filter-chip>
+          <gup-filter-chip>Filter 2</gup-filter-chip>
+          <gup-filter-chip>Filter 3</gup-filter-chip>
+          <gup-filter-chip>Filter 4</gup-filter-chip>
+        </gup-filter-chip-wrapper>
+      </div>
+
+      <div>
+        <gup-icon icon-name="chat-bubble-outline"></gup-icon>
+      </div>
+
+      <div>
+        <gup-flag country-name="om"></gup-flag>
+      </div>
+
+      <div>
+        <gup-dropdown-menu search-enabled="true" multiple="true" class="dropdown-content" id="dropdown-menu">
+          <gup-dropdown-menu-item label="Item number 1" id="item1" value="idtem1"></gup-dropdown-menu-item>
+          <gup-dropdown-menu-item label="Item number 2" id="item2" value="idtem2"></gup-dropdown-menu-item>
+
+          <gup-track slot="controls" horizontal-alignment="right">
+            <gup-button id="dropdown-button2">
+              Apply
+            </gup-button>
+          </gup-track>
+        </gup-dropdown-menu>
+      </div>
+
+      <div>
+        <gup-image alt="Alt text" src="https://images.unsplash.com/photo-1542401886-65d6c61db217?q=80&amp;w=1470&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="300" height="300">
+          <span slot="caption">Image caption</span>
+        </gup-image>
+      </div>
+
+      <div>
+        <form id="form">
+          <gup-form-list>
+            <gup-input-field name="your-message">Your message</gup-input-field>
+            <gup-dropdown-field id="ddlSpecializations" class="dropdown" name="ddlSpecializations" placeholder="fdfds" clearable>
+              <span slot="label">@VacancyResx.SpecializationsRequiredByCompany:</span>
+
+              <gup-dropdown-menu search-enabled="true" multiple="true" class="dropdown-content" id="Specializations-dropdown-menu">
+                <gup-dropdown-menu-item label="Item number 1" id="item1" value="idtem1"></gup-dropdown-menu-item>
+                <gup-dropdown-menu-item label="Item number 2" id="item2" value="idtem2"></gup-dropdown-menu-item>
+
+                <gup-track slot="controls" horizontal-alignment="right">
+                  <gup-button id="dropdown-button">
+                    Apply
+                  </gup-button>
+                </gup-track>
+              </gup-dropdown-menu>
+            </gup-dropdown-field>
+
+            <gup-input-field name="your-date" type="date">Your date</gup-input-field>
+            <gup-checkbox name="subscription" value="enabled">
+              Checkbox label
+            </gup-checkbox>
+            <gup-file-upload name="file-upload" id="file-upload">Upload a file</gup-file-upload>
+            <gup-textarea-field name="your-text" rows="4">Your text</gup-textarea-field>
+            <gup-radio-button-group label="Radio button group with many items" name="radios">
+              <gup-radio-button name="radios" value="radio-1">Radio 1</gup-radio-button>
+              <gup-radio-button name="radios" value="radio-2">Radio 2 offer higher barn farmer most
+                butter desert then everywhere air property
+                street</gup-radio-button>
+              <gup-radio-button name="radios" value="radio-3">Radio 3</gup-radio-button>
+            </gup-radio-button-group>
+            <gup-toggle name="switch-input">Default</gup-toggle>
+          </gup-form-list>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <div>
+        <gup-pagination total-pages="25" current-page="6" prev-label="Previous" prev-title="Rub your eyes and purify your heart – and prize above all else in the world those who love you and who wish you well" prev-link="https://www.timeanddate.com/astronomy/moon/blue-moon.html" next-label="Next" next-title="But Art is a punitive sentence, not a birthright" next-link="https://days.to/until/summer"></gup-pagination>
+      </div>
+
+      <div>
+        <gup-screenreader-text>Screenreader text</gup-screenreader-text>
+      </div>
+
+      <div>
+        <gup-search name="search input" label="Search" search-label="Visually hidden label for search button" reset-label="Visually hidden label for clear button"></gup-search>
+      </div>
+
+      <div>
+        <gup-tabs appearance="default">
+          <gup-tabs-navigation>
+            <gup-tab>First Tab</gup-tab>
+            <gup-tab>Second Tab</gup-tab>
+            <gup-tab>Third Tab</gup-tab>
+          </gup-tabs-navigation>
+          <gup-tab-panel>Panel for First Tab</gup-tab-panel>
+          <gup-tab-panel>Panel for Second Tab</gup-tab-panel>
+          <gup-tab-panel>Panel for Third Tab</gup-tab-panel>
+        </gup-tabs>
+      </div>
+
+      <div>
+        <gup-track gap="5">
+          <span>Element 1</span>
+          <span>Element 2 with some word</span>
+          <span>Element 3 with so many words that they talk from
+            were split happened someone dead tide joy stranger
+            air bark applied should thank if already where went
+            waste slightly orange tent boy</span>
+        </gup-track>
+      </div>
+    </gup-track>
+    <gup-button id="open-toast">Open a toast</gup-button>
+    <gup-button id="open-dialog">Open Simple Dialog</gup-button>
+    <gup-toast-container id="toast-container"></gup-toast-container>
+  </div>
+  <gup-dialog-container></gup-dialog-container>
+
+  <script type="module">
+    const toastContainer = document.getElementById("toast-container");
+    document
+      .getElementById("open-toast")
+      .addEventListener("gup-click", () => {
+        if (toastContainer) {
+          toastContainer.addToast("df", "neutral", 3000);
+        }
+      });
+
+    const dropdownField = document.getElementById("ddlSpecializations");
+    document
+      .getElementById("dropdown-button")
+      .addEventListener("gup-click", () => {
+        if (dropdownField) {
+          dropdownField.applyValue();
+        }
+      });
+
+    const form = document.getElementById("form");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      console.log(Object.fromEntries(formData));
+    });
+
+    await Promise.all([
+      customElements.whenDefined("gup-file-upload"),
+    ]).then(() => {
+      const fileUpload = document.getElementById("file-upload");
+      if (fileUpload) {
+        fileUpload.value = [
+          new File([""], "file.png", {
+            lastModified: new Date(2017, 1, 26),
+          }),
+        ];
+      }
+    });
+
+    const container = document.querySelector("gup-dialog-container");
+    const simpleButton = document.getElementById(
+      "open-dialog",
+    );
+    if (simpleButton) {
+      simpleButton.addEventListener("gup-click", function () {
+        if (container) {
+          container.createDialog({
+            heading: "Simple Dialog",
+            content:
+              "<p>This is a simple dialog with a message and a close button.</p>",
+          });
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

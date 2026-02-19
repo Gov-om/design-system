@@ -1,0 +1,5 @@
+.caption {
+  color: var(--gup-color-content-secondary);
+  font-size: var(--font-size-300);
+  margin-top: var(--gup-spacing-image-bottom);
+}

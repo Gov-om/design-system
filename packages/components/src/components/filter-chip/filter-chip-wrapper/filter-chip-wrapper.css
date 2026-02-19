@@ -1,0 +1,6 @@
+:host {
+  border-bottom: 1px solid var(--gup-color-brand-tertiary);
+}
+.label {
+  color: var(--gup-color-brand-default);
+}

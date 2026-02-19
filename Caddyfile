@@ -1,0 +1,25 @@
+:80 {
+    header {
+        -Content-Security-Policy
+        -content-security-policy
+        -X-Frame-Options
+        -x-frame-options
+    }  
+
+    handle /storybook* {
+        root * /usr/share/caddy
+        
+        header {
+            -Content-Security-Policy
+            -content-security-policy
+            -X-Frame-Options
+            -x-frame-options
+        }
+        
+        file_server
+    }
+    
+    handle {
+        respond "Storybook available at /storybook" 200
+    }
+}

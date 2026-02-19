@@ -1,0 +1,22 @@
+:host {
+  display: block;
+}
+
+.label {
+  color: var(--gup-color-content-primary);
+  font-weight: var(--font-weight-base-beta);
+  font-size: var(--font-size-400);
+  margin-bottom: var(--gup-component-2);
+}
+
+.content {
+  font-size: var(--font-size-550);
+  line-height: var(--line-height-400);
+}
+
+::slotted(gup-icon[slot="icon"]) {
+  --gup-icon--width: 30px;
+  --gup-icon--height: 30px;
+
+  margin-top: 4px;
+}

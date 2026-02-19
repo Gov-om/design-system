@@ -1,0 +1,33 @@
+:host {
+  display: block;
+}
+
+.inner {
+  &--appearance-default {
+    border-bottom: 1px solid var(--gup-color-border-low);
+  }
+
+  &--appearance-toggle:not(&--is-full-width) {
+    display: flex;
+  }
+}
+
+.inner--appearance-toggle.inner--is-full-width ::slotted(*),
+.inner--appearance-default.inner--is-full-width ::slotted(*) {
+  flex-grow: 1;
+}
+
+.list {
+  display: flex;
+
+  .inner--appearance-toggle & {
+    padding: var(--gup-component-2);
+    gap: var(--gup-component-3);
+    background-color: var(--gup-color-states-base-bg-secondary);
+    border-radius: var(--gup-radius-component-full);
+  }
+
+  .inner--appearance-vertical & {
+    flex-direction: column;
+  }
+}

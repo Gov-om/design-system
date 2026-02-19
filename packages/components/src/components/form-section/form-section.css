@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  margin-block: var(--gup-spacing-between-sections);
+}
+
+.title {
+  color: var(--gup-color-content-primary);
+  font-size: var(--font-size-600);
+  line-height: var(--line-height-500);
+  margin-bottom: var(--gup-spacing-text-to-component);
+}
+
+.inner {
+  &--has-footer {
+    .footer {
+      margin-top: var(--gup-spacing-content-to-cta);
+    }
+  }
+}

@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+
+.inner {
+  width: 100%;
+  height: 100%;
+}
+
+.svg {
+  display: block;
+  border-radius: var(--border-radius);
+}
+
+:host([shape="rectangle"]) {
+  --aspect-ratio: 3 / 4;
+  --border-radius: 2px;
+}
+
+:host([shape="circle"]) {
+  --aspect-ratio: 1;
+  --border-radius: 51%;
+}

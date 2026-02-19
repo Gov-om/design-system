@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  overflow: auto;
+  display: table;
+}
+
+.table-section {
+  &--type-header {
+    display: table-header-group;
+  }
+  &--type-body {
+    display: table-row-group;
+  }
+}
+
+.table-row {
+  display: table-row;
+}

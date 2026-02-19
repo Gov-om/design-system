@@ -1,0 +1,28 @@
+/* stylelint-disable custom-property-empty-line-before */
+:root {
+  /**
+  * Colors by palette
+  */
+
+  /* Gray */
+  --color-grey-0: #ffffff;
+  --color-grey-100: #f5f5f5;
+  --color-grey-400: #a9a9a9;
+  --color-grey-600: #7e7e7e;
+  --color-grey-900: #2d2d2d;
+  --color-grey-999: #000000;
+
+  /* Blue */
+  --color-blue-600: #377de6;
+  --color-blue-700: #2c64b9;
+
+  /* Green */
+  --color-green-500: #44a935;
+
+  /* Red */
+  --color-red-600: #cc2424;
+  --color-red-700: #9c1c1c;
+
+  --color-body: var(--color-grey-999);
+  --color-border-primary: #c1c1c1;
+}

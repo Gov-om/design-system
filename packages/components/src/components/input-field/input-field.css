@@ -1,0 +1,183 @@
+:host {
+  --padding-inline: var(--gup-component-4);
+  --padding-block: var(--gup-component-3);
+  --text-color: var(--gup-color-content-primary);
+  --value-color: var(--gup-color-content-primary);
+  --placeholder-color: var(--gup-color-content-secondary);
+
+  @mixin scope-local-variables {
+    --border-color: var(--gup-color-states-base-border);
+  }
+
+  display: block;
+}
+
+:host([disabled]) {
+  --text-color: var(--gup-color-content-tertiary);
+  --gup-icon--fill-color: var(--gup-color-states-disabled-medium);
+  --value-color: var(--gup-color-states-disabled-medium);
+  --affix-color: var(--gup-color-states-disabled-medium);
+  --placeholder-color: var(--gup-color-states-disabled-medium);
+
+  @mixin scope-local-variables {
+    --border-color: transparent;
+  }
+}
+
+:host([readonly]) {
+  .input {
+    /* Fix a Firefox issue where text cursor appears on text click in the input and gives an impression of the field being interactive */
+    pointer-events: none;
+  }
+}
+
+:host([type="tel"]),
+:host([type="email"]) {
+  .field-inner-wrapper {
+    direction: ltr;
+  }
+}
+
+.host-inner {
+  &.invalid {
+    --text-color: var(--gup-color-negative-medium);
+    --second-border-color: var(--text-color);
+
+    @mixin scope-local-variables {
+      --border-color: var(--text-color);
+    }
+  }
+}
+
+:host(:hover:not([disabled])) .host-inner:not(.invalid) {
+  .field-wrapper {
+    --second-border-color: var(--gup-color-states-base-border);
+
+    @mixin scope-local-variables {
+      --border-color: var(--gup-color-states-base-border);
+    }
+  }
+}
+
+:host(:not([disabled])) .host-inner.dirty {
+  @mixin scope-local-variables {
+    --border-color: var(--gup-color-states-base-border);
+  }
+}
+
+.label {
+  color: var(--text-color);
+  font-weight: var(--font-weight-base-beta);
+  display: block;
+
+  :host(:not([label-hidden])) & {
+    margin-bottom: var(--gup-spacing-component-default);
+  }
+}
+
+.validation-message {
+  color: var(--text-color);
+  fill: var(--text-color);
+  display: flex;
+  gap: var(--gup-component-3);
+  align-items: center;
+  margin-bottom: var(--gup-spacing-component-default);
+}
+
+.field-wrapper {
+  border-radius: var(--gup-radius-component-default);
+  border: 1px solid var(--second-border-color, transparent);
+
+  :host(:not([disabled])) .host-inner.focused & {
+    @mixin focus-outline;
+  }
+}
+
+.field-inner-wrapper {
+  border-radius: inherit;
+  display: flex;
+  line-height: 1;
+  overflow: hidden;
+
+  @mixin scope-local-variables {
+    border: 1px solid var(--border-color, transparent);
+  }
+}
+
+.input-wrapper {
+  display: flex;
+  width: 100%;
+  background-color: var(--gup-color-states-base-bg);
+
+  :host([disabled]) & {
+    background-color: var(--gup-color-states-disabled-low);
+  }
+}
+
+.has-prefix .prefix,
+.has-suffix .suffix,
+.has-input-start .input-start,
+.has-input-end .input-end {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+}
+
+.has-input-start .input-start,
+.has-input-end .input-end {
+  :host(:not([disabled])) & {
+    --gup-icon--fill-color: var(--gup-color-content-secondary);
+  }
+}
+
+.has-input-start .input-start {
+  padding-inline-start: var(--gup-component-4);
+  padding-inline-end: var(--gup-component-3);
+}
+
+.has-input-end .input-end {
+  padding-inline-start: var(--gup-component-3);
+  padding-inline-end: var(--gup-component-4);
+}
+
+.has-prefix .prefix,
+.has-suffix .suffix {
+  padding-inline: var(--gup-component-4);
+  padding-block: var(--padding-block);
+  background-color: var(--gup-color-states-base-bg-secondary);
+  color: var(--affix-color, var(--gup-color-content-secondary));
+  cursor: default;
+  font-size: var(--font-size-300);
+}
+
+.input {
+  @mixin reset-input;
+
+  flex-grow: 1;
+  padding-inline: var(--padding-inline);
+  padding-block: var(--padding-block);
+  color: var(--value-color);
+  line-height: 1.4;
+  text-align: var(--gup-input-text-align, start);
+
+  &::placeholder {
+    color: var(--placeholder-color);
+  }
+
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+}
+
+.has-hint .hint {
+  margin-top: var(--gup-spacing-component-default);
+}
+
+:host([type="date"]) .field-inner-wrapper {
+  direction: inherit;
+}
+
+:host([dir="rtl"][type="date"]) .field-inner-wrapper,
+:host-context([dir="rtl"]) :host([type="date"]) .field-inner-wrapper {
+  direction: rtl;
+}

@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npx nx run @gup-ds/components:lint:css && npx nx run @gup-ds/components:lint:prettier && npx nx run @gup-ds/components:lint:eslint && npx nx run @gup-ds/components:lint:ts

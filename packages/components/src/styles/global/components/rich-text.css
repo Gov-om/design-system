@@ -1,0 +1,65 @@
+gup-rich-text {
+  h1 {
+    --comment: 'H1 should not be used in rich text. Start with H2';
+  }
+
+  h2, h3 {
+    font-weight: var(--font-weight-base-beta);
+  }
+
+  h2 {
+    font-size: var(--font-size-550);
+    font-weight: var(--font-weight-base-beta);
+    margin-top: var(--gup-component-8);
+    margin-bottom: var(--gup-component-5);
+  }
+
+  h3 {
+    font-size: var(--font-size-500);
+    margin-top: var(--gup-component-8);
+    margin-bottom: var(--gup-component-6);
+  }
+
+  a {
+    @mixin link;
+  }
+
+  ul {
+    list-style-type: disc;
+    list-style-position: inside;
+  }
+
+  ol {
+    list-style-type: decimal;
+    list-style-position: inside;
+  }
+
+  ul ol, ul ul {
+    padding-inline-start: calc(var(--unit) * 6);
+  }
+
+  ul li, ol li {
+    padding-inline-start: calc(var(--unit) * 3);
+  }
+
+  /* Automatically center smaller images */
+  img {
+    display: block;
+    margin-inline: auto;
+    margin-block: var(--gup-component-8);
+  }
+
+  strong, b {
+    font-weight: var(--font-weight-base-beta);
+  }
+
+  blockquote {
+    color: var(--color);
+    margin: 0;
+    padding-block-start: var(--gup-padding-sm);
+    padding-inline-end: 0;
+    padding-block-end: var(--gup-padding-sm);
+    padding-inline-start: var(--gup-padding-lg);
+    border-inline-start: 6px solid var(--gup-color-brand-high);
+  }
+}

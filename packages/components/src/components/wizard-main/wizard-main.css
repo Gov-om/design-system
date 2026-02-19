@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  background-color: var(--gup-color-background-canvas);
+  height: 100%;
+  padding-inline: var(--gup-component-8);
+}
+
+.inner {
+  max-width: 632px;
+  margin-inline: auto;
+  padding-top: var(--gup-component-9);
+  padding-bottom: 64px;
+}

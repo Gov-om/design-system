@@ -1,0 +1,39 @@
+/* stylelint-disable at-rule-empty-line-before, selector-pseudo-class-disallowed-list */
+@import 'variables/colors.css';
+@import 'variables/spacing.css';
+@import 'variables/fonts.css';
+@import 'variables/typography.css';
+
+@import '../../../tokens/src/tokens.css';
+
+@import 'global/normalize-index.css';
+
+@import 'global/components/rich-text.css';
+
+html {
+  --gup--is-ltr: 1;
+}
+
+:dir(ltr) {
+  --gup--is-ltr: 1;
+}
+
+:dir(rtl) {
+  --gup--is-ltr: -1;
+}
+
+[dir="ltr"] {
+  --gup--is-ltr: 1;
+}
+
+[dir="rtl"] {
+  --gup--is-ltr: -1;
+  --gup-input-text-align: start;
+}
+
+body {
+  font-family: var(--font-base);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  color: var(--color-body);
+}

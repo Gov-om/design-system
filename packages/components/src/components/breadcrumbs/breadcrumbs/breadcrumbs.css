@@ -1,0 +1,11 @@
+:host {
+  --gap: var(--gup-spacing-component-default);
+
+  display: block;
+}
+
+.track {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+}

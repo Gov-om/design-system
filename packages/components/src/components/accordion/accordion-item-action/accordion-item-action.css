@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  align-items: center;
+  gap: var(--gup-component-3);
+  color: var(--gup-color-content-link);
+}
+
+.slot-container {
+  line-height: var(--line-height-500);
+  text-decoration-line: underline;
+}

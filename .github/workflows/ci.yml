@@ -1,0 +1,50 @@
+name: CI - Lint & Test
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    name: Lint & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.node-version'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build icons
+        run: npx nx run @gup-ds/icons:build
+
+      - name: Lint CSS
+        run: npx nx run @gup-ds/components:lint:css
+
+      - name: Lint TypeScript
+        run: npx nx run @gup-ds/components:lint:ts
+
+      - name: Lint (lit-analyzer)
+        run: npx nx run @gup-ds/components:lint:lit
+
+      - name: Lint ESLint
+        run: npx nx run @gup-ds/components:lint:eslint
+
+      - name: Install Playwright dependencies
+        run: npx playwright install-deps
+
+      - name: Lint Accessibility
+        continue-on-error: true
+        run: npx nx run @gup-ds/components:lint:a11y
+
+      - name: Lint Prettier
+        run: npx nx run @gup-ds/components:lint:prettier

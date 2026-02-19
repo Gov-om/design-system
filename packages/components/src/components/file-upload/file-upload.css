@@ -1,0 +1,72 @@
+.label {
+  color: var(--gup-color-content-primary);
+  font-weight: var(--font-weight-base-beta);
+  display: block;
+
+  &.has-error {
+    color: var(--gup-color-negative-medium);
+  }
+}
+
+.error-message,
+.hint {
+  margin-top: 4px;
+}
+
+.actions {
+  margin-top: var(--gup-spacing-text-to-component);
+}
+
+.input-wrapper {
+  position: relative;
+  border: 1px solid var(--gup-color-brand-xhigh);
+  display: flex;
+  padding: var(--gup-component-0) var(--gup-component-5);
+  justify-content: center;
+  align-items: center;
+  gap: var(--gup-component-4);
+  border-radius: var(--gup-radius-button);
+  width: var(--file-input-width);
+
+  &:focus-within {
+    @mixin focus-outline;
+  }
+}
+
+.file-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: var(--gup-component-3) var(--gup-component-0);
+  border-radius: var(--gup-radius-component-full);
+  gap: var(--gup-component-4);
+  color: var(--gup-color-brand-xhigh);
+}
+
+.file-input-button {
+  display: inline-block;
+}
+
+.uploaded-files {
+  margin-top: var(--gup-spacing-text-to-component);
+}
+
+.delete-icon,
+.file-input-icon {
+  --gup-icon--fill-color: var(--gup-color-brand-xhigh);
+}
+
+/**
+* The native input is not set to display:none
+* because it needs to still be focusable and accessible.
+*/
+.native-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}

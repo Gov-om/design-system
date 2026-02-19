@@ -1,0 +1,3 @@
+:host {
+  @mixin screenreader-text;
+}

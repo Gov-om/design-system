@@ -1,0 +1,29 @@
+:host {
+  display: flex;
+  gap: var(--gap);
+  flex-direction: var(--direction);
+  flex-wrap: var(--wrap);
+  justify-content: var(--horizontal-alignment);
+  align-items: var(--vertical-alignment);
+}
+
+:host([items-equal]) ::slotted(*) {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+:host([direction="vertical-on-mobile"]) {
+  flex-direction: column;
+
+  @media (min-width: $bp-small-min) {
+    flex-direction: row;
+  }
+}
+
+:host([direction="vertical-reverse-on-mobile"]) {
+  flex-direction: column-reverse;
+
+  @media (min-width: $bp-small-min) {
+    flex-direction: row;
+  }
+}

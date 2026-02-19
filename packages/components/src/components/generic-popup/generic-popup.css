@@ -1,0 +1,49 @@
+:host{
+  /* non styled initially, should be styled by components using the popup */
+  --gup-generic-popup--arrow-border-color: none;
+  --gup-generic-popup--arrow-border-size: 0;
+  --gup-generic-popup--arrow-size: var(--gup-component-3);
+  --gup-generic-popup--arrow-background-color: none;
+}
+
+.popup {
+  display: var(--display-popup, none);
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.arrow {
+  --arrow-rotation: 45deg;
+
+  position: absolute;
+  background-color: var(--gup-generic-popup--arrow-background-color);
+  width: var(--gup-generic-popup--arrow-size);
+  height: var(--gup-generic-popup--arrow-size);
+  transform: rotate(var(--arrow-rotation));
+  border: var(--gup-generic-popup--arrow-border-size) solid var(--gup-generic-popup--arrow-border-color);
+  border-bottom: none;
+  border-inline-end: none;
+}
+
+.arrow[data-placement*="bottom"] {
+  top: calc((var(--gup-generic-popup--arrow-size) / -2));
+}
+
+.arrow[data-placement*="top"] {
+  --arrow-rotation: -135deg;
+
+  bottom: calc((var(--gup-generic-popup--arrow-size) / -2));
+}
+
+.arrow[data-placement*="left"] {
+  --arrow-rotation: 135deg;
+
+  inset-inline-end: calc((var(--gup-generic-popup--arrow-size) / -2));
+}
+
+.arrow[data-placement*="right"] {
+  --arrow-rotation: -45deg;
+
+  inset-inline-start: calc((var(--gup-generic-popup--arrow-size) / -2));
+}

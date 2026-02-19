@@ -1,0 +1,100 @@
+:host {
+  --padding-inline: var(--gup-component-4);
+  --padding-block: var(--gup-component-3);
+  --border-color: var(--gup-color-states-base-border);
+  --text-color: var(--gup-color-content-primary);
+  --value-color: var(--gup-color-content-primary);
+
+  display: block;
+}
+
+:host([disabled]) {
+  --text-color: var(--gup-color-content-tertiary);
+  --border-color: transparent;
+  --value-color: var(--gup-color-states-disabled-medium);
+
+  .input {
+    resize: none;
+  }
+}
+
+.host-inner {
+  &.invalid {
+    --text-color: var(--gup-color-negative-medium);
+    --border-color: var(--text-color);
+    --second-border--box-shadow: 0 0 0 1px var(--gup-color-negative-medium) inset;
+  }
+}
+
+:host(:hover:not([disabled])) .host-inner:not(.invalid) {
+  --second-border--box-shadow: 0 0 0 1px var(--gup-color-states-base-border) inset;
+}
+
+:host(:not([disabled])) .host-inner.dirty {
+  --border-color: var(--gup-color-states-base-border);
+}
+
+.label {
+  color: var(--text-color);
+  font-weight: var(--font-weight-base-beta);
+  display: block;
+  margin-bottom: var(--gup-spacing-component-default);
+}
+
+.validation-message {
+  margin-bottom: var(--gup-spacing-component-default);
+}
+
+.input-wrapper {
+  display: flex;
+  border-radius: var(--gup-radius-component-default);
+  border: 1px solid var(--border-color);
+  line-height: 1;
+  overflow: hidden;
+  box-shadow: var(--second-border--box-shadow);
+  background-color: var(--gup-color-states-base-bg);
+
+  :host([disabled]) & {
+    background-color: var(--gup-color-states-disabled-low);
+  }
+
+  :host(:not([disabled]):hover .host-inner:not(.invalid)) & {
+    box-shadow: var(--gup-color-states-base-border);
+  }
+
+  :host(:not([disabled])) .host-inner.focused & {
+    @mixin focus-outline;
+  }
+}
+
+.input-inner-wrapper {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+.input-start {
+  display: inline-flex;
+  flex: 0 0 auto;
+  padding-block: var(--padding-block);
+  padding-inline-start: var(--gup-component-4);
+  padding-inline-end: var(--gup-component-3);
+}
+
+.input {
+  @mixin reset-input;
+
+  flex-grow: 1;
+  padding-inline: var(--padding-inline);
+  padding-block: var(--padding-block);
+  color: var(--value-color);
+  line-height: 1.4;
+
+  &::placeholder {
+    color: var(--gup-color-content-secondary);
+  }
+}
+
+.hint {
+  margin-top: var(--gup-spacing-component-default);
+}

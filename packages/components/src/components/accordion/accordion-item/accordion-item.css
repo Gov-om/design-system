@@ -1,0 +1,61 @@
+:host {
+  --gup-icon--fill-color: var(--gup-color-content-link);
+  --border-color: transparent;
+
+  border-bottom: 1px solid var(--gup-color-border-medium);
+  display: block;
+  color: var(--gup-color-content-primary);
+
+  &:hover {
+    border-bottom-color: transparent;
+  }
+}
+
+:host(:not(:only-child):last-child) {
+  border-bottom: none;
+}
+
+.inner {
+  display: block;
+}
+
+.label {
+  cursor: pointer;
+  padding: var(--gup-component-4) var(--gup-component-0) var(--gup-component-7) var(--gup-component-0);
+  border-bottom: 4px solid var(--border-color);
+
+  &:hover {
+    background-color: var(--gup-color-states-secondary-hover);
+  }
+
+  /* Removes the native details marker */
+  list-style-type: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.label-inner {
+  flex-grow: 1;
+  font-size: var(--font-size-600);
+  font-weight: var(--font-weight-base-beta);
+  line-height: 32px;
+  letter-spacing: -0.48px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--gup-component-3);
+  color: var(--gup-color-content-link);
+}
+
+.action-label {
+  line-height: var(--line-height-500);
+  text-decoration-line: underline;
+}
+
+.content {
+  padding-bottom: var(--gup-padding-lg);
+}

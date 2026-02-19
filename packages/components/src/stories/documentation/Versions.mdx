@@ -1,0 +1,19 @@
+import { Meta } from "@storybook/blocks";
+
+import componentsPkg from '../../../package.json';
+import iconsPkg from '../../../../icons/package.json';
+import tokensPkg from '../../../../tokens/package.json';
+import reactPkg from '../../../../react/package.json';
+import angularPkg from '../../../../angular/package.json';
+
+<Meta title="Versions" />
+
+The project is a monorepo that contains 4 packages. `@gup-ds/components`, `@gup-ds/react`, `@gup-ds/angular`, and `@gup-ds/tokens` packages can be used by the component library consumers, and `@gup-ds/icons` is only for internal use.
+
+# Package versions
+
+1. `@gup-ds/components`: {componentsPkg.version}
+2. `@gup-ds/icons`: {iconsPkg.version}
+3. `@gup-ds/tokens`: {tokensPkg.version}
+4. `@gup-ds/react`: {reactPkg.version}
+5. `@gup-ds/angular`: {angularPkg.version}

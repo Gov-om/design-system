@@ -1,0 +1,49 @@
+/**
+ * Do not edit directly
+ * Generated on Fri, 27 Dec 2024 23:48:20 GMT
+ */
+
+:root {
+  --gup-spacing-component-default: 12px;
+  --gup-spacing-content-to-cta: 32px;
+  --gup-spacing-between-content: 24px;
+  --gup-spacing-between-form-fields: 20px;
+  --gup-spacing-between-items: 8px;
+  --gup-spacing-between-options: 0px;
+  --gup-spacing-between-sections: 48px;
+  --gup-spacing-between-text: 16px;
+  --gup-spacing-horizontal-between-columns: 24px;
+  --gup-spacing-image-bottom: 8px;
+  --gup-spacing-text-to-component: 16px;
+  --gup-radius-button: 999px;
+  --gup-radius-component-default: 8px;
+  --gup-radius-component-small: 4px;
+  --gup-radius-component-full: 999px;
+  --gup-radius-card: 12px;
+  --gup-padding-xs: 8px;
+  --gup-padding-sm: 16px;
+  --gup-padding-md: 24px;
+  --gup-padding-lg: 32px;
+  --gup-padding-xl: 40px;
+  --gup-icon-xs: 16px;
+  --gup-component-0: 0px;
+  --gup-component-1: 2px;
+  --gup-component-2: 4px;
+  --gup-universal-space-4: 20px;
+  --gup-component-3: 8px;
+  --gup-component-4: 12px;
+  --gup-universal-space-5: 24px;
+  --gup-component-5: 16px;
+  --gup-component-6: 20px;
+  --gup-universal-space-7: 40px;
+  --gup-component-7: 24px;
+  --gup-component-8: 32px;
+  --gup-universal-space-9: 64px;
+  --gup-universal-space-10: 80px;
+  --gup-component-9: 40px;
+  --gup-icon-sm: 20px;
+  --gup-icon-md: 24px;
+  --gup-icon-lg: 28px;
+  --gup-icon-xl: 32px;
+  --gup-stroke-focus-ring: 6px;
+}

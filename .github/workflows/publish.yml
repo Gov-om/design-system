@@ -1,0 +1,60 @@
+name: Publish to npm
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: 'Dry run (no actual publish)'
+        required: false
+        default: 'false'
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    name: Build & Publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.node-version'
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build icons
+        run: npx nx run @gup-ds/icons:build
+
+      - name: Build components
+        run: npx nx run @gup-ds/components:build
+
+      - name: Version (determine next versions and update changelogs)
+        run: npx nx release --skip-publish
+
+      - name: Push version commits and tags
+        if: ${{ inputs.dry-run != 'true' }}
+        run: |
+          git push origin HEAD --follow-tags
+
+      - name: Publish to npm
+        if: ${{ inputs.dry-run != 'true' }}
+        run: npx nx release publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

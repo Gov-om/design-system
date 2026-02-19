@@ -1,0 +1,6 @@
+/dist
+/storybook-static
+*.css
+index.html
+CHANGELOG.md
+/chromatic-diagnostics.json

@@ -1,0 +1,115 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Using with Angular" />
+
+## Using with Angular
+
+GUP components, as any web components, are in general compatible with any version of Angular. Just make sure you import a `CUSTOM_ELEMENTS_SCHEMA` to your component with `schemas: [CUSTOM_ELEMENTS_SCHEMA]`.
+
+## Angular forms
+
+The form-related GUP components (such as `gup-input-field`, `gup-dropdown-field`, `gup-radio-button-group`, `gup-checkbox`, `gup-file-upload`, and `gup-toggle`) can be used with both Reactive Forms API and template-driven forms (`ngModel`) in Angular.
+
+`gup-input-field` and `gup-textarea-field` are supported by Angular Forms API natively (see below). For the rest we provide a compatibility layer module called `GupFormsCompatModule`. You can import it from `@gup-ds/angular` package into your component or module, and the layer will automatically apply to the web components you are using.
+
+Note that in order for `gup-input-field` and `gup-textarea-field` to work you need to add a `ngDefaultControl` directive attribute to them.
+
+Of course, you can always manually integrate any of the form components into your application by setting component props and subscribing to events directly.
+
+### Reactive forms
+
+Use the web components with `formControl` or `formControlName` directives (added to a component tag) to bind the form elements to a reactive form. You can use `Validators` and disabled state (where applicable) through the Reactive Forms API.
+
+See this short example:
+
+```html
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <gup-input-field formControlName="textinput" ngDefaultControl>Text input label</gup-input-field>
+  <gup-textarea-field formControlName="textarea" ngDefaultControl>Text area label</gup-textarea-field>
+  <gup-dropdown-field formControlName="dropdownMultiple" placeholder="Select some items">
+    <span slot="label">Multiple dropdown label</span>
+    <gup-dropdown-menu multiple>
+      <gup-dropdown-menu-item label="Item number 1" value="item1"></gup-dropdown-menu-item>
+      <gup-dropdown-menu-item label="Item number 2" value="item2"></gup-dropdown-menu-item>
+    </gup-dropdown-menu>
+  </gup-dropdown-field>
+  <gup-checkbox formControlName="checkbox" value="enabled">Checkbox label</gup-checkbox>
+  <gup-radio-button-group formControlName="radios" label="Radio button group label">
+    <gup-radio-button name="radios" value="radio-1">Radio 1</gup-radio-button>
+    <gup-radio-button name="radios" value="radio-2">Radio 2</gup-radio-button>
+    <gup-radio-button name="radios" value="radio-3">Radio 3</gup-radio-button>
+  </gup-radio-button-group>
+</form>
+```
+
+```ts
+import { GupFormsCompatModule } from '@gup-ds/angular';
+// ...
+// In a @Component or @NgModule definition
+imports: [CommonModule, FormsModule, ReactiveFormsModule, GupFormsCompatModule],
+// ...
+// In a component class
+form!: FormGroup;
+
+constructor(private formBuilder: FormBuilder) {
+  this.form = this.formBuilder.group({
+    textinput: [
+      {
+        value: '',
+        disabled: true,
+      },
+    ],
+    textarea: ['', Validators.required],
+    dropdownMultiple: [[]],
+    checkbox: [true],
+    radios: [
+      {
+        value: 'radio-2',
+        disabled: false,
+      },
+    ],
+  });
+}
+```
+
+### Template-driven forms
+
+Use the web components with `ngModel` directive (added to a component tag) to bind the form elements to a template-driven form.
+
+See this short example:
+
+```html
+<form #form="ngForm" (ngSubmit)="submit(form)">
+  <gup-input-field name="textinput" [(ngModel)]="formModel.textinput" ngDefaultControl>Text input label</gup-input-field>
+  <gup-textarea-field name="textarea" [(ngModel)]="formModel.textarea" ngDefaultControl>Text area label</gup-textarea-field>
+  <gup-dropdown-field name="dropdownMultiple" [(ngModel)]="formModel.dropdownMultiple" placeholder="Select some items">
+    <span slot="label">Multiple dropdown label</span>
+    <gup-dropdown-menu multiple>
+      <gup-dropdown-menu-item label="Item number 1" value="item1"></gup-dropdown-menu-item>
+      <gup-dropdown-menu-item label="Item number 2" value="item2"></gup-dropdown-menu-item>
+    </gup-dropdown-menu>
+  </gup-dropdown-field>
+  <gup-checkbox name="checkbox" [(ngModel)]="formModel.checkbox" value="enabled">Checkbox label</gup-checkbox>
+  <gup-radio-button-group name="radios" [(ngModel)]="formModel.radios" label="Radio button group label">
+    <gup-radio-button name="radios" value="radio-1">Radio 1</gup-radio-button>
+    <gup-radio-button name="radios" value="radio-2">Radio 2</gup-radio-button>
+    <gup-radio-button name="radios" value="radio-3">Radio 3</gup-radio-button>
+  </gup-radio-button-group>
+</form>
+```
+
+```ts
+import { GupFormsCompatModule } from '@gup-ds/angular';
+// ...
+// In a @Component or @NgModule definition
+imports: [CommonModule, FormsModule, GupFormsCompatModule]
+// ...
+// In a component class
+formModel: any = {
+  textinput: '',
+  textarea: 'Default value set through ngModel',
+  dropdownMultiple: ['item1', 'item2'],
+  checkbox: true,
+  radios: 'radio-2',
+};
+```

@@ -1,0 +1,57 @@
+:host {
+  --gup-checkbox--check-mark--border-radius: var(--gup-radius-component-small);
+  --icon--padding-inline-end: 12px;
+
+  display: block;
+  width: 100%;
+  padding: var(--gup-component-4)
+}
+
+:host(:not([visible])) {
+  display: none;
+}
+
+:host([data-highlighted]) {
+  background-color: var(--gup-color-input-bg-secondary);
+}
+
+.button {
+  width: 100%;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  color: var(--gup-color-text-strong);
+
+  :host([selected]) & {
+    font-weight: var(--font-weight-base-beta);
+  }
+
+  :host(:hover:not([disabled])) & {
+    background-color: var(--gup-color-input-bg-secondary);
+  }
+}
+
+.inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--gup-component-4);
+}
+
+.content {
+  flex-grow: 1;
+  width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.check-icon-wrapper {
+  height: 20px;
+  width: calc(20px + var(--icon--padding-inline-end));
+}
+
+:host([disabled]) {
+  cursor: not-allowed;
+  background-color: var(--gup-color-input-bg-default);
+  color: var(--gup-color-brand-tertiary);
+}

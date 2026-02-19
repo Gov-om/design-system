@@ -1,0 +1,6 @@
+/* NB! Always wrap selectors into ::slotted! */
+:host {
+  display: block;
+}
+
+/* look for other styles in global/components/rich-text.css */

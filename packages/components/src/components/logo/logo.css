@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  width: fit-content;
+}
+
+:host([inverted="enabled"]) {
+  --gup-logo--color: var(--gup-color-brand-contrast);
+}
+
+:host([inverted="disabled"]) {
+  --gup-logo--color: var(--gup-color-brand-medium);
+}
+
+.link {
+  display: block;
+}
+
+.svg {
+  fill: var(--gup-logo--color);
+  height: var(--size);
+}

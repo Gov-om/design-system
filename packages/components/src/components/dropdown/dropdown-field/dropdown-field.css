@@ -1,0 +1,41 @@
+:host {
+  --gup-dropdown-field--menu-width: 100%;
+  --gup-spinner--size: 20px;
+
+  position: relative;
+}
+
+.error-message {
+  margin-block: 4px;
+}
+
+.input-field {
+  position: relative;
+
+  &.invalid {
+    .label {
+      color: var(--gup-color-negative-medium);
+    }
+  }
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  width: var(--gup-dropdown-field--menu-width);
+  z-index: var(--gup-dropdown-field--z-index, 1);
+  margin-top: 9px;
+}
+
+.spinner-wrapper {
+  /* to avoid width shift for the component when switching the loading attribute */
+  padding-inline: 2px;
+}
+
+.hint {
+  display: block;
+}
+
+.has-hint .hint {
+  margin-top: var(--gup-spacing-component-default);
+}

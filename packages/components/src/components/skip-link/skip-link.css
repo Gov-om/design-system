@@ -1,0 +1,16 @@
+:host {
+  position: fixed;
+  width: 100%;
+  background-color: var(--color-blue-700);
+  color: var(--color-grey-0);
+  padding: calc(var(--unit) * 3);
+}
+
+:host(:not(:focus-within)) {
+  @mixin screenreader-text;
+}
+
+.link {
+  color: currentColor;
+  padding-bottom: 2px;
+}
