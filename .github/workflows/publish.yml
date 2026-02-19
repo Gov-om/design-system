@@ -8,6 +8,11 @@ on:
         required: false
         default: false
         type: boolean
+      first-release:
+        description: 'First release (no previous git tags exist, uses current package.json versions as-is)'
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -46,7 +51,7 @@ jobs:
         run: npx nx run @govom/components:build
 
       - name: Version (determine next versions and update changelogs)
-        run: npx nx release --skip-publish
+        run: npx nx release --skip-publish ${{ inputs.first-release == true && '--first-release' || '' }}
 
       - name: "Replace file: reference with real version in react package"
         run: |
