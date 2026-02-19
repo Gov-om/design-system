@@ -1,0 +1,172 @@
+/**
+ * GUP Checkbox - Class-based approach
+ *
+ * Works with native checkbox behavior — clicking the label toggles the input.
+ * All state styling (checked, indeterminate, disabled) is driven by the native
+ * input's pseudo-classes. Icons are rendered via CSS background-image (SVG),
+ * no web component dependencies needed.
+ *
+ * Usage:
+ * <label class="gup-checkbox">
+ *   <input type="checkbox" class="gup-checkbox__input" />
+ *   <div class="gup-checkbox__check-mark">
+ *     <div class="gup-checkbox__check-mark-inner"></div>
+ *   </div>
+ *   <div class="gup-checkbox__text-container">Label</div>
+ * </label>
+ *
+ * Modifier classes (appearance only, not state):
+ * - gup-checkbox--small
+ * - gup-checkbox--circle
+ */
+
+.gup-checkbox {
+  --_border-color: var(--gup-color-states-base-border);
+  --_second-border-color: transparent;
+  --_size: 32px;
+  --_icon-color: var(--gup-color-neutral-contrast);
+
+  display: flex;
+  position: relative;
+  gap: var(--gup-spacing-component-default);
+  cursor: pointer;
+  user-select: none;
+  color: var(--gup-color-content-primary);
+}
+
+.gup-checkbox__input {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: none;
+  white-space: nowrap;
+}
+
+.gup-checkbox__check-mark {
+  flex-shrink: 0;
+  border: 1px solid var(--_border-color);
+  background-color: var(--_border-color);
+  border-radius: var(--gup-checkbox--check-mark--border-radius, var(--gup-radius-component-default));
+  color: var(--gup-color-content-primary);
+  width: var(--_size);
+  height: var(--_size);
+}
+
+.gup-checkbox__check-mark-inner {
+  background-color: var(--gup-color-states-base-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--_second-border-color);
+  border-radius: inherit;
+  height: 100%;
+}
+
+.gup-checkbox__check-mark-inner::after {
+  content: "";
+  display: none;
+  width: 20px;
+  height: 20px;
+  background-color: var(--_icon-color);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.gup-checkbox__text-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gup-component-2);
+  text-wrap: balance;
+  line-height: var(--line-height-500);
+  padding-top: 3px;
+}
+
+.gup-checkbox__hint {
+  color: var(--gup-color-content-secondary);
+  font-size: var(--font-size-300);
+}
+
+.gup-checkbox:hover:has(.gup-checkbox__input:not(:disabled):not(:checked):not(:indeterminate)) {
+  --_second-border-color: var(--gup-color-states-base-border);
+}
+
+.gup-checkbox:has(.gup-checkbox__input:checked) {
+  --_border-color: transparent;
+}
+
+.gup-checkbox__input:checked + .gup-checkbox__check-mark .gup-checkbox__check-mark-inner {
+  background-color: var(--gup-color-brand-high);
+}
+
+.gup-checkbox__input:checked + .gup-checkbox__check-mark .gup-checkbox__check-mark-inner::after {
+  display: block;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+}
+
+.gup-checkbox:has(.gup-checkbox__input:indeterminate) {
+  --_border-color: transparent;
+}
+
+.gup-checkbox__input:indeterminate + .gup-checkbox__check-mark .gup-checkbox__check-mark-inner {
+  background-color: var(--gup-color-brand-high);
+}
+
+.gup-checkbox__input:indeterminate + .gup-checkbox__check-mark .gup-checkbox__check-mark-inner::after {
+  display: block;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 13H5v-2h14v2z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 13H5v-2h14v2z'/%3E%3C/svg%3E");
+}
+
+.gup-checkbox:has(.gup-checkbox__input:disabled) {
+  --_border-color: transparent;
+  pointer-events: none;
+}
+
+.gup-checkbox__input:disabled + .gup-checkbox__check-mark .gup-checkbox__check-mark-inner {
+  background-color: var(--gup-color-states-disabled-low);
+}
+
+.gup-checkbox__input:disabled + .gup-checkbox__check-mark .gup-checkbox__check-mark-inner::after {
+  --_icon-color: var(--gup-color-states-disabled-medium);
+}
+
+.gup-checkbox--small {
+  --_size: 24px;
+
+  font-size: var(--font-size-300);
+
+  & .gup-checkbox__check-mark {
+    border-radius: var(--gup-radius-component-small);
+  }
+
+  & .gup-checkbox__check-mark-inner::after {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.gup-checkbox--small.gup-checkbox--circle .gup-checkbox__check-mark {
+  border-radius: var(--gup-radius-component-full);
+}
+
+.gup-checkbox--circle .gup-checkbox__check-mark {
+  border-radius: var(--gup-radius-component-full);
+}
+
+.gup-checkbox__input:focus {
+  outline: none;
+}
+
+.gup-checkbox__input:not(:disabled):focus-visible + .gup-checkbox__check-mark {
+  outline: 4px solid var(--gup-color-states-base-focus-ring);
+  outline-offset: 3px;
+}

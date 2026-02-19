@@ -11,7 +11,6 @@
  */
 
 .gup-button {
-  /* CSS Custom Properties for theming */
   --_color: var(--gup-color-brand-medium);
   --_background: transparent;
   --_border-color: transparent;
@@ -23,34 +22,28 @@
   );
   --_active-overlay: color-mix(in srgb, var(--gup-color-states-primary-active) 90%, transparent);
 
-  /* Reset */
   appearance: none;
   font-family: inherit;
   cursor: pointer;
   text-decoration: none;
 
-  /* Layout */
   display: inline-flex;
   justify-content: center;
   align-items: center;
   gap: var(--gup-component-4);
 
-  /* Sizing */
   padding-block: calc(var(--unit) * 2);
   padding-inline: var(--gup-component-5);
 
-  /* Visual */
   border: 1px solid var(--_border-color);
   border-radius: var(--gup-radius-button);
   background: var(--_background);
   color: var(--_color);
 
-  /* Typography */
   font-size: var(--font-size-400);
   line-height: var(--line-height-500);
   text-align: center;
 
-  /* Focus */
   &:focus {
     outline: none;
   }
@@ -61,13 +54,11 @@
   }
 }
 
-/* Icon styling within button */
 .gup-button .gup-button__icon,
 .gup-button gup-icon {
   --gup-icon--fill-color: var(--_icon-fill);
 }
 
-/* Screenreader-only label for icon-only buttons */
 .gup-button__label--sr-only {
   position: absolute;
   overflow: hidden;
@@ -80,11 +71,6 @@
   white-space: nowrap;
 }
 
-/* ==========================================================================
-   APPEARANCE VARIANTS
-   ========================================================================== */
-
-/* Primary (default) */
 .gup-button--primary {
   --_background: var(--gup-color-brand-medium);
   --_color: var(--gup-color-neutral-contrast);
@@ -99,7 +85,6 @@
   }
 }
 
-/* Secondary */
 .gup-button--secondary {
   --_background: transparent;
   --_border-color: var(--gup-color-brand-xhigh);
@@ -119,7 +104,6 @@
   }
 }
 
-/* Text */
 .gup-button--text {
   --_color: var(--gup-color-brand-xhigh);
   --_icon-fill: var(--gup-color-brand-default);
@@ -136,7 +120,6 @@
   }
 }
 
-/* Danger */
 .gup-button--danger {
   --_color: var(--gup-color-neutral-contrast);
   --_background: var(--gup-color-negative-medium);
@@ -151,11 +134,6 @@
   }
 }
 
-/* ==========================================================================
-   STATE MODIFIERS
-   ========================================================================== */
-
-/* Disabled */
 .gup-button--disabled,
 .gup-button:disabled {
   --_icon-fill: var(--gup-color-states-disabled-medium);
@@ -171,15 +149,10 @@
   }
 }
 
-/* Icon Only */
 .gup-button--icon-only {
   padding: var(--gup-spacing-between-items);
   border-radius: 51%;
 }
-
-/* ==========================================================================
-   INVERTED VARIANTS (for dark backgrounds)
-   ========================================================================== */
 
 .gup-button--inverted {
   --_color: var(--gup-color-neutral-contrast);

@@ -1,3 +1,29 @@
+## 3.27.0 (2026-02-16)
+
+
+### 🚀 Features
+
+- **components:** new variant of a lite component introduced - button
+
+- **components:** new variant of a lite component introduced - checkbox
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
+## 3.26.1 (2026-02-10)
+
+
+### 🩹 Fixes
+
+- **docs:** calculate dropdown-menu height for iframes on wiki pages
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
 ## 3.26.0 (2026-02-09)
 
 

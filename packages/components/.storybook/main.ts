@@ -33,7 +33,7 @@ const config: StorybookConfig = {
   docs: {
     defaultName: 'Documentation',
   },
-  staticDirs: ['./public'],
+  staticDirs: ['./public', { from: '../src/classes', to: '/classes' }],
 
   async viteFinal(config) {
     config.server = config.server || {};

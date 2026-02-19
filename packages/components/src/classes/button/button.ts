@@ -55,11 +55,9 @@ export class GupButton {
   static getClassNames(options: GupButtonOptions = {}): string[] {
     const classes: string[] = [GUP_BUTTON_CLASSES.base];
 
-    // Appearance (default to primary if not specified)
     const appearance = options.appearance || 'primary';
     classes.push(GUP_BUTTON_CLASSES[appearance]);
 
-    // Modifiers
     if (options.disabled) {
       classes.push(GUP_BUTTON_CLASSES.disabled);
     }
@@ -73,41 +71,26 @@ export class GupButton {
     return classes;
   }
 
-  /**
-   * Get a single class string for use in templates.
-   */
   static getClassName(options: GupButtonOptions = {}): string {
     return GupButton.getClassNames(options).join(' ');
   }
 
-  /**
-   * Apply GUP button styles to an existing element.
-   */
   static apply(element: HTMLElement, options: GupButtonOptions = {}): void {
-    // Remove any existing gup-button classes
     GupButton.remove(element);
 
-    // Add new classes
     const classes = GupButton.getClassNames(options);
     element.classList.add(...classes);
 
-    // Handle disabled state for button elements
     if (element instanceof HTMLButtonElement && options.disabled) {
       element.disabled = true;
     }
   }
 
-  /**
-   * Remove all GUP button classes from an element.
-   */
   static remove(element: HTMLElement): void {
     const allClasses = Object.values(GUP_BUTTON_CLASSES);
     element.classList.remove(...allClasses);
   }
 
-  /**
-   * Create a new button element with GUP styles applied.
-   */
   static create(options: GupButtonOptions = {}): HTMLButtonElement {
     const button = document.createElement('button');
     button.type = 'button';
@@ -115,9 +98,6 @@ export class GupButton {
     return button;
   }
 
-  /**
-   * Create a new anchor element styled as a button.
-   */
   static createLink(href: string, options: GupButtonOptions = {}): HTMLAnchorElement {
     const link = document.createElement('a');
     link.href = href;
@@ -125,16 +105,10 @@ export class GupButton {
     return link;
   }
 
-  /**
-   * Update an existing GUP button's options.
-   */
   static update(element: HTMLElement, options: GupButtonOptions): void {
     GupButton.apply(element, options);
   }
 
-  /**
-   * Check if an element has GUP button styles applied.
-   */
   static isGupButton(element: HTMLElement): boolean {
     return element.classList.contains(GUP_BUTTON_CLASSES.base);
   }

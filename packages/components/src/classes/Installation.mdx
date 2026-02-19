@@ -1,0 +1,135 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Lite Components/Installation" />
+
+# Lite Components
+
+Lite Components are a class-based alternative to the GUP web components.
+Instead of using custom elements like `<gup-button>`, you apply CSS classes to native HTML elements like `<button>` and `<a>`.
+
+This approach is useful when:
+
+- You need to style native HTML elements without shadow DOM
+- You want a lighter-weight integration with minimal JavaScript
+- Your project setup doesn't support custom elements
+- You prefer working with standard HTML elements
+
+> Lite Components are currently in **Beta**. The API may change in future releases.
+
+## Importing styles
+
+Each Lite Component has its own CSS file that must be imported. Import only the components you use:
+
+```css
+/* In a CSS file (PostCSS or bundler required) */
+@import "@gup-ds/components/classes/button/button.css";
+```
+
+```javascript
+// Or in a JavaScript/TypeScript entry point
+import '@gup-ds/components/classes/button/button.css';
+```
+
+```html
+<!-- Or as a link tag -->
+<link rel="stylesheet" href="/node_modules/@gup-ds/components/classes/button/button.css">
+```
+
+You also need to include the base design tokens stylesheet for colors, spacing, and typography to work correctly:
+
+```css
+@import "@gup-ds/components/styles";
+```
+
+## Usage
+
+### Pure HTML/CSS
+
+Apply the CSS classes directly to native HTML elements:
+
+```html
+<button class="gup-button gup-button--primary">Primary Button</button>
+<button class="gup-button gup-button--secondary">Secondary Button</button>
+<a href="/page" class="gup-button gup-button--text">Text Link</a>
+```
+
+### TypeScript utility
+
+Import the utility class for programmatic usage:
+
+```typescript
+import { GupButton } from '@gup-ds/components/classes';
+
+// Apply styles to an existing element
+const btn = document.querySelector('button');
+GupButton.apply(btn, { appearance: 'primary' });
+
+// Create a new styled button
+const newBtn = GupButton.create({ appearance: 'secondary', disabled: true });
+newBtn.textContent = 'Disabled Button';
+document.body.appendChild(newBtn);
+
+// Get a class string for use in templates
+const className = GupButton.getClassName({ appearance: 'danger' });
+// => "gup-button gup-button--danger"
+```
+
+## Usage without npm
+
+If your project cannot use npm, you can use the CSS files directly. You need two stylesheets: the **design tokens** (for colors, spacing, typography) and the **component CSS**.
+
+### Option 1: Link to hosted CSS files
+
+Point the URLs to wherever the `@gup-ds/components` package is hosted on your server:
+
+```html
+<!-- 1. Design tokens (required) -->
+<link rel="stylesheet" href="https://myurl.com/gup-components/dist/styles.css">
+
+<!-- 2. Component CSS — add only what you need -->
+<link rel="stylesheet" href="https://myurl.com/gup-components/classes/button/button.css">
+<link rel="stylesheet" href="https://myurl.com/gup-components/classes/checkbox/checkbox.css">
+```
+
+### Option 2: Download or copy the raw CSS files
+
+Open the CSS file directly in your browser, then save or copy its contents:
+
+- <a href="/classes/button/button.css" target="_blank">button.css</a>
+- <a href="/classes/checkbox/checkbox.css" target="_blank">checkbox.css</a>
+
+You will also need the design tokens stylesheet (`styles.css`) for colors, spacing, and typography to work. It is available at the same hosted location as the component library.
+
+### Then use the HTML directly
+
+No JavaScript or build tools required:
+
+```html
+<button class="gup-button gup-button--primary">Submit</button>
+
+<label class="gup-checkbox">
+  <input type="checkbox" class="gup-checkbox__input" />
+  <div class="gup-checkbox__check-mark">
+    <div class="gup-checkbox__check-mark-inner"></div>
+  </div>
+  <div class="gup-checkbox__text-container">I agree</div>
+</label>
+
+<div class="gup-select">
+  <label class="gup-select__label" for="my-select">Country</label>
+  <div class="gup-select__field">
+    <select class="gup-select__input" id="my-select">
+      <option value="" disabled selected>Select a country</option>
+      <option value="us">United States</option>
+      <option value="uk">United Kingdom</option>
+    </select>
+  </div>
+</div>
+```
+
+## Available components
+
+| Component | CSS file                                                                  | TypeScript class |
+| --------- | ------------------------------------------------------------------------- | ---------------- |
+| Button    | <a href="/classes/button/button.css" target="_blank">button.css</a>       | `GupButton`      |
+| Checkbox  | <a href="/classes/checkbox/checkbox.css" target="_blank">checkbox.css</a> | `GupCheckbox`    |
