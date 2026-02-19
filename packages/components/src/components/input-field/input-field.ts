@@ -9,7 +9,7 @@ import { HasSlotController } from '../../utils/slot-controller';
 import { classMap } from 'lit/directives/class-map.js';
 import { watch } from '../../utils/decorators/watch';
 import { event, EventDispatcher } from '../../utils/decorators/event';
-import { GupIconName } from '@gup-ds/icons/dist/index.d';
+import { GupIconName } from '@govom/icons/dist/index.d';
 import { innerInputValidators } from '../../utils/form-validators';
 import { getAriaDescribedBy } from '../../utils/helpers';
 import '../icon/icon';

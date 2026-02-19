@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { LitElement } from 'lit';
 import { createComponent } from '@lit/react';
 import type { Constructor } from '@lit/reactive-element/decorators/base.js';
-import { TableCell } from '@gup-ds/components';
+import { TableCell } from '@govom/components';
 import type { ReactWebComponent } from '../../utils/lit-react-type-utils';
 
 

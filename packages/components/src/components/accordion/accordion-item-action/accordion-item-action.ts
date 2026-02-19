@@ -1,7 +1,7 @@
 import { html, unsafeCSS } from 'lit';
 import { GupComponent } from '../../../styles/styles';
 import { customElement, property } from 'lit/decorators.js';
-import { GupIconName } from '@gup-ds/icons/dist/index.d';
+import { GupIconName } from '@govom/icons/dist/index.d';
 import styles from './accordion-item-action.css?inline';
 import '../../track/track';
 import '../../icon/icon';

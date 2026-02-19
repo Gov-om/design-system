@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/web-components';
 import { getWcStorybookHelpers } from 'wc-storybook-helpers';
 import { useArgs } from '@storybook/preview-api';
 import { html } from 'lit';
-import { GupIconNames } from '@gup-ds/icons/dist/index';
+import { GupIconNames } from '@govom/icons/dist/index';
 
 import '../track/track';
 import './icon';

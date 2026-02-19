@@ -27,9 +27,9 @@ jobs:
         run: npm ci
 
       - name: Build icons
-        run: npx nx run @gup-ds/icons:build
+        run: npx nx run @govom/icons:build
 
       - name: Run Chromatic
-        run: npx nx run @gup-ds/components:chromatic
+        run: npx nx run @govom/components:chromatic
         env:
           CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

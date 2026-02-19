@@ -1,15 +1,20 @@
 {
-  "name": "@gup-ds/tokens",
-  "version": "0.2.2",
-  "description": "Oman GUP design tokens",
-  "license": "MIT",
-  "main": "src/tokens.css",
-  "scripts": {
-    "sync-tokens": "node ./utils/fetch-figma-vars.js && npm run build",
-    "build": "node transform.js && node build.js"
-  },
-  "devDependencies": {
-    "style-dictionary": "^3.9.2"
-  },
-  "dependencies": {}
+    "name":  "@govom/tokens",
+    "version":  "0.2.2",
+    "description":  "Oman GUP design tokens",
+    "license":  "MIT",
+    "main":  "src/tokens.css",
+    "scripts":  {
+                    "sync-tokens":  "node ./utils/fetch-figma-vars.js \u0026\u0026 npm run build",
+                    "build":  "node transform.js \u0026\u0026 node build.js"
+                },
+    "devDependencies":  {
+                            "style-dictionary":  "^3.9.2"
+                        },
+    "dependencies":  {
+
+                     },
+    "publishConfig":  {
+                          "access":  "public"
+                      }
 }

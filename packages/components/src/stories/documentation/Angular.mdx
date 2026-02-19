@@ -10,7 +10,7 @@ GUP components, as any web components, are in general compatible with any versio
 
 The form-related GUP components (such as `gup-input-field`, `gup-dropdown-field`, `gup-radio-button-group`, `gup-checkbox`, `gup-file-upload`, and `gup-toggle`) can be used with both Reactive Forms API and template-driven forms (`ngModel`) in Angular.
 
-`gup-input-field` and `gup-textarea-field` are supported by Angular Forms API natively (see below). For the rest we provide a compatibility layer module called `GupFormsCompatModule`. You can import it from `@gup-ds/angular` package into your component or module, and the layer will automatically apply to the web components you are using.
+`gup-input-field` and `gup-textarea-field` are supported by Angular Forms API natively (see below). For the rest we provide a compatibility layer module called `GupFormsCompatModule`. You can import it from `@govom/angular` package into your component or module, and the layer will automatically apply to the web components you are using.
 
 Note that in order for `gup-input-field` and `gup-textarea-field` to work you need to add a `ngDefaultControl` directive attribute to them.
 
@@ -43,7 +43,7 @@ See this short example:
 ```
 
 ```ts
-import { GupFormsCompatModule } from '@gup-ds/angular';
+import { GupFormsCompatModule } from '@govom/angular';
 // ...
 // In a @Component or @NgModule definition
 imports: [CommonModule, FormsModule, ReactiveFormsModule, GupFormsCompatModule],
@@ -99,7 +99,7 @@ See this short example:
 ```
 
 ```ts
-import { GupFormsCompatModule } from '@gup-ds/angular';
+import { GupFormsCompatModule } from '@govom/angular';
 // ...
 // In a @Component or @NgModule definition
 imports: [CommonModule, FormsModule, GupFormsCompatModule]

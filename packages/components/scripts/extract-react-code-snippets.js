@@ -112,7 +112,7 @@ function convertHtmlToReact(htmlSnippet) {
   const imports = [];
 
   if (usedComponents.size > 0) {
-    imports.push(`import { ${Array.from(usedComponents).sort().join(', ')} } from '@gup-ds/react';`);
+    imports.push(`import { ${Array.from(usedComponents).sort().join(', ')} } from '@govom/react';`);
   }
 
   if (hasIcons && usedIcons.size > 0) {

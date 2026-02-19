@@ -6,10 +6,10 @@
  *
  * @example
  * // Import the utility class
- * import { GupButton } from '@gup-ds/components/classes';
+ * import { GupButton } from '@govom/components/classes';
  *
  * // Import the CSS in your app's entry point
- * import '@gup-ds/components/classes/button/button.css';
+ * import '@govom/components/classes/button/button.css';
  */
 
 export * from './button';

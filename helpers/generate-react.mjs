@@ -44,7 +44,7 @@ for (const component of filteredComponents) {
 import type { LitElement } from 'lit';
 import { createComponent } from '@lit/react';
 import type { Constructor } from '@lit/reactive-element/decorators/base.js';
-import { ${component.name} } from '@gup-ds/components';
+import { ${component.name} } from '@govom/components';
 import type { ReactWebComponent } from '../../utils/lit-react-type-utils';
 
 ${jsDoc}
@@ -75,9 +75,9 @@ export default reactWrapper;
   if (i === filteredComponents.length) {
     fs.writeFileSync(path.join(reactDir, 'index.js'), index.join('\n'), 'utf8');
     fs.writeFileSync(path.join(reactDir, 'index.d.ts'), `import type { ReactWebComponent } from '../utils/lit-react-type-utils';
-import {\n  ${indexImportTypes.join(',\n  ')}\n} from '@gup-ds/components';
+import {\n  ${indexImportTypes.join(',\n  ')}\n} from '@govom/components';
 
-declare module '@gup-ds/react' {
+declare module '@govom/react' {
   ${indexExportTypes.join('\n  ')}
 }\n`, 'utf8');
   }

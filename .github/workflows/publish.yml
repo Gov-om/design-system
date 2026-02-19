@@ -40,10 +40,10 @@ jobs:
         run: npm ci
 
       - name: Build icons
-        run: npx nx run @gup-ds/icons:build
+        run: npx nx run @govom/icons:build
 
       - name: Build components
-        run: npx nx run @gup-ds/components:build
+        run: npx nx run @govom/components:build
 
       - name: Version (determine next versions and update changelogs)
         run: npx nx release --skip-publish

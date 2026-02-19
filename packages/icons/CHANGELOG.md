@@ -55,7 +55,7 @@
 
 ### 🛠️ Refactorings
 
-- **icons:** renamed "generate-icons" part in the npx nx run @gup-ds/icons:generate-icons command to "build"
+- **icons:** renamed "generate-icons" part in the npx nx run @govom/icons:generate-icons command to "build"
 
 
 ### 🧹 Chores

@@ -67,9 +67,9 @@ import {
   Track as TrackComponent,
   WizardFooter as WizardFooterComponent,
   WizardMain as WizardMainComponent
-} from '@gup-ds/components';
+} from '@govom/components';
 
-declare module '@gup-ds/react' {
+declare module '@govom/react' {
   export const Accordion: ReactWebComponent<AccordionComponent>;
   export const AccordionItem: ReactWebComponent<AccordionItemComponent>;
   export const AccordionItemAction: ReactWebComponent<AccordionItemActionComponent>;

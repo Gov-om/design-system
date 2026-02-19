@@ -71,7 +71,7 @@ An alternative to the \`<gup-button>\` web component for users who prefer workin
 
 #### With TypeScript utility:
 \`\`\`typescript
-import { GupButton } from '@gup-ds/components/classes/button';
+import { GupButton } from '@govom/components/classes/button';
 
 // Apply to existing element
 const btn = document.querySelector('button');

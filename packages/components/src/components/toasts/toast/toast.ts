@@ -2,7 +2,7 @@ import { html, unsafeCSS } from 'lit';
 import { GupComponent } from '../../../styles/styles';
 import { customElement, property } from 'lit/decorators.js';
 import styles from './toast.css?inline';
-import { GupIconName } from '@gup-ds/icons/dist/index.d';
+import { GupIconName } from '@govom/icons/dist/index.d';
 import '../../icon/icon';
 import { event, EventDispatcher } from '../../../utils/decorators/event';
 

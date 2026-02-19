@@ -25,26 +25,26 @@ jobs:
         run: npm ci
 
       - name: Build icons
-        run: npx nx run @gup-ds/icons:build
+        run: npx nx run @govom/icons:build
 
       - name: Lint CSS
-        run: npx nx run @gup-ds/components:lint:css
+        run: npx nx run @govom/components:lint:css
 
       - name: Lint TypeScript
-        run: npx nx run @gup-ds/components:lint:ts
+        run: npx nx run @govom/components:lint:ts
 
       - name: Lint (lit-analyzer)
-        run: npx nx run @gup-ds/components:lint:lit
+        run: npx nx run @govom/components:lint:lit
 
       - name: Lint ESLint
-        run: npx nx run @gup-ds/components:lint:eslint
+        run: npx nx run @govom/components:lint:eslint
 
       - name: Install Playwright dependencies
         run: npx playwright install-deps
 
       - name: Lint Accessibility
         continue-on-error: true
-        run: npx nx run @gup-ds/components:lint:a11y
+        run: npx nx run @govom/components:lint:a11y
 
       - name: Lint Prettier
-        run: npx nx run @gup-ds/components:lint:prettier
+        run: npx nx run @govom/components:lint:prettier

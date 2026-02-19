@@ -26,10 +26,10 @@ jobs:
         run: npx playwright install-deps
 
       - name: Build icons
-        run: npx nx run @gup-ds/icons:build
+        run: npx nx run @govom/icons:build
 
       - name: Build Storybook
-        run: npx nx run @gup-ds/components:build-storybook
+        run: npx nx run @govom/components:build-storybook
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
