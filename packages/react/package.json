@@ -9,7 +9,7 @@
                              "react-dom":  "^17 || ^18"
                          },
     "dependencies":  {
-                         "@govom/components":  "3.27.0",
+                         "@govom/components": "file:../components",
                          "@lit/react":  "^1.0.7"
                      },
     "devDependencies":  {

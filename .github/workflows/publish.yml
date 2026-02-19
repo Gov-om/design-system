@@ -6,7 +6,7 @@ on:
       dry-run:
         description: 'Dry run (no actual publish)'
         required: false
-        default: 'false'
+        default: false
         type: boolean
 
 permissions:
@@ -47,6 +47,12 @@ jobs:
 
       - name: Version (determine next versions and update changelogs)
         run: npx nx release --skip-publish
+
+      - name: "Replace file: reference with real version in react package"
+        run: |
+          COMPONENTS_VERSION=$(node -p "require('./packages/components/package.json').version")
+          sed -i "s|\"file:../components\"|\"${COMPONENTS_VERSION}\"|g" packages/react/package.json
+          echo "Set @govom/components to ${COMPONENTS_VERSION} in react/package.json"
 
       - name: Push version commits and tags
         if: ${{ inputs.dry-run != 'true' }}
