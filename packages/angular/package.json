@@ -1,29 +1,32 @@
 {
-  "name": "@gup-ds/angular",
-  "version": "0.0.3",
-  "description": "Angular Forms compatibility layer for Oman GUP web components library",
-  "type": "module",
-  "main": "./dist/fesm2022/index.mjs",
-  "types": "./dist/index.d.ts",
-  "peerDependencies": {
-    "@angular/common": "^19.1.0",
-    "@angular/forms": "^19.1.0",
-    "@angular/core": "^19.1.0",
-    "typescript": "~5.7.2"
-  },
-  "scripts": {
-    "ng": "ng",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development"
-  },
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "^19.1.0",
-    "@angular/cli": "^19.1.0",
-    "@angular/compiler-cli": "^19.1.0",
-    "ng-packagr": "^19.1.0"
-  },
-  "sideEffects": false
+    "name":  "@govom/angular",
+    "version":  "0.0.3",
+    "description":  "Angular Forms compatibility layer for Oman GUP web components library",
+    "type":  "module",
+    "main":  "./dist/fesm2022/index.mjs",
+    "types":  "./dist/index.d.ts",
+    "peerDependencies":  {
+                             "@angular/common":  "^19.1.0",
+                             "@angular/forms":  "^19.1.0",
+                             "@angular/core":  "^19.1.0",
+                             "typescript":  "~5.7.2"
+                         },
+    "scripts":  {
+                    "ng":  "ng",
+                    "build":  "ng build",
+                    "watch":  "ng build --watch --configuration development"
+                },
+    "dependencies":  {
+                         "tslib":  "^2.3.0"
+                     },
+    "devDependencies":  {
+                            "@angular-devkit/build-angular":  "^19.1.0",
+                            "@angular/cli":  "^19.1.0",
+                            "@angular/compiler-cli":  "^19.1.0",
+                            "ng-packagr":  "^19.1.0"
+                        },
+    "sideEffects":  false,
+    "publishConfig":  {
+                          "access":  "public"
+                      }
 }

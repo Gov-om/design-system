@@ -16,7 +16,7 @@ then
   echo "where: "
   echo "1. 'feat' is one of these allowed commit types:"
   echo "$commit_types,"
-  echo "2. 'components' is the package name (found in each package.json, without '@gup-ds' prefix), or 'all',"
+  echo "2. 'components' is the package name (found in each package.json, without '@govom' prefix), or 'all',"
   echo "3. and the rest is a description of the change"
   echo "For more information, check the script in /.husky/commit-msg"
   echo "---"

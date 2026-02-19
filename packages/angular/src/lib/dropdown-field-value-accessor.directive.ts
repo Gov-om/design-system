@@ -1,6 +1,6 @@
 import { Directive, ElementRef, forwardRef, HostListener } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { DropdownMenuItemData } from '@gup-ds/components';
+import { DropdownMenuItemData } from '@govom/components';
 
 @Directive({
   selector: 'gup-dropdown-field[formControlName], gup-dropdown-field[formControl], gup-dropdown-field[ngModel]',

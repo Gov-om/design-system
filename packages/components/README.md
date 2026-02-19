@@ -9,8 +9,8 @@ The library supports two types of component-specific style files: a regular `<co
 ### Contributing to the library
 
 1. Run `npm install` in the root folder of the repo;
-2. Run `npx nx run @gup-ds/icons:build` to build the icons used in the component library and the Storybook;
-3. Run `npx nx run @gup-ds/components:storybook` in the root folder or `npm run storybook` in the package folder;
+2. Run `npx nx run @govom/icons:build` to build the icons used in the component library and the Storybook;
+3. Run `npx nx run @govom/components:storybook` in the root folder or `npm run storybook` in the package folder;
 4. Open the Storybook at the given URL and start coding! The UI will refresh automatically.
 
 ## Visual regression testing

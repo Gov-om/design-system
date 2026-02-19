@@ -335,7 +335,7 @@ export class DataTable extends GupComponent {
         ${
           this.showViewButton
             ? html`
-            <gup-button appearance="secondary" size="medium" @gup-click=${this._handleViewClick}>
+            <gup-button appearance="secondary" @gup-click=${this._handleViewClick}>
               ${this.viewButtonIcon ? html`<gup-icon slot="icon-start" icon-name="${this.viewButtonIcon}" width="24" height="24"></gup-icon>` : nothing}
               ${this.viewButtonText}
             </gup-button>
@@ -344,7 +344,6 @@ export class DataTable extends GupComponent {
         }
         <gup-button
           appearance="${this.filterPanelOpen ? 'primary' : 'secondary'}"
-          size="medium"
           @gup-click=${this._toggleFilterPanel}
           class="${this.filterPanelOpen ? 'filter-button-active' : ''}"
         >
@@ -389,10 +388,10 @@ export class DataTable extends GupComponent {
           </slot>
         </div>
         <div class="filter-panel-actions">
-          <gup-button appearance="text" size="medium" @gup-click=${this._handleClearPanelFilters}>
+          <gup-button appearance="text" @gup-click=${this._handleClearPanelFilters}>
             Clear
           </gup-button>
-          <gup-button size="medium" @gup-click=${this._handleApplyFilters}>
+          <gup-button @gup-click=${this._handleApplyFilters}>
             Apply${selectedCount > 0 ? ` (${selectedCount})` : ''}
           </gup-button>
         </div>
@@ -412,7 +411,6 @@ export class DataTable extends GupComponent {
           (label) => html`
             <gup-button
               appearance="secondary"
-              size="medium"
               class="mobile-action-button"
             >
               <gup-icon slot="icon-start" icon-name="add" width="24" height="24"></gup-icon>
@@ -422,7 +420,6 @@ export class DataTable extends GupComponent {
         )}
         <gup-button
           appearance="${isFilterPanelOpen ? 'primary' : 'secondary'}"
-          size="medium"
           class="mobile-filters-button ${isFilterPanelOpen ? 'mobile-filters-button--active' : ''}"
           @gup-click=${this._toggleFilterPanel}
         >
@@ -515,7 +512,7 @@ export class DataTable extends GupComponent {
           </div>
         </div>
 
-        ${isEmpty ? this._renderEmptyState() : html`<gup-table layout="table"></gup-table>`}
+        ${isEmpty ? this._renderEmptyState() : html`<gup-table></gup-table>`}
       </div>
 
       ${this._renderPagination()}

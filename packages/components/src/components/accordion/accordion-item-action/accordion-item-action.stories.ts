@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/web-components';
 import { getWcStorybookHelpers } from 'wc-storybook-helpers';
-import { GupIconNames } from '@gup-ds/icons/dist/index';
+import { GupIconNames } from '@govom/icons/dist/index';
 import './accordion-item-action';
 import '../accordion/accordion';
 import { type AccordionItemAction } from './accordion-item-action';

@@ -8,30 +8,30 @@ A framework-agnostic web component library for Oman government digital services,
 
 | Package | Description | Version |
 |---|---|---|
-| `@gup-ds/components` | Core web components library | 3.26.0 |
-| `@gup-ds/react` | React wrapper components (for React <19) | 1.5.0 |
-| `@gup-ds/angular` | Angular Forms compatibility layer | 0.0.3 |
-| `@gup-ds/tokens` | Design tokens (colors, typography, spacing) | 0.2.2 |
-| `@gup-ds/icons` | Icon library (Material Design + flags) | 0.2.0 |
+| `@govom/components` | Core web components library | 3.26.0 |
+| `@govom/react` | React wrapper components (for React <19) | 1.5.0 |
+| `@govom/angular` | Angular Forms compatibility layer | 0.0.3 |
+| `@govom/tokens` | Design tokens (colors, typography, spacing) | 0.2.2 |
+| `@govom/icons` | Icon library (Material Design + flags) | 0.2.0 |
 
 ## Installation
 
 ### Web components
 
 ```bash
-npm install @gup-ds/components
+npm install @govom/components
 ```
 
 Add the styles to your HTML:
 
 ```html
-<link rel="stylesheet" href="/node_modules/@gup-ds/components/dist/styles.css">
+<link rel="stylesheet" href="/node_modules/@govom/components/dist/styles.css">
 ```
 
 Or import in CSS/PostCSS:
 
 ```css
-@import "@gup-ds/components/styles";
+@import "@govom/components/styles";
 ```
 
 Then use components directly in your markup:
@@ -42,28 +42,28 @@ Then use components directly in your markup:
 
 ### React
 
-React 19+ has full support for web components - use `@gup-ds/components` directly.
+React 19+ has full support for web components - use `@govom/components` directly.
 
 For React <19, use the wrapper package:
 
 ```bash
-npm install @gup-ds/react
+npm install @govom/react
 ```
 
 ```jsx
-import { Button } from '@gup-ds/react';
+import { Button } from '@govom/react';
 ```
 
 ### Angular
 
 ```bash
-npm install @gup-ds/angular
+npm install @govom/angular
 ```
 
 Import the compatibility module for form components (`gup-dropdown-field`, `gup-checkbox`, `gup-radio-button-group`, `gup-file-upload`, `gup-toggle`):
 
 ```typescript
-import { GupFormsCompatModule } from '@gup-ds/angular';
+import { GupFormsCompatModule } from '@govom/angular';
 ```
 
 For `gup-input-field` and `gup-textarea-field`, add the `ngDefaultControl` directive.
@@ -102,8 +102,8 @@ Browse all components and their API in the [Storybook](https://storybook.service
 
 ```bash
 npm install
-npx nx run @gup-ds/icons:build
-npx nx run @gup-ds/components:storybook
+npx nx run @govom/icons:build
+npx nx run @govom/components:storybook
 ```
 
 ### Quality control
@@ -111,7 +111,7 @@ npx nx run @gup-ds/components:storybook
 Run all linters before committing:
 
 ```bash
-npx nx run @gup-ds/components:lint:all
+npx nx run @govom/components:lint:all
 ```
 
 Individual lint commands:

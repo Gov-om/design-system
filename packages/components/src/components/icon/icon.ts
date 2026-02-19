@@ -1,7 +1,7 @@
 import { customElement, property } from 'lit/decorators.js';
 import { GupComponent } from '../../styles/styles';
 import { css, html } from 'lit';
-import { GupIconName } from '@gup-ds/icons/dist/index.d';
+import { GupIconName } from '@govom/icons/dist/index.d';
 
 /**
  * Icon component that displays an SVG icon.

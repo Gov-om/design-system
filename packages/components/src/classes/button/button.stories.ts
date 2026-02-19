@@ -17,8 +17,8 @@ interface ButtonStoryArgs extends GupButtonOptions {
 type Story = StoryObj<ButtonStoryArgs>;
 
 export default {
-  title: 'Classes/Button',
-  tags: ['autodocs'],
+  title: 'Lite Components/Button',
+  tags: ['autodocs', 'BETA'],
   argTypes: {
     appearance: {
       control: 'select',
@@ -71,7 +71,7 @@ An alternative to the \`<gup-button>\` web component for users who prefer workin
 
 #### With TypeScript utility:
 \`\`\`typescript
-import { GupButton } from '@gup-ds/components/classes/button';
+import { GupButton } from '@govom/components/classes/button';
 
 // Apply to existing element
 const btn = document.querySelector('button');
@@ -163,47 +163,6 @@ export const Disabled: Story = {
   },
 };
 
-export const Inverted: Story = {
-  render: Template,
-  args: {
-    inverted: true,
-    label: 'Inverted Button',
-  },
-  parameters: {
-    backgrounds: {
-      default: 'dark',
-    },
-  },
-};
-
-export const SecondaryInverted: Story = {
-  render: Template,
-  args: {
-    appearance: 'secondary',
-    inverted: true,
-    label: 'Secondary Inverted',
-  },
-  parameters: {
-    backgrounds: {
-      default: 'dark',
-    },
-  },
-};
-
-export const TextInverted: Story = {
-  render: Template,
-  args: {
-    appearance: 'text',
-    inverted: true,
-    label: 'Text Inverted',
-  },
-  parameters: {
-    backgrounds: {
-      default: 'dark',
-    },
-  },
-};
-
 export const AsLink: Story = {
   render: (args) => {
     const className = GupButton.getClassName({
@@ -278,28 +237,6 @@ export const IconOnly: Story = {
   args: {
     label: '',
   },
-};
-
-export const AllAppearances: Story = {
-  render: () => html`
-    <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-      <button class="${GupButton.getClassName({ appearance: 'primary' })}">Primary</button>
-      <button class="${GupButton.getClassName({ appearance: 'secondary' })}">Secondary</button>
-      <button class="${GupButton.getClassName({ appearance: 'text' })}">Text</button>
-      <button class="${GupButton.getClassName({ appearance: 'danger' })}">Danger</button>
-    </div>
-  `,
-};
-
-export const AllDisabled: Story = {
-  render: () => html`
-    <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-      <button class="${GupButton.getClassName({ appearance: 'primary', disabled: true })}" disabled>Primary</button>
-      <button class="${GupButton.getClassName({ appearance: 'secondary', disabled: true })}" disabled>Secondary</button>
-      <button class="${GupButton.getClassName({ appearance: 'text', disabled: true })}" disabled>Text</button>
-      <button class="${GupButton.getClassName({ appearance: 'danger', disabled: true })}" disabled>Danger</button>
-    </div>
-  `,
 };
 
 export const ComparisonWithWebComponent: Story = {

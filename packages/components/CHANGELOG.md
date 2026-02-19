@@ -1,3 +1,29 @@
+## 3.27.0 (2026-02-16)
+
+
+### 🚀 Features
+
+- **components:** new variant of a lite component introduced - button
+
+- **components:** new variant of a lite component introduced - checkbox
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
+## 3.26.1 (2026-02-10)
+
+
+### 🩹 Fixes
+
+- **docs:** calculate dropdown-menu height for iframes on wiki pages
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
 ## 3.26.0 (2026-02-09)
 
 
@@ -871,7 +897,7 @@
 
 ### 📝 Documentation Changes
 
-- **components:** updated @gup-ds/components installation instructions
+- **components:** updated @govom/components installation instructions
 
 - **components:** added arrow icon as to a story of gup-button as a demo of how it behaves with dir-dependent icons
 
@@ -986,7 +1012,7 @@
 
 - **components:** marked validationTarget of FormControlMixin internal to prevent it from appearing in the Storybook controls
 
-- **components:** added an Upgrade guide for @gup-ds/components@3.0.0
+- **components:** added an Upgrade guide for @govom/components@3.0.0
 
 - **components:** added class and tag name to documentation pages for each component
 
@@ -1097,7 +1123,7 @@
 
 - **components:** added automatic Typescript declarations generation
 
-- **components:** allow to import global styles in CSS with '@import "@gup-ds/components/styles"'
+- **components:** allow to import global styles in CSS with '@import "@govom/components/styles"'
 
 
 ### 🩹 Fixes
@@ -3677,7 +3703,7 @@
 
 - **components:** removed vite-svg-loader and its dependencies since default Vite functionality replaces it
 
-- **icons:** renamed "generate-icons" part in the npx nx run @gup-ds/icons:generate-icons command to "build"
+- **icons:** renamed "generate-icons" part in the npx nx run @govom/icons:generate-icons command to "build"
 
 - **components:** moved gup-rich-text CSS to global styles to avoid an issue where slotted can only be used with very simple selectors
 

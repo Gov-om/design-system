@@ -139,6 +139,8 @@ const preview: Preview = {
           'Design tokens',
           'Components',
           ['Layout', ['Header'], 'Forms', ['Form list']],
+          'Lite Components',
+          ['Installation'],
         ],
       },
     },

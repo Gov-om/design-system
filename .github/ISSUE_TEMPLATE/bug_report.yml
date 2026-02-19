@@ -56,7 +56,7 @@ body:
     id: version
     attributes:
       label: Package version
-      placeholder: e.g. @gup-ds/components@3.26.0
+      placeholder: e.g. @govom/components@3.26.0
     validations:
       required: true
 
@@ -67,7 +67,7 @@ body:
       options:
         - Vanilla JS / No framework
         - React 19+
-        - React <19 (@gup-ds/react)
+        - React <19 (@govom/react)
         - Angular
         - Vue
         - Other
