@@ -133,7 +133,7 @@ const Template = (args: CheckboxStoryArgs) => {
         class="${GUP_CHECKBOX_CLASSES.input}"
         ?checked="${args.checked}"
         ?disabled="${args.disabled}"
-        .indeterminate="${args.indeterminate}"
+        .indeterminate="${args.indeterminate ?? false}"
       />
       <div class="${GUP_CHECKBOX_CLASSES.checkMark}">
         <div class="${GUP_CHECKBOX_CLASSES.checkMarkInner}"></div>
