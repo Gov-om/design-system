@@ -1,0 +1,44 @@
+name: Sync to GitLab
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  sync:
+    name: Mirror to GitLab and open MR
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout with full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push to GitLab sync branch
+        run: |
+          git remote add gitlab https://oauth2:${{ secrets.GITLAB_TOKEN }}@gitlab.nortal.com/gup/gup-web-components.git
+          git push gitlab HEAD:refs/heads/github-sync --force
+
+      - name: Create GitLab MR (if not already open)
+        run: |
+          EXISTING_MR=$(curl --silent --header "PRIVATE-TOKEN: ${{ secrets.GITLAB_TOKEN }}" \
+            "https://gitlab.nortal.com/api/v4/projects/${{ secrets.GITLAB_PROJECT_ID }}/merge_requests?state=opened&source_branch=github-sync&target_branch=main" \
+            | grep -c '"id"' || true)
+
+          if [ "$EXISTING_MR" -eq "0" ]; then
+            curl --silent --fail \
+              --request POST \
+              --header "PRIVATE-TOKEN: ${{ secrets.GITLAB_TOKEN }}" \
+              --header "Content-Type: application/json" \
+              --data "{
+                \"source_branch\": \"github-sync\",
+                \"target_branch\": \"main\",
+                \"title\": \"Sync from GitHub ($(date +'%Y-%m-%d'))\",
+                \"description\": \"Automated sync from GitHub main branch.\n\nTriggered by commit: ${{ github.sha }}\n${{ github.event.head_commit.message }}\"
+              }" \
+              "https://gitlab.nortal.com/api/v4/projects/${{ secrets.GITLAB_PROJECT_ID }}/merge_requests"
+            echo "MR created"
+          else
+            echo "MR already open, skipping creation"
+          fi
