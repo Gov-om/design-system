@@ -1,3 +1,27 @@
+## 1.6.0 (2026-02-19)
+
+
+### 🚀 Features
+
+- **all:** add React and Angular packages with helpers
+
+- **all:** rename package scope from @gup-ds to @govom
+
+
+### 🩹 Fixes
+
+- **react:** update @govom/components dependency to 3.27.0
+
+
+### 📦 CI/CD Changes
+
+- **all:** fix publish workflow to resolve file: dependency before publishing
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
 ## 1.5.0 (2026-02-09)
 
 

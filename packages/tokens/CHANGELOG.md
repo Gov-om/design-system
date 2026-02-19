@@ -1,3 +1,17 @@
+## 0.3.0 (2026-02-19)
+
+
+### 🚀 Features
+
+- **tokens:** add design tokens package
+
+- **all:** rename package scope from @gup-ds to @govom
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
 ## 0.2.2 (2024-12-28)
 
 

@@ -1,3 +1,17 @@
+## 0.3.0 (2026-02-19)
+
+
+### 🚀 Features
+
+- **icons:** add icons package
+
+- **all:** rename package scope from @gup-ds to @govom
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
 ## 0.2.0 (2024-07-02)
 
 

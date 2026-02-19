@@ -1,6 +1,6 @@
 {
   "name": "@govom/components",
-  "version": "3.26.0",
+  "version": "3.27.0",
   "description": "Oman GUP web components library",
   "type": "module",
   "main": "dist/components.js",
