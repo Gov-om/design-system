@@ -1,8 +1,7 @@
 name: Sync to GitLab
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
   sync:
