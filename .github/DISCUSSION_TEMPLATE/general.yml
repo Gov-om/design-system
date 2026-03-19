@@ -1,0 +1,47 @@
+title: ""
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this category for open-ended conversations that don't fit elsewhere:
+        team introductions, cross-ministry alignment, general feedback, or anything on your mind.
+
+  - type: dropdown
+    id: topic
+    attributes:
+      label: Topic area
+      options:
+        - Adoption / onboarding
+        - Cross-ministry alignment
+        - Tooling / developer experience
+        - Design tokens / theming
+        - Accessibility
+        - Documentation
+        - Governance / contribution process
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: ministry
+    attributes:
+      label: Ministry or team (optional)
+      description: Let others know who you represent, if relevant.
+      placeholder: e.g. Ministry of Finance
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What prompted this discussion? What are you working on or trying to understand?
+    validations:
+      required: true
+
+  - type: textarea
+    id: body
+    attributes:
+      label: Discussion
+      description: Share your thoughts, questions, or observations.
+    validations:
+      required: true

@@ -1,0 +1,62 @@
+title: ""
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use polls to gather input from the community on design decisions, API choices, or priorities.
+        After submitting, use the **Add poll** option to attach the voting options to this discussion.
+
+  - type: dropdown
+    id: topic
+    attributes:
+      label: What are you polling on?
+      options:
+        - Component API / naming
+        - Design decision (visual style, behavior)
+        - Prioritization (what to build next)
+        - Token naming or value
+        - Process or governance
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Background
+      description: |
+        Give enough context so voters can make an informed choice.
+        What problem are we solving? What are the constraints?
+    validations:
+      required: true
+
+  - type: textarea
+    id: options
+    attributes:
+      label: Options being polled
+      description: |
+        List the options here (mirrors what you'll add in the poll widget above).
+        Include a short rationale for each so the community understands the trade-offs.
+      value: |
+        **Option A:**
+
+        **Option B:**
+
+        **Option C (if applicable):**
+    validations:
+      required: true
+
+  - type: input
+    id: deadline
+    attributes:
+      label: Poll closes (optional)
+      description: When should this poll close so we can act on the results?
+      placeholder: e.g. 2026-03-31
+
+  - type: textarea
+    id: next-steps
+    attributes:
+      label: What happens after
+      description: How will the poll result be used? Who makes the final call?
+      placeholder: e.g. Results will inform the RFC for the new token naming scheme.

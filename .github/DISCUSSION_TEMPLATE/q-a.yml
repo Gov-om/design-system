@@ -1,0 +1,75 @@
+title: ""
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ask anything about integrating or using the design system.
+        The community and maintainers will help - the best answer can be marked as accepted.
+
+        > **Before posting**, please check:
+        > - [Storybook documentation](https://storybook.service.gov.om/)
+        > - [Design system wiki](https://design-system.service.gov.om/en)
+        > - [Existing Q&A discussions](https://github.com/Gov-om/main/discussions/categories/q-a)
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Component usage
+        - Component API / props / slots
+        - Styling / CSS custom properties
+        - Design tokens / theming
+        - Framework integration (React, Angular, Vue)
+        - Accessibility
+        - Installation / setup
+        - Storybook
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: component
+    attributes:
+      label: Component (if applicable)
+      placeholder: e.g. gup-dropdown-field, gup-data-table
+
+  - type: input
+    id: version
+    attributes:
+      label: Package version
+      placeholder: e.g. @govom/components@3.26.0
+
+  - type: dropdown
+    id: framework
+    attributes:
+      label: Framework
+      options:
+        - Vanilla JS / No framework
+        - React 19+
+        - React <19 (@govom/react)
+        - Angular
+        - Vue
+        - Other / Not applicable
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: Describe what you're trying to do and what you're not sure about.
+    validations:
+      required: true
+
+  - type: textarea
+    id: tried
+    attributes:
+      label: What I've tried
+      description: Share any code snippets, approaches you've already attempted, or docs you've consulted.
+      render: html
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected outcome
+      description: What should happen once your question is answered?

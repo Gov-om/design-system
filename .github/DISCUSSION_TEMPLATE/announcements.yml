@@ -1,0 +1,66 @@
+title: ""
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > **Announcements are posted by the design system maintainers.**
+        > This category is used for release notes, breaking changes, deprecations, and other official updates.
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Announcement type
+      options:
+        - New release
+        - Breaking change
+        - Deprecation notice
+        - Security advisory
+        - Roadmap update
+        - Event / workshop
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version (if applicable)
+      placeholder: e.g. @govom/components@4.0.0
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: A short summary of what this announcement is about.
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: |
+        Full description. For releases, include what changed and why.
+        For breaking changes, describe what was changed and what teams need to update.
+      value: |
+        ## What changed
+
+        ## Why
+
+        ## Migration steps (if applicable)
+
+        ## Affected components
+
+    validations:
+      required: true
+
+  - type: textarea
+    id: links
+    attributes:
+      label: Related links
+      description: Changelog, migration guide, Storybook, Figma, or pull requests.
+      placeholder: |
+        - Changelog:
+        - Migration guide:
+        - Storybook:
