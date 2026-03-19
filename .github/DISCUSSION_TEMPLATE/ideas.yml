@@ -1,0 +1,76 @@
+title: ""
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Got an idea for a new component, pattern, or improvement to the design system?
+        Share it here - ideas are open for community input before becoming formal proposals or issues.
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Idea type
+      options:
+        - New component
+        - New design token or theme variable
+        - New pattern / composition
+        - Enhancement to existing component
+        - Developer experience improvement
+        - Documentation or Storybook improvement
+        - Accessibility improvement
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: component
+    attributes:
+      label: Component or area (if applicable)
+      placeholder: e.g. gup-data-table, gup-button, design tokens
+
+  - type: input
+    id: ministry
+    attributes:
+      label: Ministry or team
+      description: Who is this idea coming from?
+      placeholder: e.g. Ministry of Interior
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or opportunity
+      description: What problem does this solve, or what opportunity does it open up?
+    validations:
+      required: true
+
+  - type: textarea
+    id: idea
+    attributes:
+      label: Proposed idea
+      description: Describe your idea. What should it look like or do? How should it behave?
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-cases
+    attributes:
+      label: Use cases
+      description: Where would this be used? List concrete examples from your project or ministry.
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Figma links, examples from other design systems, screenshots, or prior art.
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      options:
+        - label: I'm willing to help design this
+        - label: I'm willing to help implement this
+        - label: I can provide a Figma design reference

@@ -1,0 +1,80 @@
+title: ""
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Built something with the design system? Show it off!
+        Share what your ministry or team has created - it helps the whole community learn and get inspired.
+
+  - type: input
+    id: ministry
+    attributes:
+      label: Ministry or team
+      placeholder: e.g. Ministry of Education
+    validations:
+      required: true
+
+  - type: input
+    id: project
+    attributes:
+      label: Project name
+      placeholder: e.g. Public Services Portal, Document Submission Form
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: What are you sharing?
+      options:
+        - Full product / service
+        - Page or feature
+        - Component composition / pattern
+        - Theming / ministry-specific customisation
+        - Developer tooling or integration
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Tell us about the project and how you used the design system.
+    validations:
+      required: true
+
+  - type: textarea
+    id: components
+    attributes:
+      label: Components used
+      description: Which components from the design system did you use?
+      placeholder: |
+        - gup-button
+        - gup-data-table
+        - gup-form-field
+
+  - type: textarea
+    id: highlights
+    attributes:
+      label: Highlights or learnings
+      description: |
+        Anything that worked especially well? Any challenges or workarounds?
+        Feedback here is valuable for the design system roadmap.
+
+  - type: textarea
+    id: links
+    attributes:
+      label: Links
+      description: Screenshots, a live URL (if public), Figma, or a code repository.
+      placeholder: |
+        - Live URL:
+        - Screenshot:
+        - Figma:
+
+  - type: checkboxes
+    id: visibility
+    attributes:
+      label: Visibility
+      options:
+        - label: This project is publicly accessible
+        - label: I'm happy for this to be featured in the design system showcase
