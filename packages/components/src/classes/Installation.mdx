@@ -74,9 +74,32 @@ const className = GupButton.getClassName({ appearance: 'danger' });
 // => "gup-button gup-button--danger"
 ```
 
+## Templates
+
+Page-level templates combine structural layout classes with Lite Components to produce full-page compositions without any web components (except `gup-icon` and `gup-logo`, which have no lite versions yet).
+
+Import the template CSS alongside the component CSS files it depends on:
+
+```javascript
+import '@gup-ds/components/classes/button/button.css';
+import '@gup-ds/components/classes/checkbox/checkbox.css';
+import '@gup-ds/components/classes/templates/service-start.css';
+```
+
+The template CSS provides layout classes that replace the corresponding web component wrappers:
+
+| Web component          | Lite class                                   |
+| ---------------------- | -------------------------------------------- |
+| `<gup-header>`         | `.gup-lite-header` + `.gup-lite-header__nav` |
+| `<gup-content-header>` | `.gup-lite-content-header`                   |
+| `<gup-wizard-main>`    | `.gup-lite-wizard-main`                      |
+| `<gup-wizard-footer>`  | `.gup-lite-wizard-footer`                    |
+
+See the [Service Start template story](?path=/story/lite-components-templates-service-start--default) for a complete working example.
+
 ## Usage without npm
 
-If your project cannot use npm, you can use the CSS files directly. You need two stylesheets: the **design tokens** (for colors, spacing, typography) and the **component CSS**.
+If your project cannot use npm, you can use the CSS files directly. You need two stylesheets: the **design tokens** (for colors, spacing, and typography) and the **component CSS**.
 
 ### Option 1: Link to hosted CSS files
 
@@ -86,9 +109,12 @@ Point the URLs to wherever the `@gup-ds/components` package is hosted on your se
 <!-- 1. Design tokens (required) -->
 <link rel="stylesheet" href="https://myurl.com/gup-components/dist/styles.css">
 
-<!-- 2. Component CSS — add only what you need -->
+<!-- 2. Component CSS - add only what you need -->
 <link rel="stylesheet" href="https://myurl.com/gup-components/classes/button/button.css">
 <link rel="stylesheet" href="https://myurl.com/gup-components/classes/checkbox/checkbox.css">
+
+<!-- 3. Template CSS - add only what you need -->
+<link rel="stylesheet" href="https://myurl.com/gup-components/classes/templates/service-start.css">
 ```
 
 ### Option 2: Download or copy the raw CSS files
@@ -97,6 +123,7 @@ Open the CSS file directly in your browser, then save or copy its contents:
 
 - <a href="/classes/button/button.css" target="_blank">button.css</a>
 - <a href="/classes/checkbox/checkbox.css" target="_blank">checkbox.css</a>
+- <a href="/classes/templates/service-start.css" target="_blank">service-start.css</a>
 
 You will also need the design tokens stylesheet (`styles.css`) for colors, spacing, and typography to work. It is available at the same hosted location as the component library.
 
@@ -133,3 +160,9 @@ No JavaScript or build tools required:
 | --------- | ------------------------------------------------------------------------- | ---------------- |
 | Button    | <a href="/classes/button/button.css" target="_blank">button.css</a>       | `GupButton`      |
 | Checkbox  | <a href="/classes/checkbox/checkbox.css" target="_blank">checkbox.css</a> | `GupCheckbox`    |
+
+## Available templates
+
+| Template      | CSS file                                                                             | Story                                                                 |
+| ------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------- |
+| Service Start | <a href="/classes/templates/service-start.css" target="_blank">service-start.css</a> | [View](?path=/story/lite-components-templates-service-start--default) |

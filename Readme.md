@@ -173,6 +173,6 @@ This project uses GitHub Actions for continuous integration:
 
 ## Feedback
 
-- Email: gup_pmo@mtcit.gov.om
+- Email: gup_designlibrary_support@mtcit.gov.om 
 - [WhatsApp group](https://chat.whatsapp.com/KqN9RuWxKaW1nTXUXm8I6p)
 - Report bugs by reproducing in the [Storybook](https://storybook.service.gov.om/) or by forking the [Codepen playground](https://codepen.io/certainlyakey/pen/LYKxrjw)

@@ -59,6 +59,11 @@
   --gup-icon--fill-color: var(--_icon-fill);
 }
 
+.gup-button svg {
+  fill: var(--_icon-fill);
+  flex-shrink: 0;
+}
+
 .gup-button__label--sr-only {
   position: absolute;
   overflow: hidden;
