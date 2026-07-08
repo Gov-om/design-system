@@ -22,7 +22,7 @@ export default {
   },
   args: {
     ...args,
-    'country-name': 'om',
+    'country-name': 'oman',
   },
   parameters: {
     axe: {

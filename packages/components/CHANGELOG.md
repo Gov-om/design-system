@@ -1,3 +1,18 @@
+## 3.28.2 (2026-03-17)
+
+
+### 🩹 Fixes
+
+- **docs:** tweak for 'with custom extra controls' story of dropdown-menu component
+
+- **docs:** use full name for default flag story
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
+
 ## 3.28.1 (2026-03-17)
 
 

@@ -94,6 +94,9 @@ export const WithCustomExtraControls: Story = {
         <gup-track slot="controls-extra-buttons"><gup-button>Extra action</gup-button></gup-track>
       `
     ),
+  args: {
+    multiple: true,
+  },
 };
 
 export const Empty: Story = {
