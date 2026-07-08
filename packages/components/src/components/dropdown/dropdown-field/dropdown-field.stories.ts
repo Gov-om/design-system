@@ -51,6 +51,7 @@ export default {
     storybookAttachment: storybookArgAttachment,
   },
   parameters: {
+    layout: 'padded',
     actions: {
       handles: events,
     },
@@ -542,7 +543,6 @@ export const WithDataLoadedAsynchronously: Story = {
           dropdownField.loadingLabel = 'Loading data...';
           const response = await fetch('https://meowfacts.herokuapp.com/?count=6');
           const catFacts = await response.json();
-          console.log('data: ', catFacts);
           const dropdown = dropdownField.querySelector('gup-dropdown-menu');
           catFacts.data.forEach((fact, index) => {
             const item = document.createElement('gup-dropdown-menu-item');

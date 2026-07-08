@@ -1,3 +1,18 @@
+## 3.28.1 (2026-03-17)
+
+
+### 🩹 Fixes
+
+- **docs:** dropdown field iframe height tweak
+
+- **docs:** flyout iframe height tweak
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
+
 ## 3.28.0 (2026-03-17)
 
 
