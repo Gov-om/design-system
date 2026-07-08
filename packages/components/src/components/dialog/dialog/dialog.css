@@ -25,10 +25,11 @@
 }
 
 .modal-header {
-  position: relative;
+  grid-area: title;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: flex-start;
+  column-gap: var(--gup-spacing-text-to-component);
 }
 
 .modal-heading {
@@ -36,8 +37,8 @@
   font-size: var(--font-size-550);
   font-weight: var(--font-weight-base-beta);
   color: var(--gup-color-content-primary);
-  padding-inline-end: var(--gup-padding-xxl);
-  grid-area: title;
+  flex: 1;
+  min-width: 0;
 }
 
 .icon {
@@ -49,9 +50,9 @@
 }
 
 .close-button {
-  position: absolute;
-  inset-inline-end: 0;
-  inset-block-start: 0;
+  flex-shrink: 0;
+  margin-inline-start: auto;
+  display: flex;
   justify-content: center;
   align-items: center;
 }

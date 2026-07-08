@@ -1,3 +1,22 @@
+## 3.30.1 (2026-05-01)
+
+
+### 🩹 Fixes
+
+- **components:** fixed frid settings for the dialog component to avoid overlaping of cancel button and dialog title
+
+
+### 📝 Documentation Changes
+
+- **components:** updated email feedback address
+
+
+### ❤️  Thank You
+
+- devops
+- Ekaterina Loginova
+
+
 ## 3.30.0 (2026-04-14)
 
 
