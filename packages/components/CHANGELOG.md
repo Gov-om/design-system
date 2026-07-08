@@ -1,3 +1,16 @@
+## 3.30.2 (2026-06-09)
+
+
+### 🩹 Fixes
+
+- **components:** fixed pointer-events blocking wizard footer buttons in toast-container component
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
+
 ## 3.30.1 (2026-05-01)
 
 
