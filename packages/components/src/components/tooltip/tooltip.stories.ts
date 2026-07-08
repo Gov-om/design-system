@@ -109,30 +109,12 @@ export const WithMaxWidth: Story = {
   },
 };
 
-export const WithLongContentAndPlacementLeftOnLeftEdge: Story = {
+export const WithPlacementLeftOnLeftEdge: Story = {
   ...WithLongContent,
   name: 'With long content, placement set to left, on the left edge of the viewport',
   args: {
     ...WithLongContent.args,
     placement: 'left',
     storybookAttachment: 'center-start',
-  },
-};
-
-export const WithLongContentAndPlacementRightOnRightEdge: Story = {
-  ...WithLongContent,
-  name: 'With long content, placement set to right, on the right edge of the viewport',
-  args: {
-    ...WithLongContent.args,
-    placement: 'right',
-    storybookAttachment: 'bottom-end',
-  },
-};
-
-export const WithActionButton: Story = {
-  ...Open,
-  render: (args) => templateWithConfigurablePosition(args, html`<gup-link href="#">Action</gup-link>`),
-  args: {
-    hint: 'Hint text',
   },
 };

@@ -3,6 +3,7 @@ import { Meta, StoryObj } from '@storybook/web-components';
 import { getWcStorybookHelpers } from 'wc-storybook-helpers';
 
 import './toggle';
+import '../button/button';
 import { type Toggle } from './toggle';
 
 const { events, args, argTypes, template } = getWcStorybookHelpers('gup-toggle');
@@ -47,7 +48,7 @@ export const InForm: Story = {
   render: (args) => html`
     <form>
       ${template(args)}
-      <button type="submit">Submit</button>
+      <gup-button style="margin-top: var(--gup-spacing-text-to-component);" @gup-click="${(e: CustomEvent) => (e.target as HTMLElement).closest('form')?.requestSubmit()}">Submit</gup-button>
     </form>
     <script>
       (function() {

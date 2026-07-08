@@ -1,5 +1,6 @@
 import { html, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { GupComponent } from '../../../styles/styles';
 import styles from './dropdown-menu-item.css?inline';
 import '../../icon/icon';
@@ -42,10 +43,11 @@ export class DropdownMenuItem extends GupComponent {
 
   private buttonRef: Ref<HTMLButtonElement> = createRef();
   private checkboxRef: Ref<Checkbox> = createRef();
+  private optionDivRef: Ref<HTMLDivElement> = createRef();
 
   /** Focuses the dropdown menu item */
   public focusElement() {
-    const target = this.isDropdownMenuMultiple() ? this.checkboxRef.value : this.buttonRef.value;
+    const target = this.isDropdownMenuMultiple() ? this.optionDivRef.value : this.buttonRef.value;
     target?.focus();
   }
 
@@ -54,12 +56,7 @@ export class DropdownMenuItem extends GupComponent {
     return this.closest<DropdownMenu>('gup-dropdown-menu')?.multiple ?? false;
   }
 
-  private onClick(event: MouseEvent) {
-    if (this.isDropdownMenuMultiple()) {
-      // This stops the checkbox change event from bubbling up to `gup-dropdown-menu`. The latter uses the same event name as `gup-checkbox`, so subscribing to `gup-change` `gup-dropdown-menu` with `multiple=true` triggers both events)
-      event.stopPropagation();
-    }
-
+  private handleSelect() {
     if (!this.disabled) {
       this.selected = !this.selected;
       // We do not want this internal event to appear in the Storybook as a part of component documentation
@@ -74,17 +71,33 @@ export class DropdownMenuItem extends GupComponent {
     }
   }
 
+  private onClick(event: MouseEvent) {
+    if (this.isDropdownMenuMultiple()) {
+      // This stops the checkbox change event from bubbling up to `gup-dropdown-menu`. The latter uses the same event name as `gup-checkbox`, so subscribing to `gup-change` `gup-dropdown-menu` with `multiple=true` triggers both events)
+      event.stopPropagation();
+    }
+    this.handleSelect();
+  }
+
+  private onKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      // Stop propagation so the parent gup-dropdown-menu keyboard handler doesn't also fire
+      event.stopPropagation();
+      this.handleSelect();
+    }
+  }
+
   render() {
     if (this.isDropdownMenuMultiple()) {
       return html`
-        <div role="option" aria-selected="${this.selected}">
+        <div role="option" aria-selected="${this.selected}" aria-label="${ifDefined(this.label || undefined)}" tabindex="-1" @click="${this.onClick}" @keydown="${this.onKeyDown}" ${ref(this.optionDivRef)}>
           <gup-checkbox class="checkbox"
                         size="s"
                         ?disabled=${this.disabled}
                         ?checked=${this.selected}
-                        @gup-change="${this.onClick}"
                         value="${this.value}"
-                        tabindex="-1"
+                        ?inert=${true}
                         ${ref(this.checkboxRef)}
           >
             <div class="content">

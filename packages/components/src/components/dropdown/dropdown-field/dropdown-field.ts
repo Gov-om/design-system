@@ -468,9 +468,9 @@ export class DropdownField extends FormControlMixin(GupComponent) {
           placeholder="${this.loading ? this.loadingLabel : this.placeholder}"
           readonly
           type="text"
-          input-role="combobox"
-          aria-haspopup="listbox"
-          aria-controls="${this.name}-listbox"
+          .inputRole="${'combobox'}"
+          .ariaHasPopupType="${'listbox'}"
+          .ariaControlsId="${this.dropdownOpened ? `${this.name}-listbox` : undefined}"
           .ariaExpandedState="${this.dropdownOpened}"
           class="${classMap({
             'input-field': true,

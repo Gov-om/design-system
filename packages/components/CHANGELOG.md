@@ -1,3 +1,32 @@
+## 3.27.1 (2026-03-09)
+
+
+### 🩹 Fixes
+
+- **components:** removed native picker call and added possibility to edit fields with types of date and time manually in input-field component
+
+- **components:** removed footer button for single select in dropfown-field component
+
+- **components:** fix a11y violations
+
+
+### 📝 Documentation Changes
+
+- **components:** fix code templates logic extraction
+
+- **components:** deprciate circle variant of checbox component
+
+- **components:** limit amount of stories for tooltip component
+
+- **components:** replace native buttons with gup one in form stories
+
+- **components:** center label and add Omani rial in data-sheet stories
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
 ## 3.27.0 (2026-02-16)
 
 

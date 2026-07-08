@@ -3,6 +3,7 @@ import { html } from 'lit';
 import { getWcStorybookHelpers } from 'wc-storybook-helpers';
 import './input-field';
 import { type InputField } from './input-field';
+import '../button/button';
 import '../track/track';
 import '../wizard-main/wizard-main';
 // import '../../../.storybook/components/storybook-comment/storybook-comment';
@@ -31,7 +32,7 @@ export default {
 const formTemplate = (args: InputField & { 'data-story-id'?: string }, slotTemplate = html``) => html`
   <form novalidate>
   ${template(args, slotTemplate)}
-  <button type="submit" style="margin-top: 12px;">Submit</button>
+  <gup-button style="margin-top: var(--gup-spacing-text-to-component);" @gup-click="${(e: CustomEvent) => (e.target as HTMLElement).closest('form')?.requestSubmit()}">Submit</gup-button>
   </form>
   <script>
     (function() {

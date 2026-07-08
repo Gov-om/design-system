@@ -4,6 +4,7 @@ import { html } from 'lit';
 
 import './radio-button-group';
 import '../radio-button/radio-button';
+import '../button/button';
 import { type RadioButtonGroup } from './radio-button-group';
 
 const { argTypes, args, template, events } = getWcStorybookHelpers('gup-radio-button-group');
@@ -69,7 +70,7 @@ export const InForm: Story = {
         <gup-radio-button name="radios" value="radio-2">Radio 2</gup-radio-button>
       `
       )}
-      <button type="submit">Submit</button>
+      <gup-button style="margin-top: var(--gup-spacing-text-to-component);" @gup-click="${(e: CustomEvent) => (e.target as HTMLElement).closest('form')?.requestSubmit()}">Submit</gup-button>
     </form>
     <script>
       (function() {

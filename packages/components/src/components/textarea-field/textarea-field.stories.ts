@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/web-components';
 import { html } from 'lit';
 import { getWcStorybookHelpers } from 'wc-storybook-helpers';
 import './textarea-field';
+import '../button/button';
 import { type TextareaField } from './textarea-field';
 
 const { events, args, argTypes, template } = getWcStorybookHelpers('gup-textarea-field');
@@ -34,7 +35,7 @@ export const InForm: Story = {
   render: (args) => html`
     <form>
       ${template(args)}
-      <button type="submit">Submit</button>
+      <gup-button style="margin-top: var(--gup-spacing-text-to-component);" @gup-click="${(e: CustomEvent) => (e.target as HTMLElement).closest('form')?.requestSubmit()}">Submit</gup-button>
     </form>
     <script>
       (function() {
