@@ -82,3 +82,20 @@ export const TypeExpired: Story = {
     'title-slot': 'Your application has expired.',
   },
 };
+
+export const RTL: Story = {
+  render: (args) =>
+    template(
+      args,
+      html`
+        <gup-button slot="action">زر الإجراء</gup-button>
+      `
+    ),
+  args: {
+    'default-slot': 'بعض نص الجسم فاتورة أصلية انتشرت سقطت صاحت حديقة الحيوان آلات صفر ناقش رئتان زبدة صندوقها المتحرك المعلمة نفسها ببساطة فريق عبد لا يجري',
+    'title-slot': 'عنوان متجه تماماً نحو حفلة بحثية جيش خيمة مطاط ثالث ترحيب',
+  },
+  parameters: {
+    direction: 'rtl',
+  },
+};

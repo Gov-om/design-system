@@ -235,13 +235,14 @@ export class DataTable extends GupComponent {
       }
     });
 
-    this.resultsCount = visibleCount;
-
     if (!searchTerm) {
       this.totalItems = this._originalTotalItems;
+      this.currentPage = 1;
+      this.resultsCount = undefined;
     } else {
       this.totalItems = visibleCount;
       this.currentPage = 1;
+      this.resultsCount = visibleCount;
     }
 
     this._paginateRows();
@@ -348,7 +349,7 @@ export class DataTable extends GupComponent {
           class="${this.filterPanelOpen ? 'filter-button-active' : ''}"
         >
           <gup-icon slot="icon-start" icon-name="filter-list" width="24" height="24"></gup-icon>
-          Filter${filterCount > 0 ? ` (${filterCount})` : ''}
+          ${this.filtersButtonText}${filterCount > 0 ? ` (${filterCount})` : ''}
         </gup-button>
       </div>
       ${this._renderFilterPanel()}

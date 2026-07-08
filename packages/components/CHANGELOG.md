@@ -1,3 +1,39 @@
+## 3.29.0 (2026-04-02)
+
+
+### 🚀 Features
+
+- **docs:** added 'RTL' variant for track documentation
+
+- **docs:** added 'RTL' variant for stepper documentation
+
+- **docs:** added 'RTL' variant for form-section documentation
+
+- **docs:** added 'RTL' variant for file-upload items documentation
+
+- **docs:** added 'RTL' variant for data-sheet documentation
+
+- **docs:** added 'RTL' variant for badge-chip documentation
+
+- **docs:** added 'RTL' variant for button documentation
+
+- **docs:** code-snippets for button
+
+- **docs:** added 'RTL' variant for data-table documentation
+
+- **docs:** added 'RTL' variant for page-status documentation
+
+
+### 🩹 Fixes
+
+- **comonents:** applied responsive principles to filter controls section in data-table
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
+
 ## 3.28.3 (2026-03-18)
 
 

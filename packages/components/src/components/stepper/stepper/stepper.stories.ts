@@ -103,42 +103,6 @@ export const ControlledState: Story = {
   },
 };
 
-export const RTL: Story = {
-  render: (args) =>
-    template(
-      args,
-      html`
-      <gup-stepper-item label-show="عرض" label-hide="اخفاء" step-number="1" step-type="done">
-        <span slot="label">الخطوة 1</span>
-        محتوى الخطوة 1
-      </gup-stepper-item>
-      <gup-stepper-item label-show="عرض" label-hide="اخفاء" step-number="2" step-type="selected">
-        <span slot="label">الخطوة 2</span>
-        محتوى الخطوة 2
-      </gup-stepper-item>
-      <gup-stepper-item label-show="عرض" label-hide="اخفاء" step-number="3">
-        <span slot="label">الخطوة 3</span>
-        محتوى الخطوة 3
-      </gup-stepper-item>
-      <gup-stepper-item label-show="عرض" label-hide="اخفاء" step-number="4">
-        <span slot="label">الخطوة 4</span>
-        محتوى الخطوة 4
-      </gup-stepper-item>
-      <gup-stepper-item label-show="عرض" label-hide="اخفاء" label-and="ايضا" step-number="4.5" step-type="and">
-        <span slot="label">الخطوة 4 ونصف</span>
-        محتوى الخطوة 4 ونصف
-      </gup-stepper-item>
-      <gup-stepper-item label-show="عرض" label-hide="اخفاء" step-number="5">
-        <span slot="label">الخطوة 5</span>
-        محتوى الخطوة 5
-      </gup-stepper-item>
-      `
-    ),
-  parameters: {
-    direction: 'rtl',
-  },
-};
-
 export const WizardMode: Story = {
   render: (args) => template(args, slotContent),
   args: {
@@ -182,5 +146,41 @@ export const StaticModeWithDetails: Story = {
   },
   parameters: {
     layout: 'padded',
+  },
+};
+
+export const RTL: Story = {
+  render: (args) =>
+    template(
+      args,
+      html`
+      <gup-stepper-item label-show="عرض" label-hide="اخفاء" step-number="1" step-type="done">
+        <span slot="label">الخطوة 1</span>
+        محتوى الخطوة 1
+      </gup-stepper-item>
+      <gup-stepper-item label-show="عرض" label-hide="اخفاء" step-number="2" step-type="selected">
+        <span slot="label">الخطوة 2</span>
+        محتوى الخطوة 2
+      </gup-stepper-item>
+      <gup-stepper-item label-show="عرض" label-hide="اخفاء" step-number="3">
+        <span slot="label">الخطوة 3</span>
+        محتوى الخطوة 3
+      </gup-stepper-item>
+      <gup-stepper-item label-show="عرض" label-hide="اخفاء" step-number="4">
+        <span slot="label">الخطوة 4</span>
+        محتوى الخطوة 4
+      </gup-stepper-item>
+      <gup-stepper-item label-show="عرض" label-hide="اخفاء" label-and="ايضا" step-number="4.5" step-type="and">
+        <span slot="label">الخطوة 4 ونصف</span>
+        محتوى الخطوة 4 ونصف
+      </gup-stepper-item>
+      <gup-stepper-item label-show="عرض" label-hide="اخفاء" step-number="5">
+        <span slot="label">الخطوة 5</span>
+        محتوى الخطوة 5
+      </gup-stepper-item>
+      `
+    ),
+  parameters: {
+    direction: 'rtl',
   },
 };

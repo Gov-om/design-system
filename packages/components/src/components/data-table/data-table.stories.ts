@@ -972,3 +972,99 @@ export const EmptyTable: Story = {
     },
   },
 };
+
+const rtlArgs = {
+  title: 'الطلبات',
+  description: 'هذا وصف مختصر',
+  'search-placeholder': 'البحث في البيانات',
+  'total-items': 17,
+  'current-page': 1,
+  'items-per-page': 6,
+  layout: 'table' as const,
+  'show-search': true,
+  'show-filters': true,
+  'show-view-button': true,
+  'view-button-text': 'عرض الطلب',
+  'filters-button-text': 'تصفية',
+  columns: [
+    { key: 'number', label: 'الرقم', width: '180px' },
+    { key: 'type', label: 'النوع' },
+    { key: 'startDate', label: 'تاريخ البدء', width: '110px' },
+    { key: 'endDate', label: 'تاريخ الانتهاء', width: '110px' },
+    { key: 'status', label: 'الحالة', width: '150px' },
+  ],
+  filters: [
+    { key: 'dateBefore', label: 'التاريخ قبل', type: 'date' as const },
+    { key: 'dateAfter', label: 'التاريخ بعد', type: 'date' as const },
+  ],
+};
+
+const rtlApplicationStatusRows: TemplateResult = html`
+  <gup-table-cell type="header" style="width: 180px">الرقم</gup-table-cell>
+  <gup-table-cell type="header">النوع</gup-table-cell>
+  <gup-table-cell type="header" style="width: 110px">تاريخ البدء</gup-table-cell>
+  <gup-table-cell type="header" style="width: 110px">تاريخ الانتهاء</gup-table-cell>
+  <gup-table-cell type="header" style="width: 150px">الحالة</gup-table-cell>
+  <gup-table-row>
+    <gup-table-cell>RN07A-1234567</gup-table-cell>
+    <gup-table-cell>تسجيل الملكية للورثة</gup-table-cell>
+    <gup-table-cell>0000-00-00</gup-table-cell>
+    <gup-table-cell>0000-00-00</gup-table-cell>
+    <gup-table-cell>
+      <gup-badge-chip appearance="positive">مؤكد</gup-badge-chip>
+    </gup-table-cell>
+  </gup-table-row>
+  <gup-table-row>
+    <gup-table-cell>RN07A-1234567</gup-table-cell>
+    <gup-table-cell>تسجيل عقد بيع عبر الوسطاء</gup-table-cell>
+    <gup-table-cell>0000-00-00</gup-table-cell>
+    <gup-table-cell>0000-00-00</gup-table-cell>
+    <gup-table-cell>
+      <gup-badge-chip appearance="brand">قيد المعالجة</gup-badge-chip>
+    </gup-table-cell>
+  </gup-table-row>
+  <gup-table-row>
+    <gup-table-cell>RN07A-1234567</gup-table-cell>
+    <gup-table-cell>تسجيل عقد الانتفاع</gup-table-cell>
+    <gup-table-cell>0000-00-00</gup-table-cell>
+    <gup-table-cell>0000-00-00</gup-table-cell>
+    <gup-table-cell>
+      <gup-badge-chip appearance="brand">مقدم</gup-badge-chip>
+    </gup-table-cell>
+  </gup-table-row>
+  <gup-table-row>
+    <gup-table-cell>TEMPRRN07A-1234567</gup-table-cell>
+    <gup-table-cell>نقل رهن عقاري - من جهة إلى أخرى</gup-table-cell>
+    <gup-table-cell>0000-00-00</gup-table-cell>
+    <gup-table-cell>0000-00-00</gup-table-cell>
+    <gup-table-cell>
+      <gup-badge-chip appearance="neutral">مسودة</gup-badge-chip>
+    </gup-table-cell>
+  </gup-table-row>
+  <gup-table-row>
+    <gup-table-cell>RN07A-1234567</gup-table-cell>
+    <gup-table-cell>نقل رهن عقاري - من جهة إلى أخرى</gup-table-cell>
+    <gup-table-cell>0000-00-00</gup-table-cell>
+    <gup-table-cell>0000-00-00</gup-table-cell>
+    <gup-table-cell>
+      <gup-badge-chip appearance="negative" is-filled>مرفوض</gup-badge-chip>
+    </gup-table-cell>
+  </gup-table-row>
+  <gup-table-row>
+    <gup-table-cell>RN07A-1234567</gup-table-cell>
+    <gup-table-cell>تسجيل الملكية للورثة</gup-table-cell>
+    <gup-table-cell>0000-00-00</gup-table-cell>
+    <gup-table-cell>0000-00-00</gup-table-cell>
+    <gup-table-cell>
+      <gup-badge-chip appearance="positive">مؤكد</gup-badge-chip>
+    </gup-table-cell>
+  </gup-table-row>
+`;
+
+export const RTL: Story = {
+  render: (args) => renderDataTable(args, rtlApplicationStatusRows),
+  args: rtlArgs,
+  parameters: {
+    direction: 'rtl',
+  },
+};
