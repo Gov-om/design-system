@@ -1,3 +1,23 @@
+## 3.27.2 (2026-03-17)
+
+
+### 🩹 Fixes
+
+- **docs:** fix typo for depreceated circle checkbox component
+
+- **docs:** added arabic content to rtl story of rich-text component
+
+- **docs:** added arabic content to rtl story of dialog component
+
+- **docs:** removed unwanted story from input-field component
+
+- **docs:** fix flag default snippet extraction
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
 ## 3.27.1 (2026-03-09)
 
 

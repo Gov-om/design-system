@@ -46,7 +46,7 @@ export const Small: Story = {
   },
 };
 
-export const CircleDepreciated: Story = {
+export const CircleDeprecated: Story = {
   ...Default,
   args: {
     appearance: 'circle',
