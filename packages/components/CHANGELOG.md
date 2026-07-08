@@ -1,3 +1,15 @@
+## 3.27.3 (2026-03-17)
+
+
+### 🩹 Fixes
+
+- **docs:** added arabic content to rtl story of rich-text component
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
 ## 3.27.2 (2026-03-17)
 
 
