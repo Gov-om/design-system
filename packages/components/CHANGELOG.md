@@ -1,3 +1,19 @@
+## 3.28.0 (2026-03-17)
+
+
+### 🚀 Features
+
+- **components:** added gup-flyout component
+
+- **components:** added gup-flyout component
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+- Satish Dabhi
+
+
 ## 3.27.3 (2026-03-17)
 
 

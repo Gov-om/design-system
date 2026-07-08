@@ -64,4 +64,5 @@ export * from './toasts/toast/toast';
 export * from './spinner/spinner';
 export * from './dialog/dialog/dialog';
 export * from './dialog/dialog-container/dialog-container';
+export * from './flyout/flyout';
 export * from './dropdown/dropdown-field/dropdown-field.type';
