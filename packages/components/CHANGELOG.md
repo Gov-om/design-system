@@ -1,3 +1,20 @@
+## 3.30.0 (2026-04-14)
+
+
+### 🚀 Features
+
+- **components:** lite version - use svg icons instead of gup ones in button
+
+- **components:** lite version - introduced service-start template
+
+- **components:** lite version - documentation update
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
+
 ## 3.29.0 (2026-04-02)
 
 
