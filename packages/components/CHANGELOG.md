@@ -1,3 +1,16 @@
+## 3.28.3 (2026-03-18)
+
+
+### 🩹 Fixes
+
+- **docs:** use apper case letter for default flag story
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
+
 ## 3.28.2 (2026-03-17)
 
 

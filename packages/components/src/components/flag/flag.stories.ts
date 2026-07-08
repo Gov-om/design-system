@@ -22,7 +22,7 @@ export default {
   },
   args: {
     ...args,
-    'country-name': 'oman',
+    'country-name': 'Oman',
   },
   parameters: {
     axe: {
@@ -40,7 +40,7 @@ export const Circle: Story = {
   ...Default,
   args: {
     shape: 'circle',
-    'country-name': 'switzerland',
+    'country-name': 'Switzerland',
   },
 };
 
