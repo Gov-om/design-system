@@ -3,6 +3,7 @@ import { html } from 'lit';
 import { getWcStorybookHelpers } from 'wc-storybook-helpers';
 import './input-field';
 import { type InputField } from './input-field';
+import '../button/button';
 import '../track/track';
 import '../wizard-main/wizard-main';
 // import '../../../.storybook/components/storybook-comment/storybook-comment';
@@ -31,7 +32,7 @@ export default {
 const formTemplate = (args: InputField & { 'data-story-id'?: string }, slotTemplate = html``) => html`
   <form novalidate>
   ${template(args, slotTemplate)}
-  <button type="submit" style="margin-top: 12px;">Submit</button>
+  <gup-button style="margin-top: var(--gup-spacing-text-to-component);" @gup-click="${(e: CustomEvent) => (e.target as HTMLElement).closest('form')?.requestSubmit()}">Submit</gup-button>
   </form>
   <script>
     (function() {
@@ -122,23 +123,23 @@ export const NumberFieldWithCustomIncrements: Story = {
   },
 };
 
-export const NumericFieldAndNumberFieldComparison: Story = {
-  ...NumberField,
-  render: (args) => html`
-    <!-- <storybook-comment>
-      <p>A component with <code>type="numeric"</code> allows any keyboard input (displaying an error with the default pattern settings set to numbers only) and displays a number-friendly keyboard on mobile devices. A component with <code>type="number"</code> only allows number input and displays arrow buttons at the end of the input. </p>
-      <p>Use <code>type="numeric"</code> for non-incremental numerical values such as Civil ID, PINs, etc. Use <code>type="number"</code> for incremental number values such as age. </p>
-    </storybook-comment> -->
-    <gup-track gap="5" direction="vertical">
-      <gup-input-field type="numeric" name="numeric">Enter your 4-digit PIN (numeric field)</gup-input-field>
-      ${template(args)}
-    </gup-track>
-  `,
-  args: {
-    ...NumberField.args,
-    'default-slot': 'Your age (number field)',
-  },
-};
+// export const NumericFieldAndNumberFieldComparison: Story = {
+//   ...NumberField,
+//   render: (args) => html`
+//     <!-- <storybook-comment>
+//       <p>A component with <code>type="numeric"</code> allows any keyboard input (displaying an error with the default pattern settings set to numbers only) and displays a number-friendly keyboard on mobile devices. A component with <code>type="number"</code> only allows number input and displays arrow buttons at the end of the input. </p>
+//       <p>Use <code>type="numeric"</code> for non-incremental numerical values such as Civil ID, PINs, etc. Use <code>type="number"</code> for incremental number values such as age. </p>
+//     </storybook-comment> -->
+//     <gup-track gap="5" direction="vertical">
+//       <gup-input-field type="numeric" name="numeric">Enter your 4-digit PIN (numeric field)</gup-input-field>
+//       ${template(args)}
+//     </gup-track>
+//   `,
+//   args: {
+//     ...NumberField.args,
+//     'default-slot': 'Your age (number field)',
+//   },
+// };
 
 export const EmailField: Story = {
   ...Default,

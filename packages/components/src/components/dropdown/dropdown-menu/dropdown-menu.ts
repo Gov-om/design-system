@@ -66,6 +66,7 @@ export class DropdownMenu extends GupComponent {
   @state() private _selectedItems: DropdownMenuItemData[] = [];
   @state() private highlightedIndex = 0;
   @state() private isEmpty = false;
+  @state() private _hasCustomControls = false;
 
   firstUpdated() {
     this.addEventListener('dropdown-menu-item-click', this.dropdownMenuItemClick as EventListener);
@@ -162,6 +163,9 @@ export class DropdownMenu extends GupComponent {
     }
     this.onChange(this._selectedItems);
     this.requestUpdate();
+    if (!this.multiple && !this._hasCustomControls) {
+      this.onApply();
+    }
   }
 
   /** Clears currently selected items */
@@ -208,6 +212,11 @@ export class DropdownMenu extends GupComponent {
 
   private handleApply(): void {
     this.onApply();
+  }
+
+  private handleControlsSlotChange(e: Event): void {
+    const slot = e.target as HTMLSlotElement;
+    this._hasCustomControls = slot.assignedNodes({ flatten: true }).length > 0;
   }
 
   private handleKeyDown(event: KeyboardEvent): void {
@@ -348,11 +357,17 @@ export class DropdownMenu extends GupComponent {
             : nothing
         }
         <div class="controls">
-          <slot name="controls">
+          <slot name="controls" @slotchange=${this.handleControlsSlotChange}>
+            ${
+              this.multiple
+                ? html`
             <gup-track class="controls-track" horizontal-alignment="right">
               <slot name="controls-extra-buttons"></slot>
-              <gup-button appearance=${this._selectedItems.length > 0 ? 'primary' : 'text'} class="apply-button" @gup-click=${this.handleApply}>${this._selectedItems.length > 0 ? html`${this.itemsSelectedButtonLabel} ${this.multiple ? '(' + this._selectedItems.length + ')' : nothing}` : this.noSelectionButtonLabel}</gup-button>
+              <gup-button appearance=${this._selectedItems.length > 0 ? 'primary' : 'text'} class="apply-button" @gup-click=${this.handleApply}>${this._selectedItems.length > 0 ? html`${this.itemsSelectedButtonLabel} (${this._selectedItems.length})` : this.noSelectionButtonLabel}</gup-button>
             </gup-track>
+            `
+                : nothing
+            }
           </slot>
         </div>
       </div>

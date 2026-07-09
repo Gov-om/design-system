@@ -96,7 +96,17 @@ export const WithoutCloseButton: Story = {
 };
 
 export const RTL: Story = {
-  ...Default,
+  render: (args) => html`
+    ${template(
+      args,
+      html`
+        <gup-button-group slot="action-buttons">
+          <gup-button appearance="secondary">إرسال</gup-button>
+          <gup-button appearance="text">إلغاء</gup-button>
+        </gup-button-group>
+      `
+    )}
+  `,
   args: {
     heading: 'رسالة مؤكدة',
     'default-slot': 'هذا هو محتوى النافذة المنبثقة. يمكنك وضع أي محتوى تريده هنا.',

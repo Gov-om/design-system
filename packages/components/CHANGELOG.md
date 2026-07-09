@@ -1,3 +1,208 @@
+## 3.30.2 (2026-06-09)
+
+
+### 🩹 Fixes
+
+- **components:** fixed pointer-events blocking wizard footer buttons in toast-container component
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
+
+## 3.30.1 (2026-05-01)
+
+
+### 🩹 Fixes
+
+- **components:** fixed frid settings for the dialog component to avoid overlaping of cancel button and dialog title
+
+
+### 📝 Documentation Changes
+
+- **components:** updated email feedback address
+
+
+### ❤️  Thank You
+
+- devops
+- Ekaterina Loginova
+
+
+## 3.30.0 (2026-04-14)
+
+
+### 🚀 Features
+
+- **components:** lite version - use svg icons instead of gup ones in button
+
+- **components:** lite version - introduced service-start template
+
+- **components:** lite version - documentation update
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
+
+## 3.29.0 (2026-04-02)
+
+
+### 🚀 Features
+
+- **docs:** added 'RTL' variant for track documentation
+
+- **docs:** added 'RTL' variant for stepper documentation
+
+- **docs:** added 'RTL' variant for form-section documentation
+
+- **docs:** added 'RTL' variant for file-upload items documentation
+
+- **docs:** added 'RTL' variant for data-sheet documentation
+
+- **docs:** added 'RTL' variant for badge-chip documentation
+
+- **docs:** added 'RTL' variant for button documentation
+
+- **docs:** code-snippets for button
+
+- **docs:** added 'RTL' variant for data-table documentation
+
+- **docs:** added 'RTL' variant for page-status documentation
+
+
+### 🩹 Fixes
+
+- **comonents:** applied responsive principles to filter controls section in data-table
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
+
+## 3.28.3 (2026-03-18)
+
+
+### 🩹 Fixes
+
+- **docs:** use apper case letter for default flag story
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
+
+## 3.28.2 (2026-03-17)
+
+
+### 🩹 Fixes
+
+- **docs:** tweak for 'with custom extra controls' story of dropdown-menu component
+
+- **docs:** use full name for default flag story
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
+
+## 3.28.1 (2026-03-17)
+
+
+### 🩹 Fixes
+
+- **docs:** dropdown field iframe height tweak
+
+- **docs:** flyout iframe height tweak
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
+
+## 3.28.0 (2026-03-17)
+
+
+### 🚀 Features
+
+- **components:** added gup-flyout component
+
+- **components:** added gup-flyout component
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+- Satish Dabhi
+
+
+## 3.27.3 (2026-03-17)
+
+
+### 🩹 Fixes
+
+- **docs:** added arabic content to rtl story of rich-text component
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
+## 3.27.2 (2026-03-17)
+
+
+### 🩹 Fixes
+
+- **docs:** fix typo for depreceated circle checkbox component
+
+- **docs:** added arabic content to rtl story of rich-text component
+
+- **docs:** added arabic content to rtl story of dialog component
+
+- **docs:** removed unwanted story from input-field component
+
+- **docs:** fix flag default snippet extraction
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
+## 3.27.1 (2026-03-09)
+
+
+### 🩹 Fixes
+
+- **components:** removed native picker call and added possibility to edit fields with types of date and time manually in input-field component
+
+- **components:** removed footer button for single select in dropfown-field component
+
+- **components:** fix a11y violations
+
+
+### 📝 Documentation Changes
+
+- **components:** fix code templates logic extraction
+
+- **components:** deprciate circle variant of checbox component
+
+- **components:** limit amount of stories for tooltip component
+
+- **components:** replace native buttons with gup one in form stories
+
+- **components:** center label and add Omani rial in data-sheet stories
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
 ## 3.27.0 (2026-02-16)
 
 

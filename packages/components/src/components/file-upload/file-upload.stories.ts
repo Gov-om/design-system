@@ -277,3 +277,13 @@ export const FileLibrary: Story = {
     },
   },
 };
+
+export const RTL: Story = {
+  render: (args) => template(args),
+  args: {
+    'default-slot': 'رفع ملف',
+  },
+  parameters: {
+    direction: 'rtl',
+  },
+};

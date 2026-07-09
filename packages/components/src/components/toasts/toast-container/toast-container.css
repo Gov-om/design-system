@@ -6,4 +6,9 @@
   max-width: 600px;
   width: 100%;
   z-index: var(--gup-toast-container--z-index, 1000);
+  pointer-events: none;
+}
+
+::slotted(gup-toast) {
+  pointer-events: auto;
 }

@@ -58,3 +58,18 @@ export const Mobile: Story = {
   ...Default,
   ...applyBreakpoint('xsmall'),
 };
+
+export const RTL: Story = {
+  render: (args) =>
+    template(
+      args,
+      html`
+        <span>العنصر 1</span>
+        <span>العنصر 2 مع بعض الكلمات</span>
+        <span>العنصر 3 مع كلمات كثيرة جداً تتحدث عن شيء ما حدث لشخص ما في مكان ما وزمان ما وكان ذلك أمراً مثيراً للاهتمام وجديراً بالملاحظة والتأمل والدراسة المعمقة</span>
+      `
+    ),
+  parameters: {
+    direction: 'rtl',
+  },
+};

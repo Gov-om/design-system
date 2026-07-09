@@ -107,3 +107,15 @@ export const IconOnly: Story = {
     'with-icon-only': true,
   },
 };
+
+export const RTL: Story = {
+  render: (args) => html`
+    <gup-track>
+    ${template({ ...args, 'default-slot': 'أنا تسمية' })}
+    ${template({ ...args, 'is-filled': 'true', 'default-slot': 'تسمية 2' })}
+    </gup-track>
+  `,
+  parameters: {
+    direction: 'rtl',
+  },
+};

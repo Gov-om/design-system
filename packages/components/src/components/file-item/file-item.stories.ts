@@ -68,3 +68,15 @@ export const Multiple: Story = {
     <div>Content after</div>
   `,
 };
+
+export const RTL: Story = {
+  render: (args) => template(args),
+  args: {
+    'file-name': 'ملف.png',
+    'subtitle': '09.02.2021، 2 ميغابايت',
+    'thumbnail-alt': 'صورة مصغرة',
+  },
+  parameters: {
+    direction: 'rtl',
+  },
+};

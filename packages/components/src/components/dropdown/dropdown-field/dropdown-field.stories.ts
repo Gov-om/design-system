@@ -51,6 +51,7 @@ export default {
     storybookAttachment: storybookArgAttachment,
   },
   parameters: {
+    layout: 'padded',
     actions: {
       handles: events,
     },
@@ -99,7 +100,7 @@ export const InForm: Story = {
         </gup-dropdown-menu>
       `
       )}
-      <button type="submit">Submit</button>
+      <gup-button style="margin-top: var(--gup-spacing-text-to-component);" @gup-click="${(e: CustomEvent) => (e.target as HTMLElement).closest('form')?.requestSubmit()}">Submit</gup-button>
     </form>
     <!-- <storybook-comment>
       The <code>novalidate</code> attribute can be added to the form to disable the default behavior of focusing on invalid input and displaying a native error message, allowing for custom error handling.
@@ -136,7 +137,7 @@ export const Required: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await userEvent.click(canvas.getByRole('button', { name: /submit/i }));
+    await userEvent.click(canvas.getByText('Submit'));
   },
 };
 
@@ -304,30 +305,30 @@ export const Empty: Story = {
     ),
 };
 
-export const TwoDropdowns: Story = {
-  ...Default,
-  render: (args) => html`
-    <gup-track direction="vertical" gap="6">
-      ${template(
-        args,
-        html`
-          <gup-dropdown-menu>
-            ${itemsTemplate}
-          </gup-dropdown-menu>
-        `
-      )}
-      <gup-dropdown-field name="dropdown2" placeholder="Select an item">
-        <span slot="label">Dropdown 2</span>
-        <gup-dropdown-menu search-enabled>
-          ${itemsTemplate}
-        </gup-dropdown-menu>
-      </gup-dropdown-field>
-    </gup-track>
-  `,
-  args: {
-    name: 'dropdown1',
-  },
-};
+// export const TwoDropdowns: Story = {
+//   ...Default,
+//   render: (args) => html`
+//     <gup-track direction="vertical" gap="6">
+//       ${template(
+//         args,
+//         html`
+//           <gup-dropdown-menu>
+//             ${itemsTemplate}
+//           </gup-dropdown-menu>
+//         `
+//       )}
+//       <gup-dropdown-field name="dropdown2" placeholder="Select an item">
+//         <span slot="label">Dropdown 2</span>
+//         <gup-dropdown-menu search-enabled>
+//           ${itemsTemplate}
+//         </gup-dropdown-menu>
+//       </gup-dropdown-field>
+//     </gup-track>
+//   `,
+//   args: {
+//     name: 'dropdown1',
+//   },
+// };
 
 export const WithHint: Story = {
   ...Default,
@@ -353,20 +354,20 @@ export const Loading: Story = {
   },
 };
 
-export const WithFewItems: Story = {
-  ...Default,
-  render: (args) => html`
-    ${template(
-      args,
-      html`
-        <gup-dropdown-menu>
-          <gup-dropdown-menu-item label="Item number 1" value="item1"></gup-dropdown-menu-item>
-          <gup-dropdown-menu-item label="Item 2" value="item2"></gup-dropdown-menu-item>
-        </gup-dropdown-menu>
-      `
-    )}
-  `,
-};
+// export const WithFewItems: Story = {
+//   ...Default,
+//   render: (args) => html`
+//     ${template(
+//       args,
+//       html`
+//         <gup-dropdown-menu>
+//           <gup-dropdown-menu-item label="Item number 1" value="item1"></gup-dropdown-menu-item>
+//           <gup-dropdown-menu-item label="Item 2" value="item2"></gup-dropdown-menu-item>
+//         </gup-dropdown-menu>
+//       `
+//     )}
+//   `,
+// };
 
 export const InTable: Story = {
   ...Default,
@@ -398,81 +399,72 @@ export const InTable: Story = {
   },
 };
 
-export const OnDarkerBackground: Story = {
-  ...Default,
-  parameters: {
-    backgrounds: {
-      default: 'GUP',
-    },
-  },
-};
+// export const WithPopupOpeningToTop: Story = {
+//   ...Default,
+//   render: (args) => html`
+//     <div class="sb-attachment-canvas sb-attachment-canvas--position-${args.storybookAttachment}">
+//       ${template(
+//         args,
+//         html`
+//           <gup-dropdown-menu>
+//             ${itemsTemplate}
+//           </gup-dropdown-menu>
+//         `
+//       )}
+//     </div>
+//     `,
+//   args: {
+//     ...Default.args,
+//     storybookAttachment: 'bottom',
+//   },
+//   argTypes: {
+//     ...Default.argTypes,
+//     storybookAttachment: storybookArgAttachment,
+//   },
+//   parameters: {
+//     layout: 'fullscreen',
+//   },
+//   play: async ({ canvasElement }) => {
+//     const canvas = within(canvasElement);
+//     await userEvent.click(canvas.getByText('Label'));
+//   },
+// };
 
-export const WithPopupOpeningToTop: Story = {
-  ...Default,
-  render: (args) => html`
-    <div class="sb-attachment-canvas sb-attachment-canvas--position-${args.storybookAttachment}">
-      ${template(
-        args,
-        html`
-          <gup-dropdown-menu>
-            ${itemsTemplate}
-          </gup-dropdown-menu>
-        `
-      )}
-    </div>
-    `,
-  args: {
-    ...Default.args,
-    storybookAttachment: 'bottom',
-  },
-  argTypes: {
-    ...Default.argTypes,
-    storybookAttachment: storybookArgAttachment,
-  },
-  parameters: {
-    layout: 'fullscreen',
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    await userEvent.click(canvas.getByText('Label'));
-  },
-};
+// export const DeprecatedWithItemIds: Story = {
+//   render: (args) =>
+//     template(
+//       args,
+//       html`
+//         <gup-dropdown-menu>
+//           <gup-dropdown-menu-item label="Item number 1" id="item1"></gup-dropdown-menu-item>
+//           <gup-dropdown-menu-item label="Item number 2, with fallen dream thrown vast note completely settlers forty fall game" id="item2"></gup-dropdown-menu-item>
+//           <gup-dropdown-menu-item label="Item 3" id="item3"></gup-dropdown-menu-item>
+//           <gup-dropdown-menu-item
+//             label="Item number 4"
+//             id="item4"
+//           ></gup-dropdown-menu-item>
+//         </gup-dropdown-menu>
+//       `
+//     ),
+// };
 
-export const DeprecatedWithItemIds: Story = {
-  render: (args) =>
-    template(
-      args,
-      html`
-        <gup-dropdown-menu>
-          <gup-dropdown-menu-item label="Item number 1" id="item1"></gup-dropdown-menu-item>
-          <gup-dropdown-menu-item label="Item number 2, with fallen dream thrown vast note completely settlers forty fall game" id="item2"></gup-dropdown-menu-item>
-          <gup-dropdown-menu-item label="Item 3" id="item3"></gup-dropdown-menu-item>
-          <gup-dropdown-menu-item
-            label="Item number 4"
-            id="item4"
-          ></gup-dropdown-menu-item>
-        </gup-dropdown-menu>
-      `
-    ),
-};
-
-export const DeprecatedWithItemIdsAndValues: Story = {
-  render: (args) =>
-    template(
-      args,
-      html`
-        <gup-dropdown-menu>
-          <gup-dropdown-menu-item label="Item number 1" id="item1" value="item1"></gup-dropdown-menu-item>
-          <gup-dropdown-menu-item label="Item number 2, with fallen dream thrown vast note completely settlers forty fall game" id="item2" value="item2"></gup-dropdown-menu-item>
-          <gup-dropdown-menu-item label="Item 3" id="item3" value="item3"></gup-dropdown-menu-item>
-          <gup-dropdown-menu-item
-            label="Item number 4"
-            id="item4" value="item4"
-          ></gup-dropdown-menu-item>
-        </gup-dropdown-menu>
-      `
-    ),
-};
+// export const DeprecatedWithItemIdsAndValues: Story = {
+//   render: (args) =>
+//     template(
+//       args,
+//       html`
+//         <gup-dropdown-menu>
+//           <gup-dropdown-menu-item label="Item number 1" id="item1" value="item1"></gup-dropdown-menu-item>
+//           <gup-dropdown-menu-item label="Item number 2, with fallen dream thrown vast note completely settlers forty fall game" id="item2" value="item2"></gup-dropdown-menu-item>
+//           <gup-dropdown-menu-item label="Item 3" id="item3" value="item3"></gup-dropdown-menu-item>
+//           <gup-dropdown-menu-item
+//             label="Item number 4"
+//             id="item4" value="item4"
+//           ></gup-dropdown-menu-item>
+//         </gup-dropdown-menu>
+//       `
+//     ),
+// };
 
 export const RTL: Story = {
   ...Default,
@@ -551,7 +543,6 @@ export const WithDataLoadedAsynchronously: Story = {
           dropdownField.loadingLabel = 'Loading data...';
           const response = await fetch('https://meowfacts.herokuapp.com/?count=6');
           const catFacts = await response.json();
-          console.log('data: ', catFacts);
           const dropdown = dropdownField.querySelector('gup-dropdown-menu');
           catFacts.data.forEach((fact, index) => {
             const item = document.createElement('gup-dropdown-menu-item');

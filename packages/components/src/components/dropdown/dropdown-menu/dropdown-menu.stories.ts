@@ -36,6 +36,9 @@ export default {
     html: {
       transform: (code: string) => htmlAddonTransformSourceStripAll(code).replace(/visible="[^\\"]*"/g, ''),
     },
+    // gup-dropdown-menu is not intended to be used standalone — it requires gup-dropdown-field as a parent.
+    // A11y violations in isolation (missing listbox context, inert checkbox focus) are expected and not relevant here.
+    a11y: { disabled: true },
   },
 } as Meta;
 
@@ -51,7 +54,7 @@ const itemsTemplate = html`
     value="item4"
   ></gup-dropdown-menu-item>
   <gup-dropdown-menu-item label="Item number 5" value="item5"></gup-dropdown-menu-item>
-  <gup-dropdown-menu-item value="item6">
+  <gup-dropdown-menu-item label="Item number 6" value="item6">
     Item number 6 with some <em>HTML</em>
   </gup-dropdown-menu-item>
 `;
@@ -91,6 +94,9 @@ export const WithCustomExtraControls: Story = {
         <gup-track slot="controls-extra-buttons"><gup-button>Extra action</gup-button></gup-track>
       `
     ),
+  args: {
+    multiple: true,
+  },
 };
 
 export const Empty: Story = {

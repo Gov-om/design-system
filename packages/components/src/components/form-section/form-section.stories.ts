@@ -67,3 +67,15 @@ export const MultipleFormSections: Story = {
     </gup-form-section>
   `,
 };
+
+export const RTL: Story = {
+  render: (args) => template(args),
+  args: {
+    'default-slot':
+      'أخبرها أنك تريد فقط التحدث. لا علاقة له بالتزاوج. آه، موسيقى نادي الإفطار! الملف غير موجود. كنت أحلم أجمل الأحلام. إلا أنك كنت هناك، وكنت هناك، وكنت هناك، وكنت هناك، وكنت هناك، وكنت هناك!',
+    'title-slot': 'القسم 1 رأى رفض خطوة جدار بلطف مقبض شعر مختلف ترحيب تصنيع',
+  },
+  parameters: {
+    direction: 'rtl',
+  },
+};

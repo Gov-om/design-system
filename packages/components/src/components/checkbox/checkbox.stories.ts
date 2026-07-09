@@ -2,6 +2,7 @@ import { html } from 'lit';
 import { Meta, StoryObj } from '@storybook/web-components';
 import { getWcStorybookHelpers } from 'wc-storybook-helpers';
 import './checkbox';
+import '../button/button';
 import { type Checkbox } from './checkbox';
 
 const { events, args, argTypes, template } = getWcStorybookHelpers('gup-checkbox');
@@ -45,7 +46,7 @@ export const Small: Story = {
   },
 };
 
-export const Circle: Story = {
+export const CircleDeprecated: Story = {
   ...Default,
   args: {
     appearance: 'circle',
@@ -115,7 +116,7 @@ export const InForm: Story = {
   render: (args) => html`
     <form>
       ${template(args)}
-      <button type="submit">Submit</button>
+      <gup-button style="margin-top: var(--gup-spacing-text-to-component);" @gup-click="${(e: CustomEvent) => (e.target as HTMLElement).closest('form')?.requestSubmit()}">Submit</gup-button>
     </form>
     <script>
       (function() {

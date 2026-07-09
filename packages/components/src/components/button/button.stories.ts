@@ -195,3 +195,13 @@ export const WithIconOnly: Story = {
     `
     ),
 };
+
+export const RTL: Story = {
+  ...WithIconEnd,
+  args: {
+    'default-slot': 'زر',
+  },
+  parameters: {
+    direction: 'rtl',
+  },
+};

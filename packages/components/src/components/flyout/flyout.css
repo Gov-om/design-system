@@ -1,0 +1,206 @@
+/* Flyout Container / Backdrop */
+:host {
+  display: none;
+}
+
+:host([open]) {
+  display: block;
+  z-index: var(--gup-flyout--z-index, 100);
+}
+
+.flyout-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0 0 0 / 50%);
+  z-index: var(--gup-flyout--z-index, 100);
+}
+
+:host(:not([backdrop])) .flyout-backdrop {
+  background-color: transparent;
+}
+
+/* Flyout Panel */
+.flyout-panel {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--gup-color-states-base-bg, #ffffff);
+  box-shadow: 
+    0 16px 32px 0 var(--gup-color-shadow-color-5, rgb(0 0 0 / 10%)),
+    0 8px 16px 0 var(--gup-color-shadow-color-4, rgb(0 0 0 / 8%)),
+    0 3px 6px 0 var(--gup-color-shadow-color-3, rgb(0 0 0 / 6%)),
+    0 1px 2px 0 var(--gup-color-shadow-color-2, rgb(0 0 0 / 4%));
+  z-index: calc(var(--gup-flyout--z-index, 100) + 1);
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+/* Position: Right */
+:host([position="right"]) .flyout-panel {
+  top: 0;
+  inset-inline-end: 0;
+  bottom: 0;
+  width: var(--gup-flyout--width, 460px);
+  max-width: 100%;
+  animation-name: slide-in-right;
+}
+
+/* Position: Left */
+:host([position="left"]) .flyout-panel {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--gup-flyout--width, 460px);
+  max-width: 100%;
+  animation-name: slide-in-left;
+}
+
+/* Position: Top */
+:host([position="top"]) .flyout-panel {
+  top: 0;
+  left: 0;
+  inset-inline-end: 0;
+  height: var(--gup-flyout--height, 400px);
+  max-height: 100%;
+  animation-name: slide-in-top;
+}
+
+/* Position: Bottom */
+:host([position="bottom"]) .flyout-panel {
+  bottom: 0;
+  left: 0;
+  inset-inline-end: 0;
+  height: var(--gup-flyout--height, 400px);
+  max-height: 100%;
+  animation-name: slide-in-bottom;
+}
+
+/* Header */
+.flyout-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block-start: var(--gup-spacing-between-text, 16px);
+  padding-block-end: var(--gup-spacing-between-text, 17px);
+  padding-inline-start: var(--gup-spacing-between-content, 24px);
+  padding-inline-end: var(--gup-spacing-component-default, 12px);
+  border-bottom: 1px solid var(--gup-color-border-low, #e1e1e2);
+  min-height: 60px;
+  box-sizing: border-box;
+}
+
+.flyout-heading {
+  margin: 0;
+  font-size: var(--font-size-500, 20px);
+  font-weight: var(--font-weight-base-beta, 700);
+  line-height: 28px;
+  letter-spacing: -0.4px;
+  color: var(--gup-color-content-primary, #27272a);
+}
+
+/* Close Button */
+.close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  border-radius: var(--gup-radius-button, 999px);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.close-button:hover {
+  background-color: var(--gup-color-states-hover-bg, rgb(0 0 0 / 4%));
+}
+
+.close-button:focus-visible {
+  outline: 2px solid var(--gup-color-focus-ring, #2f57cd);
+  outline-offset: 2px;
+}
+
+.close-icon {
+  --gup-icon--fill-color: var(--gup-color-brand-xhigh, #132459);
+  --gup-icon--width: var(--gup-icon-md, 24px);
+  --gup-icon--height: var(--gup-icon-md, 24px);
+}
+
+/* Content */
+.flyout-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--gup-spacing-between-content, 24px) var(--gup-spacing-content-to-cta, 32px);
+  color: var(--gup-color-content-primary, #27272a);
+}
+
+.flyout-content:focus {
+  outline: none;
+}
+
+.flyout-content:focus-visible {
+  outline: 2px solid var(--gup-color-focus-ring, #2f57cd);
+  outline-offset: -2px;
+}
+
+/* Footer */
+.flyout-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 72px;
+  padding-inline: var(--gup-spacing-content-to-cta, 32px);
+  background-color: var(--gup-color-states-base-bg, #ffffff);
+  border-top: 1px solid var(--gup-color-border-low, #e1e1e2);
+}
+
+.flyout-footer:empty {
+  display: none;
+}
+
+/* Animations */
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-top {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-bottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .flyout-panel {
+    animation: none;
+  }
+}

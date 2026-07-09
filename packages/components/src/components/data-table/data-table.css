@@ -49,8 +49,8 @@ gup-button{
   display: flex;
   flex-direction: column;
   gap: var(--gup-spacing-text-to-component);
-  flex: 1;
   min-width: 0;
+  flex-basis: 60%;
 }
 
 .table-controls-right {
@@ -64,7 +64,7 @@ gup-button{
   display: flex;
   flex-direction: column;
   gap: var(--gup-spacing-component-default, 12px);
-  width: 520px;
+  max-width: 520px;
   position: relative;
   z-index: 1;
 }
@@ -195,9 +195,9 @@ gup-button{
 .table-controls {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   gap: 20px;
   flex-wrap: wrap;
+  row-gap: var(--gup-spacing-between-form-fields);
 }
 
 .filters-container gup-button {

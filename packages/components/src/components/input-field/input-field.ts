@@ -189,9 +189,6 @@ export class InputField extends FormControlMixin(GupComponent) {
   private handleFocus(event: Event) {
     this.focused = true;
     this.onFocus(event);
-    if (this.type === 'date' || this.type === 'time') {
-      this.showPicker();
-    }
   }
 
   private handleBlur() {
@@ -261,8 +258,8 @@ export class InputField extends FormControlMixin(GupComponent) {
     this.passwordVisible = !this.passwordVisible;
   }
 
-  renderIconButton(iconName: GupIconName, buttonLabel: string): TemplateResult {
-    return html`<button aria-label="${buttonLabel}" @click="${this.focusInput}" ?disabled="${this.disabled}"><gup-icon icon-name="${iconName}" height="24" width="24"></gup-icon></button>`;
+  renderIconButton(iconName: GupIconName, buttonLabel: string, onClick = this.focusInput): TemplateResult {
+    return html`<button aria-label="${buttonLabel}" @click="${onClick}" ?disabled="${this.disabled}"><gup-icon icon-name="${iconName}" height="24" width="24"></gup-icon></button>`;
   }
 
   renderIcon(iconName: GupIconName): TemplateResult {
@@ -275,9 +272,9 @@ export class InputField extends FormControlMixin(GupComponent) {
     } else if (this.type === 'tel') {
       return this.renderIcon('phone');
     } else if (this.type === 'date') {
-      return this.renderIconButton('calendar-today', 'Click to pick a date');
+      return this.renderIconButton('calendar-today', 'Click to pick a date', this.showPicker);
     } else if (this.type === 'time') {
-      return this.renderIconButton('schedule', 'Click to pick time');
+      return this.renderIconButton('schedule', 'Click to pick time', this.showPicker);
     } else {
       return html`<slot name="input-start"></slot>`;
     }
