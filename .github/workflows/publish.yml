@@ -60,12 +60,12 @@ jobs:
           echo "Set @govom/components to ${COMPONENTS_VERSION} in react/package.json"
 
       - name: Push version commits and tags
-        if: ${{ inputs.dry-run != 'true' }}
+        if: ${{ !inputs.dry-run }}
         run: |
           git push origin HEAD --follow-tags
 
       - name: Publish to npm
-        if: ${{ inputs.dry-run != 'true' }}
+        if: ${{ !inputs.dry-run }}
         run: npx nx release publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
