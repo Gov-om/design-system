@@ -13,6 +13,11 @@ on:
         required: false
         default: false
         type: boolean
+      projects:
+        description: 'nx projects to release (default: components only, until @govom/angular build is fixed)'
+        required: false
+        default: '@govom/components'
+        type: string
 
 permissions:
   contents: write
@@ -51,7 +56,7 @@ jobs:
         run: npx nx run @govom/components:build
 
       - name: Version (determine next versions and update changelogs)
-        run: npx nx release --skip-publish ${{ inputs.first-release == true && '--first-release' || '' }}
+        run: npx nx release --skip-publish --projects=${{ inputs.projects }} ${{ inputs.first-release == true && '--first-release' || '' }}
 
       - name: "Replace file: reference with real version in react package"
         run: |
@@ -66,6 +71,6 @@ jobs:
 
       - name: Publish to npm
         if: ${{ !inputs.dry-run }}
-        run: npx nx release publish
+        run: npx nx release publish --projects=${{ inputs.projects }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
