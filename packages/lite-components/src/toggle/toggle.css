@@ -1,0 +1,139 @@
+/**
+ * GUP Toggle - Class-based approach
+ *
+ * Works with native checkbox behavior - clicking the label toggles the input.
+ * All state styling (checked, disabled) is driven by the native input's
+ * pseudo-classes via sibling selectors.
+ *
+ * Usage:
+ * <label class="gup-toggle">
+ *   <input type="checkbox" class="gup-toggle__input" name="switch" />
+ *   <div class="gup-toggle__box">
+ *     <div class="gup-toggle__knob"></div>
+ *   </div>
+ *   <div class="gup-toggle__text-container">
+ *     Label text
+ *     <span class="gup-form-hint">Optional hint text</span>
+ *   </div>
+ * </label>
+ *
+ * Modifier classes:
+ * - gup-toggle--label-first  (moves label text before the toggle box)
+ */
+
+.gup-toggle {
+  --_width: 44px;
+  --_knob-size: var(--gup-component-6);
+  --_padding: 2px;
+  --_transition: cubic-bezier(0.2, 0, 1, 0.9);
+  --_transition-time: 70ms;
+
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding-block: var(--gup-component-3);
+  border-radius: var(--gup-radius-component-default);
+  cursor: pointer;
+  user-select: none;
+  color: var(--gup-color-content-primary);
+}
+
+/* Visually hidden native input - state drives styling via sibling selectors */
+.gup-toggle__input {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: none;
+  white-space: nowrap;
+}
+
+.gup-toggle__box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: var(--_width);
+  padding: var(--_padding);
+  box-sizing: border-box;
+  border-radius: var(--gup-radius-button);
+  background-color: var(--gup-color-neutral-low);
+  transition: background-color var(--_transition-time) var(--_transition);
+}
+
+.gup-toggle__knob {
+  width: var(--_knob-size);
+  height: var(--_knob-size);
+  border-radius: 51%;
+  background-color: var(--gup-color-neutral-contrast);
+  transition: transform var(--_transition-time) var(--_transition);
+}
+
+.gup-toggle__text-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gup-component-3);
+  text-wrap: balance;
+  line-height: var(--line-height-500);
+}
+
+/* .gup-form-hint styles are in forms.css */
+
+/* Label-first layout: moves box visually after the text */
+.gup-toggle--label-first .gup-toggle__box {
+  order: 1;
+}
+
+.gup-toggle--label-first .gup-toggle__text-container {
+  order: 0;
+}
+
+/* Hover */
+.gup-toggle:hover:not(:has(.gup-toggle__input:disabled)) {
+  background-color: var(--gup-color-states-secondary-hover);
+}
+
+.gup-toggle__box:hover {
+  background-color: var(--gup-color-states-primary-hover);
+}
+
+/* Checked - placed after hover rules so it takes priority */
+.gup-toggle__input:checked ~ .gup-toggle__box {
+  background-color: var(--gup-color-brand-high);
+}
+
+.gup-toggle__input:checked ~ .gup-toggle__box .gup-toggle__knob {
+  transform: translateX(calc(var(--_width) - 100% - var(--_padding) * 2));
+}
+
+[dir="rtl"] .gup-toggle__input:checked ~ .gup-toggle__box .gup-toggle__knob {
+  transform: translateX(calc(-(var(--_width) - 100% - var(--_padding) * 2)));
+}
+
+/* Focus */
+.gup-toggle__input:focus-visible ~ .gup-toggle__box {
+  outline: 4px solid var(--gup-color-states-base-focus-ring);
+  outline-offset: 3px;
+}
+
+/* Disabled */
+.gup-toggle:has(.gup-toggle__input:disabled) {
+  cursor: default;
+  pointer-events: none;
+}
+
+.gup-toggle:has(.gup-toggle__input:disabled) .gup-toggle__text-container {
+  color: var(--gup-color-content-tertiary);
+}
+
+.gup-toggle:has(.gup-toggle__input:disabled) .gup-toggle__box {
+  background-color: var(--gup-color-states-disabled-low);
+}
+
+.gup-toggle__input:disabled ~ .gup-toggle__box .gup-toggle__knob {
+  background-color: var(--gup-color-states-disabled-medium);
+}

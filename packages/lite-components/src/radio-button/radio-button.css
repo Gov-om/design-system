@@ -1,0 +1,156 @@
+/**
+ * GUP Radio Button - Class-based approach
+ *
+ * Usage:
+ * <fieldset class="gup-radio-group">
+ *   <legend class="gup-radio-group__label">Group label</legend>
+ *   <span class="gup-form-hint">Optional hint text</span>
+ *   <span class="gup-form-error">Optional error message</span>
+ *   <div class="gup-radio-group__options">
+ *     <label class="gup-radio">
+ *       <input type="radio" class="gup-radio__input" name="group" value="a" />
+ *       <div class="gup-radio__box">
+ *         <div class="gup-radio__box-inner">
+ *           <div class="gup-radio__pupil"></div>
+ *         </div>
+ *       </div>
+ *       <div class="gup-radio__text-container">Option A</div>
+ *     </label>
+ *   </div>
+ * </fieldset>
+ */
+
+/* Radio button */
+
+.gup-radio {
+  --_box-size: var(--gup-icon-xl);
+  --_pupil-size: var(--gup-icon-sm);
+
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  gap: var(--gup-component-4);
+}
+
+.gup-radio--small {
+  --_box-size: var(--gup-icon-md);
+  --_pupil-size: var(--gup-icon-xs);
+}
+
+/* Visually hidden native input - state drives styling via sibling selectors */
+.gup-radio__input {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: none;
+  white-space: nowrap;
+}
+
+.gup-radio__box {
+  background-color: var(--gup-color-states-base-bg);
+  border: 1px solid var(--gup-color-states-base-border);
+  border-radius: var(--gup-radius-component-full);
+  width: var(--_box-size);
+  height: var(--_box-size);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.gup-radio__box-inner {
+  border-radius: var(--gup-radius-component-full);
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gup-radio:hover .gup-radio__box-inner {
+  border: 2px solid var(--gup-color-states-base-border);
+}
+
+.gup-radio__pupil {
+  border-radius: var(--gup-radius-component-full);
+  background-color: var(--gup-color-brand-high);
+  width: var(--_pupil-size);
+  height: var(--_pupil-size);
+  visibility: hidden;
+}
+
+/* Checked state */
+.gup-radio__input:checked ~ .gup-radio__box .gup-radio__pupil {
+  visibility: visible;
+}
+
+/* Focus ring */
+.gup-radio__input:focus-visible ~ .gup-radio__box {
+  box-shadow: 0 0 0 2px var(--gup-color-neutral-contrast), 0 0 0 6px var(--gup-color-states-base-focus-ring);
+}
+
+/* Disabled state */
+.gup-radio:has(.gup-radio__input:disabled) {
+  pointer-events: none;
+}
+
+.gup-radio__input:disabled ~ .gup-radio__box {
+  background-color: var(--gup-color-states-disabled-low);
+  border-color: var(--gup-color-states-disabled-low);
+}
+
+.gup-radio__input:disabled ~ .gup-radio__box .gup-radio__pupil {
+  background-color: var(--gup-color-states-disabled-medium);
+}
+
+.gup-radio__input:disabled ~ .gup-radio__text-container {
+  color: var(--gup-color-content-tertiary);
+}
+
+/* Text area */
+.gup-radio__text-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gup-component-1);
+  min-height: var(--_box-size);
+  justify-content: center;
+}
+
+/* .gup-form-hint styles are in forms.css */
+
+/* Radio group */
+.gup-radio-group {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gup-radio-group__label {
+  display: block;
+  padding-bottom: var(--gup-component-5);
+  font-weight: var(--font-weight-base-beta);
+  color: var(--gup-color-content-primary);
+}
+
+.gup-radio-group--error .gup-radio-group__label {
+  color: var(--gup-color-negative-medium);
+  padding-bottom: var(--gup-component-3);
+}
+
+.gup-radio-group__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gup-component-4);
+}
+
+/* Spacing for shared form elements within a radio group */
+.gup-radio-group > .gup-form-hint {
+  display: block;
+  margin-bottom: var(--gup-component-4);
+}
+
+.gup-radio-group > .gup-form-error {
+  margin-bottom: var(--gup-component-5);
+}

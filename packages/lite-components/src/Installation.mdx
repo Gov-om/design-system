@@ -1,0 +1,218 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Lite Components - WIP/Installation" />
+
+# Lite Components
+
+Lite Components are a class-based alternative to the GUP web components.
+Instead of using custom elements like `<gup-button>`, you apply CSS classes to native HTML elements like `<button>` and `<a>`.
+
+This approach is useful when:
+
+- You need to style native HTML elements without shadow DOM
+- You want a lighter-weight integration with minimal JavaScript
+- Your project setup doesn't support custom elements
+- You prefer working with standard HTML elements
+
+They ship as a separate package, `@govom/lite-components`, so you don't have to install the web components (`@govom/components`) to use them.
+
+> Lite Components are currently in **Beta**. The API may change in future releases.
+
+## Installation
+
+```bash
+npm install @govom/lite-components
+```
+
+## Importing styles
+
+Each Lite Component has its own CSS file that must be imported. Import only the components you use:
+
+```css
+/* In a CSS file (PostCSS or bundler required) */
+@import "@govom/lite-components/button/button.css";
+```
+
+```javascript
+// Or in a JavaScript/TypeScript entry point
+import '@govom/lite-components/button/button.css';
+```
+
+```html
+<!-- Or as a link tag -->
+<link rel="stylesheet" href="/node_modules/@govom/lite-components/dist/button/button.css">
+```
+
+You also need the design tokens for colors, spacing, and typography to work correctly. Import the `tokens` stylesheet, which contains only CSS variables and `@font-face` declarations (no web-component base or reset styles):
+
+```css
+@import "@govom/lite-components/tokens";
+```
+
+If you also use the web components elsewhere and already import `@govom/components/styles`, that is sufficient on its own - it includes everything in `tokens` plus a CSS reset - and you can skip the import above.
+
+## Usage
+
+### Pure HTML/CSS
+
+Apply the CSS classes directly to native HTML elements:
+
+```html
+<button class="gup-button gup-button--primary">Primary Button</button>
+<button class="gup-button gup-button--secondary">Secondary Button</button>
+<a href="/page" class="gup-button gup-button--text">Text Link</a>
+```
+
+### TypeScript utility
+
+Import the utility class for programmatic usage:
+
+```typescript
+import { GupButton } from '@govom/lite-components';
+
+// Apply styles to an existing element
+const btn = document.querySelector('button');
+GupButton.apply(btn, { appearance: 'primary' });
+
+// Create a new styled button
+const newBtn = GupButton.create({ appearance: 'secondary', disabled: true });
+newBtn.textContent = 'Disabled Button';
+document.body.appendChild(newBtn);
+
+// Get a class string for use in templates
+const className = GupButton.getClassName({ appearance: 'danger' });
+// => "gup-button gup-button--danger"
+```
+
+## Templates
+
+Page-level templates combine structural layout classes with Lite Components to produce full-page compositions without any web components.
+
+Import the template CSS alongside the component CSS files it depends on:
+
+```javascript
+import '@govom/lite-components/button/button.css';
+import '@govom/lite-components/checkbox/checkbox.css';
+import '@govom/lite-components/templates/service-start.css';
+```
+
+The template CSS provides layout classes that replace the corresponding web component wrappers:
+
+| Web component          | Lite class                                   |
+| ---------------------- | -------------------------------------------- |
+| `<gup-header>`         | `.gup-lite-header` + `.gup-lite-header__nav` |
+| `<gup-content-header>` | `.gup-lite-content-header`                   |
+| `<gup-wizard-main>`    | `.gup-lite-wizard-main`                      |
+| `<gup-wizard-footer>`  | `.gup-lite-wizard-footer`                    |
+
+See the [Service Start template story](?path=/story/lite-components-wip-templates-service-start--default) for a complete working example.
+
+## Usage without npm
+
+If your project cannot use npm, you can use the CSS files directly. You need two stylesheets: the **design tokens** (for colors, spacing, and typography) and the **component CSS**.
+
+### Option 1: Link to hosted CSS files
+
+The `@govom/lite-components` package is published on npm, so you can point directly at a CDN that mirrors npm packages (e.g. jsDelivr) instead of hosting the files yourself:
+
+```html
+<!-- 1. Design tokens (required) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govom/lite-components/dist/tokens.css">
+
+<!-- 2. Shared styles (required alongside relevant components) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govom/lite-components/dist/forms.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govom/lite-components/dist/utils.css">
+
+<!-- 3. Component CSS - add only what you need -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govom/lite-components/dist/accordion/accordion.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govom/lite-components/dist/badge/badge.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govom/lite-components/dist/banner/banner.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govom/lite-components/dist/button/button.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govom/lite-components/dist/checkbox/checkbox.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govom/lite-components/dist/details/details.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govom/lite-components/dist/file-upload/file-upload.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govom/lite-components/dist/input-field/input-field.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govom/lite-components/dist/link/link.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govom/lite-components/dist/radio-button/radio-button.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govom/lite-components/dist/select-field/select-field.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govom/lite-components/dist/stepper/stepper.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govom/lite-components/dist/table/table.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govom/lite-components/dist/textarea-field/textarea-field.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govom/lite-components/dist/toggle/toggle.css">
+
+<!-- 4. Template CSS - add only what you need -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govom/lite-components/dist/templates/service-start.css">
+```
+
+If your organization blocks public CDNs, you can instead host these same files on your own server by pointing the URLs above at wherever you've placed them.
+
+### Option 2: Download or copy the raw CSS files
+
+Open the CSS file directly in your browser, then save or copy its contents:
+
+- <a href="/classes/forms.css" target="_blank">forms.css</a> (shared form styles - hint, error)
+- <a href="/classes/utils.css" target="_blank">utils.css</a> (layout + accessibility utilities - track, sr-only)
+- <a href="/classes/accordion/accordion.css" target="_blank">accordion.css</a>
+- <a href="/classes/badge/badge.css" target="_blank">badge.css</a>
+- <a href="/classes/banner/banner.css" target="_blank">banner.css</a>
+- <a href="/classes/button/button.css" target="_blank">button.css</a>
+- <a href="/classes/checkbox/checkbox.css" target="_blank">checkbox.css</a>
+- <a href="/classes/details/details.css" target="_blank">details.css</a>
+- <a href="/classes/file-upload/file-upload.css" target="_blank">file-upload.css</a>
+- <a href="/classes/input-field/input-field.css" target="_blank">input-field.css</a>
+- <a href="/classes/link/link.css" target="_blank">link.css</a>
+- <a href="/classes/radio-button/radio-button.css" target="_blank">radio-button.css</a>
+- <a href="/classes/select-field/select-field.css" target="_blank">select-field.css</a>
+- <a href="/classes/stepper/stepper.css" target="_blank">stepper.css</a>
+- <a href="/classes/table/table.css" target="_blank">table.css</a>
+- <a href="/classes/textarea-field/textarea-field.css" target="_blank">textarea-field.css</a>
+- <a href="/classes/toggle/toggle.css" target="_blank">toggle.css</a>
+- <a href="/classes/templates/service-start.css" target="_blank">service-start.css</a>
+
+You will also need the design tokens stylesheet (`tokens.css`) for colors, spacing, and typography to work. It is available at the same hosted location as the package.
+
+### Then use the HTML directly
+
+No JavaScript or build tools required:
+
+```html
+<button class="gup-button gup-button--primary">Submit</button>
+
+<label class="gup-checkbox">
+  <input type="checkbox" class="gup-checkbox__input" />
+  <div class="gup-checkbox__check-mark">
+    <div class="gup-checkbox__check-mark-inner"></div>
+  </div>
+  <div class="gup-checkbox__text-container">I agree</div>
+</label>
+```
+
+## Available components
+
+| Component           | CSS file                                                                                    | TypeScript class                    |
+| ------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------- |
+| Shared form styles  | <a href="/classes/forms.css" target="_blank">forms.css</a>                                  | `gupFormClasses`                    |
+| Layout + a11y utils | <a href="/classes/utils.css" target="_blank">utils.css</a>                                  | `gupTrackClasses`, `gupSrOnlyClass` |
+| Accordion           | <a href="/classes/accordion/accordion.css" target="_blank">accordion.css</a>                | `GupAccordion`, `GupAccordionItem`  |
+| Badge               | <a href="/classes/badge/badge.css" target="_blank">badge.css</a>                            | `GupBadge`                          |
+| Banner              | <a href="/classes/banner/banner.css" target="_blank">banner.css</a>                         | `GupBanner`                         |
+| Button              | <a href="/classes/button/button.css" target="_blank">button.css</a>                         | `GupButton`                         |
+| Checkbox            | <a href="/classes/checkbox/checkbox.css" target="_blank">checkbox.css</a>                   | `GupCheckbox`                       |
+| Details             | <a href="/classes/details/details.css" target="_blank">details.css</a>                      | `GupDetails`                        |
+| File Upload         | <a href="/classes/file-upload/file-upload.css" target="_blank">file-upload.css</a>          | `GupFileUpload`                     |
+| Input field         | <a href="/classes/input-field/input-field.css" target="_blank">input-field.css</a>          | `GupInputField`                     |
+| Link                | <a href="/classes/link/link.css" target="_blank">link.css</a>                               | `GupLink`                           |
+| Radio Button        | <a href="/classes/radio-button/radio-button.css" target="_blank">radio-button.css</a>       | `GupRadioButton`, `GupRadioGroup`   |
+| Select field        | <a href="/classes/select-field/select-field.css" target="_blank">select-field.css</a>       | `GupSelectField`                    |
+| Stepper             | <a href="/classes/stepper/stepper.css" target="_blank">stepper.css</a>                      | `GupStepper`                        |
+| Table               | <a href="/classes/table/table.css" target="_blank">table.css</a>                            | `GupTable`                          |
+| Textarea            | <a href="/classes/textarea-field/textarea-field.css" target="_blank">textarea-field.css</a> | `GupTextarea`                       |
+| Toggle              | <a href="/classes/toggle/toggle.css" target="_blank">toggle.css</a>                         | `GupToggle`                         |
+
+Pagination and Dropdown are not part of this release.
+
+## Available templates
+
+| Template      | CSS file                                                                             | Story                                                                     |
+| ------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
+| Service Start | <a href="/classes/templates/service-start.css" target="_blank">service-start.css</a> | [View](?path=/story/lite-components-wip-templates-service-start--default) |

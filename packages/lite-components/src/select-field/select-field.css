@@ -1,0 +1,142 @@
+/**
+ * GUP Select Field - Class-based approach
+ *
+ * Styled native <select> with label, hint, and error message.
+ * The native arrow is hidden via appearance:none; a custom SVG arrow is
+ * positioned absolutely inside the wrapper.
+ *
+ * Usage:
+ * <div class="gup-select-field">
+ *   <label class="gup-select-field__label" for="id">Label</label>
+ *   <span class="gup-form-hint">Optional hint</span>
+ *   <span class="gup-form-error" role="alert"><svg>...</svg> Error message</span>
+ *   <div class="gup-select-field__wrapper">
+ *     <select class="gup-select-field__select" id="id" name="...">
+ *       <option value="" disabled selected>Select an option</option>
+ *       <option value="a">Option A</option>
+ *     </select>
+ *     <span class="gup-select-field__icon" aria-hidden="true">
+ *       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+ *         <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+ *       </svg>
+ *     </span>
+ *   </div>
+ * </div>
+ *
+ * Modifier classes (add to .gup-select-field):
+ * - gup-select-field--error   show error border and label colour
+ *
+ * Requires forms.css for .gup-form-hint and .gup-form-error.
+ */
+
+.gup-select-field {
+  --_label-color: var(--gup-color-content-primary);
+  --_border-color: var(--gup-color-states-base-border);
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label */
+
+.gup-select-field__label {
+  color: var(--_label-color);
+  font-weight: var(--font-weight-base-beta);
+  margin-bottom: var(--gup-spacing-component-default);
+}
+
+/* Shared form element spacing */
+
+.gup-select-field > .gup-form-hint {
+  display: block;
+  margin-bottom: var(--gup-component-3);
+}
+
+.gup-select-field > .gup-form-error {
+  margin-bottom: var(--gup-component-3);
+}
+
+/* Wrapper */
+
+.gup-select-field__wrapper {
+  position: relative;
+  border-radius: var(--gup-radius-component-default);
+  border: 1px solid var(--_border-color);
+  background-color: var(--gup-color-states-base-bg);
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+/* Select - appearance:none removes the native arrow across all browsers */
+
+.gup-select-field__select {
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  font: inherit;
+  flex-grow: 1;
+  min-width: 0;
+  padding-inline-start: var(--gup-component-4);
+  padding-inline-end: calc(var(--gup-component-4) * 2 + 24px);
+  padding-block: var(--gup-component-3);
+  color: var(--gup-color-content-primary);
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+/* Custom arrow icon - pointer-events:none so clicks pass through to the <select> */
+
+.gup-select-field__icon {
+  position: absolute;
+  inset-inline-end: var(--gup-component-4);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  color: var(--gup-color-brand-xhigh);
+}
+
+/* Hover - double border via inset box-shadow */
+
+.gup-select-field:hover:not(:has(.gup-select-field__select:disabled)):not(.gup-select-field--error)
+  .gup-select-field__wrapper {
+  box-shadow: 0 0 0 1px var(--gup-color-states-base-border) inset;
+}
+
+/* Focus ring */
+
+.gup-select-field:has(.gup-select-field__select:not(:disabled):focus-visible)
+  .gup-select-field__wrapper {
+  outline: 6px solid var(--gup-color-states-base-focus-ring);
+  outline-offset: 3px;
+}
+
+/* Disabled */
+
+.gup-select-field:has(.gup-select-field__select:disabled) {
+  --_label-color: var(--gup-color-content-tertiary);
+  --_border-color: transparent;
+}
+
+.gup-select-field:has(.gup-select-field__select:disabled) .gup-select-field__wrapper {
+  background-color: var(--gup-color-states-disabled-low);
+}
+
+.gup-select-field__select:disabled {
+  color: var(--gup-color-states-disabled-medium);
+  cursor: not-allowed;
+}
+
+/* Error */
+
+.gup-select-field--error {
+  --_label-color: var(--gup-color-negative-medium);
+  --_border-color: var(--gup-color-negative-medium);
+}
+
+.gup-select-field--error .gup-select-field__wrapper {
+  box-shadow: 0 0 0 1px var(--gup-color-negative-medium) inset;
+}

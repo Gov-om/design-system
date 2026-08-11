@@ -1,0 +1,58 @@
+/**
+ * GUP Table - Class-based approach
+ *
+ * Styled data table using native HTML table elements.
+ *
+ * Usage:
+ * <table class="gup-table">
+ *   <thead class="gup-table__head">
+ *     <tr class="gup-table__row">
+ *       <th class="gup-table__header" scope="col">Column A</th>
+ *       <th class="gup-table__header" scope="col">Column B</th>
+ *     </tr>
+ *   </thead>
+ *   <tbody class="gup-table__body">
+ *     <tr class="gup-table__row">
+ *       <td class="gup-table__cell">Value A</td>
+ *       <td class="gup-table__cell">Value B</td>
+ *     </tr>
+ *   </tbody>
+ * </table>
+ *
+ * Row headers: use <th class="gup-table__header" scope="row"> inside <tbody>.
+ */
+
+.gup-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  overflow: auto;
+}
+
+/* Header and data cells share padding and border */
+
+.gup-table__header,
+.gup-table__cell {
+  border-bottom: 1px solid var(--gup-color-border-low);
+  padding-block: var(--gup-component-3);
+  padding-inline-end: var(--gup-component-7);
+  min-width: 60px;
+  color: var(--gup-color-content-primary);
+  text-align: start;
+  vertical-align: top;
+  text-wrap: wrap;
+}
+
+/* Column and row headers are bold */
+
+.gup-table__header {
+  font-weight: var(--font-weight-base-beta);
+}
+
+/* Remove border-bottom from the last row to avoid a double-border effect
+   when the table is placed inside a container that already has a bottom border */
+
+.gup-table__body .gup-table__row:last-child .gup-table__header,
+.gup-table__body .gup-table__row:last-child .gup-table__cell {
+  border-bottom: none;
+}

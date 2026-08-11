@@ -1,0 +1,146 @@
+/**
+ * GUP Accordion - Class-based approach
+ *
+ * Disclosure group using native <details>/<summary> elements.
+ *
+ * Usage:
+ * <div class="gup-accordion">
+ *   <details class="gup-accordion-item">
+ *     <summary class="gup-accordion-item__label">
+ *       <span class="gup-accordion-item__label-inner">Label</span>
+ *       <span class="gup-accordion-item__action">
+ *         <span class="gup-accordion-item__action-icon" aria-hidden="true"></span>
+ *         <span class="gup-accordion-item__action-show">Show</span>
+ *         <span class="gup-accordion-item__action-hide">Hide</span>
+ *       </span>
+ *     </summary>
+ *     <div class="gup-accordion-item__content">Content</div>
+ *   </details>
+ * </div>
+ *
+ * Modifier classes (add to .gup-accordion-item):
+ * - gup-accordion-item--hide-controls  hides the show/hide action
+ */
+
+/* Wrapper */
+
+.gup-accordion {
+  display: block;
+}
+
+/* Item */
+
+.gup-accordion-item {
+  border-bottom: 1px solid var(--gup-color-border-medium);
+  display: block;
+  color: var(--gup-color-content-primary);
+}
+
+.gup-accordion-item:hover {
+  border-bottom-color: transparent;
+}
+
+/* Remove bottom border from last item in a multi-item group */
+.gup-accordion > .gup-accordion-item:not(:only-child):last-child {
+  border-bottom: none;
+}
+
+/* Label (summary) */
+
+.gup-accordion-item__label {
+  cursor: pointer;
+  padding: var(--gup-component-4) 0 var(--gup-component-7);
+  border-bottom: 4px solid transparent;
+  display: flex;
+  gap: var(--gup-component-4);
+  align-items: flex-start;
+  list-style: none;
+}
+
+.gup-accordion-item__label::-webkit-details-marker {
+  display: none;
+}
+
+.gup-accordion-item__label::marker {
+  display: none;
+}
+
+.gup-accordion-item__label:hover {
+  background-color: var(--gup-color-states-secondary-hover);
+}
+
+/* Label text */
+
+.gup-accordion-item__label-inner {
+  flex-grow: 1;
+  font-size: var(--font-size-600);
+  font-weight: var(--font-weight-base-beta);
+  line-height: 32px;
+  letter-spacing: -0.48px;
+}
+
+/* Action (icon + show/hide text) */
+
+.gup-accordion-item__action {
+  display: flex;
+  align-items: center;
+  gap: var(--gup-component-3);
+  color: var(--gup-color-content-link);
+  flex-shrink: 0;
+}
+
+.gup-accordion-item__action-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  background-color: currentColor;
+
+  /* add-circle-outline: closed state */
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+/* remove-circle-outline: open state */
+details.gup-accordion-item[open] .gup-accordion-item__action-icon {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
+}
+
+/* Show/hide text */
+
+.gup-accordion-item__action-show,
+.gup-accordion-item__action-hide {
+  line-height: var(--line-height-500);
+  text-decoration: underline;
+}
+
+.gup-accordion-item__action-hide {
+  display: none;
+}
+
+details.gup-accordion-item[open] .gup-accordion-item__action-show {
+  display: none;
+}
+
+details.gup-accordion-item[open] .gup-accordion-item__action-hide {
+  display: inline;
+}
+
+/* Hide controls modifier */
+
+.gup-accordion-item--hide-controls .gup-accordion-item__action {
+  display: none;
+}
+
+/* Content */
+
+.gup-accordion-item__content {
+  padding-bottom: var(--gup-padding-lg);
+}

@@ -1,0 +1,43 @@
+{
+  "name": "@govom/lite-components",
+  "version": "0.1.0",
+  "description": "Oman GUP Lite Components - class-based styles for native HTML elements",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens": "./dist/tokens.css",
+    "./*": "./dist/*"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite build --watch",
+    "lint:css": "npx stylelint \"src/**/*.css\"",
+    "lint:ts": "tsc --noEmit --skipLibCheck",
+    "lint:prettier": "npx prettier . --check",
+    "lint:prettier:format": "npx prettier . --write"
+  },
+  "devDependencies": {
+    "@fontsource/readex-pro": "^5.0.12",
+    "@types/node": "^20.14.2",
+    "autoprefixer": "^10.4.20",
+    "glob": "^11.0.1",
+    "postcss": "^8.4.31",
+    "postcss-dir-pseudo-class": "^8.0.0",
+    "postcss-nested": "^6.0.1",
+    "typescript": "^5.0.2",
+    "vite": "^5.4.11",
+    "vite-plugin-dts": "^4.5.0"
+  }
+}

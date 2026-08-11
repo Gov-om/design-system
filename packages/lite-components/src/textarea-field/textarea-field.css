@@ -1,0 +1,110 @@
+/**
+ * GUP Textarea - Class-based approach
+ *
+ * Works with native textarea behavior. State styling (disabled, error) is driven
+ * by native pseudo-classes and a modifier class. No JavaScript required.
+ *
+ * Usage:
+ * <div class="gup-textarea">
+ *   <label class="gup-textarea__label" for="msg">Your message</label>
+ *   <span class="gup-form-hint">Optional hint text</span>
+ *   <span class="gup-form-error">Error message</span>
+ *   <div class="gup-textarea__wrapper">
+ *     <textarea class="gup-textarea__input" id="msg" name="message" rows="4"></textarea>
+ *   </div>
+ * </div>
+ *
+ * Modifier classes:
+ * - gup-textarea--error
+ */
+
+.gup-textarea {
+  --_label-color: var(--gup-color-content-primary);
+  --_border-color: var(--gup-color-states-base-border);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.gup-textarea__label {
+  color: var(--_label-color);
+  font-weight: var(--font-weight-base-beta);
+  margin-bottom: var(--gup-spacing-component-default);
+}
+
+/* Spacing for shared form elements within a textarea field */
+.gup-textarea > .gup-form-hint {
+  display: block;
+  margin-bottom: var(--gup-component-3);
+}
+
+.gup-textarea > .gup-form-error {
+  margin-bottom: var(--gup-component-3);
+}
+
+.gup-textarea__wrapper {
+  border-radius: var(--gup-radius-component-default);
+  border: 1px solid var(--_border-color);
+  overflow: hidden;
+  background-color: var(--gup-color-states-base-bg);
+}
+
+.gup-textarea__input {
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  font: inherit;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--gup-component-3) var(--gup-component-4);
+  color: var(--gup-color-content-primary);
+  line-height: 1.4;
+  resize: vertical;
+}
+
+.gup-textarea__input::placeholder {
+  color: var(--gup-color-content-secondary);
+}
+
+/* Hover - double border */
+.gup-textarea:hover:not(:has(.gup-textarea__input:disabled)):not(.gup-textarea--error) .gup-textarea__wrapper {
+  box-shadow: 0 0 0 1px var(--gup-color-states-base-border) inset;
+}
+
+/* Focus */
+.gup-textarea__input:focus {
+  outline: none;
+}
+
+.gup-textarea:has(.gup-textarea__input:not(:disabled):focus-visible) .gup-textarea__wrapper {
+  outline: 6px solid var(--gup-color-states-base-focus-ring);
+  outline-offset: 3px;
+}
+
+/* Disabled */
+.gup-textarea:has(.gup-textarea__input:disabled) {
+  --_label-color: var(--gup-color-content-tertiary);
+  --_border-color: transparent;
+}
+
+.gup-textarea:has(.gup-textarea__input:disabled) .gup-textarea__wrapper {
+  background-color: var(--gup-color-states-disabled-low);
+}
+
+.gup-textarea__input:disabled {
+  color: var(--gup-color-states-disabled-medium);
+  cursor: not-allowed;
+  resize: none;
+}
+
+/* Error */
+.gup-textarea--error {
+  --_label-color: var(--gup-color-negative-medium);
+  --_border-color: var(--gup-color-negative-medium);
+}
+
+.gup-textarea--error .gup-textarea__wrapper {
+  box-shadow: 0 0 0 1px var(--gup-color-negative-medium) inset;
+}

@@ -1,0 +1,157 @@
+/**
+ * GUP Service Start - Lite Template Layout
+ *
+ * Structural CSS classes for the Service Start page template.
+ * These replace the <gup-header>, <gup-content-header>, <gup-wizard-main>
+ * and <gup-wizard-footer> web components with native HTML elements.
+ *
+ * Usage:
+ * <div class="gup-page">
+ *   <header class="gup-lite-header">...</header>
+ *   <div class="gup-lite-content-header">...</div>
+ *   <main class="gup-lite-wizard-main">...</main>
+ *   <footer class="gup-lite-wizard-footer">...</footer>
+ * </div>
+ */
+
+/* Page shell */
+
+.gup-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+/* Header */
+
+.gup-lite-header {
+  --gup-button--underline: none;
+  --gup-logo--color: var(--gup-color-neutral-contrast);
+
+  /* Inside flex container, allow logo overhang to remain visible */
+  position: relative;
+  background: var(--gup-color-background-navigation-bar)
+    linear-gradient(180deg, #eff5ff -66.34%, #f7f5f1 100%);
+  border-bottom: 1px solid var(--gup-color-border-low);
+  padding-inline: var(--gup-component-8);
+}
+
+.gup-lite-header__nav {
+  max-width: 1024px;
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 60px;
+  width: 100%;
+  font-size: 16px;
+  color: var(--gup-color-brand-xhigh);
+}
+
+.gup-lite-header__slot {
+  flex-grow: 1;
+  flex-basis: 0;
+  display: flex;
+  align-items: center;
+}
+
+.gup-lite-header__slot--end {
+  justify-content: flex-end;
+}
+
+.gup-lite-header__logo-wrapper {
+  --overhang: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 72px;
+  height: calc(60px + var(--overhang));
+  padding: 11px 18px 13px;
+  margin-bottom: calc(var(--overhang) * -1);
+  border-radius: 0 0 var(--gup-radius-component-default) var(--gup-radius-component-default);
+  background-color: var(--gup-color-brand-medium);
+}
+
+/* Content header */
+
+.gup-lite-content-header {
+  display: flex;
+  width: 100%;
+  background: var(--gup-color-states-base-bg-secondary);
+  border-bottom: 1px solid var(--gup-color-border-low);
+  font-size: var(--font-size-550);
+  color: var(--gup-color-content-secondary);
+  padding-inline: var(--gup-component-8);
+}
+
+.gup-lite-content-header__inner {
+  max-width: 1024px;
+  min-height: 100px;
+  margin-inline: auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--gup-component-6);
+  padding-block: 32px;
+}
+
+.gup-lite-content-header__title {
+  color: var(--gup-color-content-primary);
+  font-size: var(--font-size-700);
+  font-weight: var(--font-weight-base-beta);
+  letter-spacing: -0.64px;
+  line-height: 1;
+  margin: var(--gup-component-9) 0 0;
+}
+
+/* Wizard main */
+
+.gup-lite-wizard-main {
+  flex: 1;
+  background-color: var(--gup-color-background-canvas);
+  padding-inline: var(--gup-component-8);
+}
+
+.gup-lite-wizard-main__inner {
+  max-width: 632px;
+  margin-inline: auto;
+  padding-top: var(--gup-component-9);
+  padding-bottom: 64px;
+}
+
+/* Wizard footer */
+
+.gup-lite-wizard-footer {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid var(--gup-color-border-low);
+  background-color: var(--gup-color-background-wizard-bar);
+  padding-inline: var(--gup-component-8);
+  padding-block: var(--gup-component-5);
+}
+
+.gup-lite-wizard-footer__inner {
+  max-width: 1024px;
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gup-lite-wizard-footer__track {
+  display: flex;
+  align-items: center;
+  flex: 1 0 0;
+}
+
+.gup-lite-wizard-footer__start {
+  margin-inline-end: auto;
+}
+
+.gup-lite-wizard-footer__end {
+  margin-inline-start: auto;
+}

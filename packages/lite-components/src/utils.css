@@ -1,0 +1,68 @@
+/**
+ * GUP Utils - Shared layout and accessibility utility classes
+ *
+ * Import this file once in your application or alongside any component that needs it.
+ *
+ * Usage:
+ * @import "@gup-ds/components/classes/utils.css";
+ */
+
+/* ─── Track - flex layout builder ───────────────────────────── */
+
+/*
+ * Mirrors the <gup-track> web component.
+ * Control gap with the --gup-track--gap CSS custom property.
+ *
+ * <div class="gup-track gup-track--v-center">
+ *   <span>Left</span>
+ *   <span>Right</span>
+ * </div>
+ */
+
+.gup-track {
+  display: flex;
+  gap: var(--gup-track--gap, var(--gup-spacing-component-default));
+  flex-wrap: nowrap;
+}
+
+/* Direction */
+.gup-track--vertical        { flex-direction: column; }
+.gup-track--wrap            { flex-wrap: wrap; }
+
+/* Horizontal alignment (justify-content) */
+.gup-track--h-center        { justify-content: center; }
+.gup-track--h-end           { justify-content: flex-end; }
+.gup-track--h-between       { justify-content: space-between; }
+
+/* Vertical alignment (align-items) */
+.gup-track--v-center        { align-items: center; }
+.gup-track--v-end           { align-items: flex-end; }
+.gup-track--v-start         { align-items: flex-start; }
+
+/* Equal-width children */
+.gup-track--items-equal > * { flex: 1 0 0; }
+
+/* ─── Screenreader text - visually hidden, accessible ────────── */
+
+/*
+ * Mirrors the <gup-screenreader-text> web component.
+ * Content is announced by screen readers but not visible on screen.
+ *
+ * <span class="gup-sr-only">Current page: 3 of 10</span>
+ * <button type="button">
+ *   <svg aria-hidden="true">...</svg>
+ *   <span class="gup-sr-only">Close dialog</span>
+ * </button>
+ */
+
+.gup-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

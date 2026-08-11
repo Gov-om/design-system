@@ -1,0 +1,29 @@
+/**
+ * GUP Forms - Shared class-based styles
+ *
+ * Common styles shared across all lite form components (checkbox, radio, etc.).
+ * Import this file once alongside any form component CSS.
+ *
+ * Usage:
+ * @import "@gup-ds/components/classes/forms.css";
+ */
+
+/* Hint text */
+.gup-form-hint {
+  color: var(--gup-color-content-secondary);
+  font-size: var(--font-size-400);
+}
+
+/* Error message */
+.gup-form-error {
+  display: flex;
+  align-items: center;
+  gap: var(--gup-component-2);
+  color: var(--gup-color-negative-medium);
+  font-size: var(--font-size-400);
+}
+
+.gup-form-error svg {
+  fill: var(--gup-color-negative-medium);
+  flex-shrink: 0;
+}

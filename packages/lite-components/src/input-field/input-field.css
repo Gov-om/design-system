@@ -1,0 +1,162 @@
+/**
+ * GUP Input Field - Class-based approach
+ *
+ * Styled text input with label, hint, and error message.
+ *
+ * Usage:
+ * <div class="gup-input-field">
+ *   <label class="gup-input-field__label" for="id">Label</label>
+ *   <span class="gup-form-hint">Optional hint</span>
+ *   <span class="gup-form-error" role="alert"><svg>...</svg> Error message</span>
+ *   <div class="gup-input-field__wrapper">
+ *     <span class="gup-input-field__prefix">https://</span>
+ *     <input class="gup-input-field__input" id="id" type="text" name="...">
+ *     <span class="gup-input-field__suffix">.com</span>
+ *   </div>
+ * </div>
+ *
+ * Modifier classes (add to .gup-input-field):
+ * - gup-input-field--error    show error border and label colour
+ *
+ * Requires forms.css for .gup-form-hint and .gup-form-error.
+ *
+ * For date / time: use type="date" / type="time". The CSS hides the native
+ * picker indicator so the user types directly into the day/month/year or
+ * hour/minute segments on desktop. On mobile the native picker still appears.
+ */
+
+.gup-input-field {
+  --_label-color: var(--gup-color-content-primary);
+  --_border-color: var(--gup-color-states-base-border);
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label */
+
+.gup-input-field__label {
+  color: var(--_label-color);
+  font-weight: var(--font-weight-base-beta);
+  margin-bottom: var(--gup-spacing-component-default);
+}
+
+/* Shared form elements spacing */
+
+.gup-input-field > .gup-form-hint {
+  display: block;
+  margin-bottom: var(--gup-component-3);
+}
+
+.gup-input-field > .gup-form-error {
+  margin-bottom: var(--gup-component-3);
+}
+
+/* Wrapper */
+
+.gup-input-field__wrapper {
+  border-radius: var(--gup-radius-component-default);
+  border: 1px solid var(--_border-color);
+  overflow: hidden;
+  display: flex;
+  background-color: var(--gup-color-states-base-bg);
+  line-height: 1;
+}
+
+/* Prefix / suffix */
+
+.gup-input-field__prefix,
+.gup-input-field__suffix {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  padding-inline: var(--gup-component-4);
+  padding-block: var(--gup-component-3);
+  background-color: var(--gup-color-states-base-bg-secondary);
+  color: var(--gup-color-content-secondary);
+  cursor: default;
+  font-size: var(--font-size-300);
+}
+
+/* Input */
+
+.gup-input-field__input {
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  font: inherit;
+  flex-grow: 1;
+  min-width: 0;
+  padding-inline: var(--gup-component-4);
+  padding-block: var(--gup-component-3);
+  color: var(--gup-color-content-primary);
+  line-height: 1.4;
+}
+
+.gup-input-field__input::placeholder {
+  color: var(--gup-color-content-secondary);
+}
+
+/* Force LTR for email and tel fields even inside RTL layouts */
+.gup-input-field__input[type="email"],
+.gup-input-field__input[type="tel"] {
+  direction: ltr;
+}
+
+/* Suppress native date / time picker indicators */
+.gup-input-field__input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+/* Hover - double border via inset box-shadow */
+
+.gup-input-field:hover:not(:has(.gup-input-field__input:disabled)):not(.gup-input-field--error)
+  .gup-input-field__wrapper {
+  box-shadow: 0 0 0 1px var(--gup-color-states-base-border) inset;
+}
+
+/* Focus ring */
+
+.gup-input-field__input:focus {
+  outline: none;
+}
+
+.gup-input-field:has(.gup-input-field__input:not(:disabled):focus-visible)
+  .gup-input-field__wrapper {
+  outline: 6px solid var(--gup-color-states-base-focus-ring);
+  outline-offset: 3px;
+}
+
+/* Disabled */
+
+.gup-input-field:has(.gup-input-field__input:disabled) {
+  --_label-color: var(--gup-color-content-tertiary);
+  --_border-color: transparent;
+}
+
+.gup-input-field:has(.gup-input-field__input:disabled) .gup-input-field__wrapper {
+  background-color: var(--gup-color-states-disabled-low);
+}
+
+.gup-input-field:has(.gup-input-field__input:disabled) .gup-input-field__prefix,
+.gup-input-field:has(.gup-input-field__input:disabled) .gup-input-field__suffix {
+  background-color: var(--gup-color-states-disabled-low);
+  color: var(--gup-color-states-disabled-medium);
+}
+
+.gup-input-field__input:disabled {
+  color: var(--gup-color-states-disabled-medium);
+  cursor: not-allowed;
+}
+
+/* Error */
+
+.gup-input-field--error {
+  --_label-color: var(--gup-color-negative-medium);
+  --_border-color: var(--gup-color-negative-medium);
+}
+
+.gup-input-field--error .gup-input-field__wrapper {
+  box-shadow: 0 0 0 1px var(--gup-color-negative-medium) inset;
+}
