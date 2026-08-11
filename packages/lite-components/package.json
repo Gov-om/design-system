@@ -23,8 +23,10 @@
   "scripts": {
     "build": "tsc && vite build",
     "dev": "vite build --watch",
+    "lint:all": "npm run lint:css && npm run lint:ts && npm run lint:eslint && npm run lint:prettier",
     "lint:css": "npx stylelint \"src/**/*.css\"",
     "lint:ts": "tsc --noEmit --skipLibCheck",
+    "lint:eslint": "npx eslint .",
     "lint:prettier": "npx prettier . --check",
     "lint:prettier:format": "npx prettier . --write"
   },
