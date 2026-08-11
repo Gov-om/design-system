@@ -31,13 +31,6 @@
   }
 }
 
-:host([type="tel"]),
-:host([type="email"]) {
-  .field-inner-wrapper {
-    direction: ltr;
-  }
-}
-
 .host-inner {
   &.invalid {
     --text-color: var(--gup-color-negative-medium);
@@ -173,11 +166,21 @@
   margin-top: var(--gup-spacing-component-default);
 }
 
-:host([type="date"]) .field-inner-wrapper {
+:host([type="date"]) .field-inner-wrapper,
+:host([type="time"]) .field-inner-wrapper,
+:host([type="tel"]) .field-inner-wrapper,
+:host([type="email"]) .field-inner-wrapper {
   direction: inherit;
 }
 
-:host([dir="rtl"][type="date"]) .field-inner-wrapper,
-:host-context([dir="rtl"]) :host([type="date"]) .field-inner-wrapper {
-  direction: rtl;
+:host([type="tel"]) .input,
+:host([type="email"]) .input {
+  direction: ltr;
+}
+
+.input[type="date"]:dir(rtl),
+.input[type="time"]:dir(rtl),
+.input[type="tel"]:dir(rtl),
+.input[type="email"]:dir(rtl) {
+  text-align: right;
 }

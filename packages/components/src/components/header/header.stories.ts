@@ -28,13 +28,13 @@ export default {
 export const headerTemplate: TemplateResult = html`
   <gup-track slot="start">
     <gup-button appearance="text">
-      Save & exit
+      <span class="header-action-label">Save & exit</span>
       <gup-icon slot="icon-start" icon-name="close" height="24" width="24"></gup-icon>
     </gup-button>
   </gup-track>
   <gup-track slot="end" horizontal-alignment="right">
     <gup-button appearance="text">
-      Do you need help?
+      <span class="header-action-label">Do you need help?</span>
       <gup-icon slot="icon-start" icon-name="live-help" height="24" width="24"></gup-icon>
     </gup-button>
   </gup-track>

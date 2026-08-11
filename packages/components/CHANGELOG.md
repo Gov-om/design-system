@@ -1,3 +1,38 @@
+## 3.31.0 (2026-07-14)
+
+
+### 🚀 Features
+
+- **components:** hide header action labels on small screens
+
+- **components:** added an Arabic right-to-left version with a mobile friendly, cancel free header and stacked action buttons in confirmation page template
+
+- **components:** added CSS variable for width management in wizard-main component
+
+
+### 🩹 Fixes
+
+- **components:** mirror date, time, phone and email input fields in RTL
+
+- **components:** loaded custom-elements.json via createRequire
+
+- **components:** fix for vite ans storybook version change issue
+
+
+### 🧹 Chores
+
+- **all:** ignore .claude to prevent Nx duplicate project errors
+
+
+### ✏️ Formatting and Automatically Generated Files
+
+- **components:** resolved lit analyzer no-invalid-css errors in service confirmation and start templates
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
 ## 3.30.2 (2026-06-09)
 
 

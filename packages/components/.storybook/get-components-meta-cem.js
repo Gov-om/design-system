@@ -1,5 +1,5 @@
 // From https://github.com/shoelace-style/shoelace/blob/c31d4f5855a504a687642697c7e54971028f254b/docs/_utilities/cem.cjs
-import customElementsManifest from '../custom-elements.json' assert { type: 'json' };
+import customElementsManifest from '../custom-elements.json';
 
 export const getComponentsMetaCEM = () => {
   const allComponents = [];

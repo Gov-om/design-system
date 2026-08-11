@@ -24,6 +24,32 @@ export default {
 
 export const Default: StoryObj = {
   render: () => html`
+      <style>
+        /* Header action labels stay in the DOM but are visually hidden below 750px */
+        .header-action-label {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          padding: 0;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          white-space: nowrap;
+          border: 0;
+        }
+
+        @media (min-width: 750px) {
+          .header-action-label {
+            position: static;
+            width: auto;
+            height: auto;
+            margin: 0;
+            overflow: visible;
+            clip: auto;
+            white-space: normal;
+          }
+        }
+      </style>
       <div style="display: flex; flex-direction: column; height: 100%">
         <gup-header>
           ${headerTemplate}
