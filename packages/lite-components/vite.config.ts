@@ -13,13 +13,6 @@ const globPath = (...segments: string[]) =>
     .join('/');
 const srcRoot = globPath('src') + '/';
 
-// Component CSS (src/<component>/<name>.css) is copied straight into dist,
-// preserving each folder, so consumers can `import '@govom/lite-components/button/button.css'`.
-// It runs through the same postcss pipeline (nesting, autoprefixer) as the rest of the package but
-// bypasses Rollup's asset pipeline: routing CSS through build.lib.entry triggers Rollup's
-// name-collision handling and renames files (e.g. button.css -> button2.css).
-// src/styles/tokens.css is NOT handled here - it needs @import + font-asset inlining, which Vite's
-// own CSS pipeline does, so it goes through build.lib.entry instead.
 function componentCssPlugin(): Plugin {
   const files = sync(srcRoot + '**/*.css', { ignore: [srcRoot + 'styles/**'] });
   return {
@@ -43,6 +36,25 @@ function componentCssPlugin(): Plugin {
           await fs.writeFile(outPath, result.css, 'utf-8');
         })
       );
+
+      // postcss-import resolves the token @import layers; each referenced @fontsource
+      // woff2 is copied into dist/fonts/ and its url() rewritten, so tokens.css stays small and the fonts
+      // ship as separate cacheable files (the browser fetches only the unicode-range subsets a page uses).
+      const postcssImport = nodeRequire('postcss-import');
+      const tokensSrc = path.resolve(__dirname, 'src/styles/tokens.css');
+      const tokensRaw = await fs.readFile(tokensSrc, 'utf-8');
+      const tokensOut = await postcss([postcssImport(), ...postcssConfig.plugins]).process(tokensRaw, { from: tokensSrc, to: tokensSrc });
+      let tokensCss = tokensOut.css;
+
+      const fontsOutDir = path.resolve(__dirname, 'dist/fonts');
+      await fs.mkdir(fontsOutDir, { recursive: true });
+      const fontRefs = new Set([...tokensCss.matchAll(/url\(['"]?(@fontsource\/[^'")]+\.woff2)['"]?\)/g)].map((m) => m[1]));
+      for (const ref of fontRefs) {
+        const outName = path.basename(ref);
+        await fs.copyFile(nodeRequire.resolve(ref), path.resolve(fontsOutDir, outName));
+        tokensCss = tokensCss.split(ref).join('./fonts/' + outName);
+      }
+      await fs.writeFile(path.resolve(__dirname, 'dist/tokens.css'), tokensCss, 'utf-8');
     },
   };
 }
@@ -64,7 +76,6 @@ export default defineConfig({
         ...sync(globPath('src/**/*.ts'), {
           ignore: [globPath('src/**/*.stories.ts'), globPath('src/**/*.type.ts'), globPath('src/**/*.d.ts'), globPath('src/*/index.ts')],
         }),
-        path.resolve(__dirname, 'src/styles/tokens.css'),
       ],
       formats: ['es'],
     },
