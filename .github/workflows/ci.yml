@@ -39,9 +39,17 @@ jobs:
       - name: Lint ESLint
         run: npx nx run @govom/components:lint:eslint
 
+      - name: Build lite-components
+        run: npx nx run @govom/lite-components:build
+
+      - name: Lint lite-components
+        run: npx nx run @govom/lite-components:lint:all
+
       - name: Install Playwright dependencies
         run: npx playwright install-deps
 
+      # Builds the components Storybook, which includes the Lite Components stories, so this
+      # covers both packages. A separate lite target would only repeat the Storybook build.
       - name: Lint Accessibility
         continue-on-error: true
         run: npx nx run @govom/components:lint:a11y
