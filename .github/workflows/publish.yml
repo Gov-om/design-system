@@ -14,7 +14,7 @@ on:
         default: false
         type: boolean
       projects:
-        description: 'nx projects to release (default: components only, until @govom/angular build is fixed)'
+        description: 'nx projects to release (default: components only, until @govom/angular build is fixed). Use @govom/lite-components with first-release on its first publish.'
         required: false
         default: '@govom/components'
         type: string
@@ -54,6 +54,9 @@ jobs:
 
       - name: Build components
         run: npx nx run @govom/components:build
+
+      - name: Build lite-components
+        run: npx nx run @govom/lite-components:build
 
       - name: Version (determine next versions and update changelogs)
         run: npx nx release --skip-publish --projects=${{ inputs.projects }} ${{ inputs.first-release == true && '--first-release' || '' }}

@@ -1,0 +1,39 @@
+/**
+ * GUP Badge - Class-based approach
+ *
+ * Copy-paste usage:
+ * <span class="gup-badge gup-badge--positive"></span>
+ *
+ * Modifier classes:
+ * - gup-badge--neutral    (warning/yellow - default)
+ * - gup-badge--positive   (green)
+ * - gup-badge--negative   (red)
+ * - gup-badge--offline    (grey)
+ */
+
+.gup-badge {
+  --_bg-color: var(--gup-color-warning-medium);
+
+  display: inline-block;
+  border: 1px solid var(--gup-color-content-inverted-primary);
+  aspect-ratio: 1;
+  width: 12px;
+  border-radius: 51%;
+  background-color: var(--_bg-color);
+}
+
+.gup-badge--neutral {
+  --_bg-color: var(--gup-color-warning-medium);
+}
+
+.gup-badge--positive {
+  --_bg-color: var(--gup-color-positive-medium);
+}
+
+.gup-badge--negative {
+  --_bg-color: var(--gup-color-negative-medium);
+}
+
+.gup-badge--offline {
+  --_bg-color: var(--gup-color-neutral-low);
+}

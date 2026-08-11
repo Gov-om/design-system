@@ -1,0 +1,199 @@
+/**
+ * GUP Banner - Class-based approach
+ *
+ * Notification banner with semantic type variants and filled appearance.
+ *
+ * Usage:
+ * <div class="gup-banner" role="region" aria-label="Notice">
+ *   <div class="gup-banner__inner">
+ *     <div class="gup-banner__track">
+ *       <span class="gup-banner__icon" aria-hidden="true"><svg>...</svg></span>
+ *       <p class="gup-banner__title">Title text</p>
+ *       <div class="gup-banner__body">
+ *         <div class="gup-banner__message">Message text.</div>
+ *         <div class="gup-banner__actions"><!-- optional buttons --></div>
+ *       </div>
+ *     </div>
+ *   </div>
+ * </div>
+ *
+ * Use role="alert" for error banners (live region), role="region" + aria-label for others.
+ *
+ * Modifier classes (add to .gup-banner):
+ * - gup-banner--success   green border / background
+ * - gup-banner--warning   yellow border / background
+ * - gup-banner--error     red border / background
+ * - gup-banner--filled    solid background, inverted text
+ * - gup-banner--no-icon   hide the icon area, switch to flex column layout
+ */
+
+.gup-banner {
+  --_border-color: var(--gup-color-neutral-low);
+  --_icon-color: var(--gup-color-neutral-medium);
+  --_bg-color: transparent;
+
+  display: block;
+  max-width: var(--gup-banner--width, 600px);
+  padding: var(--gup-component-6);
+  border-radius: var(--gup-radius-card);
+  border: 1px solid var(--_border-color);
+  background-color: var(--_bg-color);
+  color: var(--gup-color-content-primary);
+  line-height: var(--line-height-500, 1.5);
+}
+
+/* ─── Inner / close ──────────────────────────────────────────── */
+
+.gup-banner__inner {
+  position: relative;
+}
+
+.gup-banner__close {
+  position: absolute;
+  inset-inline-end: 0;
+  inset-block-start: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--gup-color-brand-xhigh);
+}
+
+.gup-banner__close:focus-visible {
+  outline: 6px solid var(--gup-color-states-base-focus-ring);
+  outline-offset: 3px;
+  border-radius: var(--gup-radius-component-default);
+}
+
+/* ─── Track - grid layout: icon | title / · | body ──────────── */
+
+.gup-banner__track {
+  display: grid;
+  grid-template-areas:
+    'icon title'
+    '.    body';
+  grid-template-columns: max-content 1fr;
+  gap: var(--gup-spacing-between-text);
+}
+
+.gup-banner__icon {
+  grid-area: icon;
+  display: flex;
+  align-items: flex-start;
+  padding-inline-end: var(--gup-component-3);
+  fill: var(--_icon-color);
+  color: var(--_icon-color);
+}
+
+.gup-banner__title {
+  grid-area: title;
+  margin: 0;
+  font-weight: var(--font-weight-base-beta);
+  padding-inline-end: var(--gup-component-8);
+}
+
+.gup-banner__body {
+  grid-area: body;
+}
+
+.gup-banner__message {
+  text-wrap: pretty;
+}
+
+.gup-banner__actions {
+  margin-top: var(--gup-component-6);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gup-component-4);
+}
+
+/* No-icon variant - switch from grid to flex */
+
+.gup-banner--no-icon .gup-banner__track {
+  display: flex;
+  flex-direction: column;
+}
+
+.gup-banner--no-icon .gup-banner__icon {
+  display: none;
+}
+
+/* ─── Type variants ──────────────────────────────────────────── */
+
+.gup-banner--success {
+  --_border-color: var(--gup-color-positive-low);
+  --_icon-color: var(--gup-color-positive-medium);
+  --_bg-color: var(--gup-color-positive-xlow);
+}
+
+.gup-banner--warning {
+  --_border-color: var(--gup-color-warning-low);
+  --_icon-color: var(--gup-color-warning-contrast);
+  --_bg-color: var(--gup-color-warning-xlow);
+}
+
+.gup-banner--warning .gup-banner__icon {
+  position: relative;
+  padding: var(--gup-component-1);
+  padding-block-start: var(--gup-component-3);
+  margin-inline: var(--gup-component-2);
+}
+
+.gup-banner--warning .gup-banner__icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  width: 28px;
+  height: 28px;
+  background-color: var(--gup-color-warning-medium);
+  border-radius: var(--gup-radius-component-full);
+  z-index: -1;
+}
+
+.gup-banner--error {
+  --_border-color: var(--gup-color-negative-low);
+  --_icon-color: var(--gup-color-negative-medium);
+  --_bg-color: var(--gup-color-negative-xlow);
+}
+
+/* ─── Filled appearance ──────────────────────────────────────── */
+
+.gup-banner--filled {
+  --_border-color: transparent;
+  --_icon-color: var(--gup-color-neutral-contrast);
+  --_bg-color: var(--gup-color-neutral-high);
+
+  color: var(--gup-color-content-inverted-primary);
+}
+
+.gup-banner--filled .gup-banner__close {
+  color: var(--gup-color-neutral-contrast);
+}
+
+.gup-banner--filled.gup-banner--success {
+  --_bg-color: var(--gup-color-positive-high);
+}
+
+.gup-banner--filled.gup-banner--warning {
+  --_bg-color: var(--gup-color-warning-low);
+
+  color: var(--gup-color-content-primary);
+}
+
+.gup-banner--filled.gup-banner--warning .gup-banner__close {
+  color: var(--gup-color-brand-xhigh);
+}
+
+.gup-banner--filled.gup-banner--warning .gup-banner__icon::before {
+  background-color: var(--gup-color-warning-high);
+}
+
+.gup-banner--filled.gup-banner--error {
+  --_bg-color: var(--gup-color-negative-high);
+}

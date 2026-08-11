@@ -1,0 +1,99 @@
+/**
+ * GUP Link - Class-based approach
+ *
+ * Apply to any native `<a>` or `<button>` element.
+ *
+ * Usage:
+ * <a href="/path" class="gup-link">Default link</a>
+ * <a href="/path" class="gup-link gup-link--secondary">Back</a>
+ * <button type="button" class="gup-link gup-link--danger">Delete</button>
+ *
+ * Modifier classes:
+ * - gup-link--secondary   grey colour (non-primary actions)
+ * - gup-link--danger      red colour (destructive actions)
+ * - gup-link--sm          smaller font size
+ * - gup-link--lg          larger font size
+ * - gup-link--disabled    disabled (for <a> elements - pair with
+ *                         aria-disabled="true" and tabindex="-1")
+ */
+
+.gup-link {
+  --_color: var(--gup-link-color, var(--gup-color-brand-xhigh));
+
+  display: inline;
+  padding-block: 1px;
+  border-bottom: 1px solid var(--_color);
+  color: var(--_color);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border-inline: none;
+  border-block-start: none;
+  font: inherit;
+  line-height: inherit;
+}
+
+.gup-link:hover {
+  --_color: var(--gup-color-brand-high);
+
+  background-color: var(--gup-color-states-secondary-hover);
+}
+
+.gup-link:focus-visible {
+  outline: 6px solid var(--gup-color-states-base-focus-ring);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ─── Severity modifiers ─────────────────────────────────────── */
+
+.gup-link--secondary {
+  --_color: var(--gup-color-content-primary);
+}
+
+.gup-link--secondary:hover {
+  --_color: var(--gup-color-content-primary);
+}
+
+/*
+ * Uses negative-high, not negative-medium: danger links commonly sit on the
+ * error surface (--gup-color-negative-xlow, #fef1f1) where negative-medium
+ * reaches only 4.35:1 and fails WCAG 1.4.3 AA. negative-high gives 5.83:1
+ * there and 6.42:1 on white.
+ */
+.gup-link--danger {
+  --_color: var(--gup-color-negative-high);
+}
+
+.gup-link--danger:hover {
+  --_color: var(--gup-color-negative-xhigh);
+}
+
+/* ─── Size modifiers ─────────────────────────────────────────── */
+
+.gup-link--sm {
+  font-size: var(--font-size-300);
+}
+
+.gup-link--lg {
+  font-size: var(--font-size-500);
+}
+
+/* ─── Disabled ───────────────────────────────────────────────── */
+
+/*
+ * `pointer-events: none` only stops the mouse - an <a href> stays keyboard
+ * focusable and activatable. Anchors must therefore also carry
+ * aria-disabled="true" and tabindex="-1" (GupLink.apply/create do this), which
+ * removes them from the tab order and exposes the disabled state to assistive
+ * tech. Genuinely inactive controls are exempt from WCAG 1.4.3 contrast.
+ */
+.gup-link--disabled,
+.gup-link[aria-disabled='true'],
+.gup-link:disabled {
+  --_color: var(--gup-color-states-disabled-medium);
+
+  color: var(--gup-color-states-disabled-medium);
+  pointer-events: none;
+  cursor: not-allowed;
+}

@@ -1,0 +1,11 @@
+/* stylelint-disable at-rule-empty-line-before */
+
+/*
+ * Design tokens only: colors, spacing, fonts and typography custom properties + @font-face.
+ * No web-component base/reset styles - import this to use Lite Components without the web components.
+ */
+@import '../../../components/src/styles/variables/colors.css';
+@import '../../../components/src/styles/variables/spacing.css';
+@import '../../../components/src/styles/variables/fonts.css';
+@import '../../../components/src/styles/variables/typography.css';
+@import '../../../tokens/src/tokens.css';

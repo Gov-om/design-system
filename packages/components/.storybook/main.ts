@@ -3,7 +3,13 @@ import type { StorybookConfig } from '@storybook/web-components-vite';
 import remarkGfm from 'remark-gfm';
 
 const config: StorybookConfig = {
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: [
+    '../src/**/*.mdx',
+    '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+    // Lite Components
+    '../../lite-components/src/**/*.mdx',
+    '../../lite-components/src/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+  ],
   addons: [
     getAbsolutePath('@storybook/addon-links'),
     getAbsolutePath('@storybook/addon-essentials'),
@@ -33,7 +39,7 @@ const config: StorybookConfig = {
   docs: {
     defaultName: 'Documentation',
   },
-  staticDirs: ['./public', { from: '../src/classes', to: '/classes' }],
+  staticDirs: ['./public', { from: '../../lite-components/src', to: '/classes' }],
 
   async viteFinal(config) {
     config.server = config.server || {};

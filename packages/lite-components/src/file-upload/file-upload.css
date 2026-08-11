@@ -1,0 +1,184 @@
+/**
+ * GUP File Upload - Class-based approach
+ *
+ * Requires JavaScript (GupFileUpload class) to render selected files and
+ * handle deletion. See file-upload.ts for the JS initialisation API.
+ *
+ * Usage:
+ * <div class="gup-file-upload" id="my-upload">
+ *   <label class="gup-file-upload__label" for="my-input">Upload a file</label>
+ *   <span class="gup-form-hint">Optional hint</span>
+ *   <span class="gup-form-error" role="alert"><svg>...</svg> Error message</span>
+ *   <div class="gup-file-upload__input-wrapper">
+ *     <span class="gup-file-upload__trigger">
+ *       <svg class="gup-file-upload__trigger-icon" ...>...</svg>
+ *       <span class="gup-file-upload__trigger-label">Choose file</span>
+ *     </span>
+ *     <input class="gup-file-upload__input" id="my-input" type="file" name="upload">
+ *   </div>
+ *   <ul class="gup-file-upload__file-list"></ul>
+ * </div>
+ *
+ * Modifier classes (add to .gup-file-upload):
+ * - gup-file-upload--error   show error border and label colour
+ *
+ * Requires forms.css for .gup-form-hint and .gup-form-error.
+ */
+
+.gup-file-upload {
+  --_label-color: var(--gup-color-content-primary);
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label */
+
+.gup-file-upload__label {
+  color: var(--_label-color);
+  font-weight: var(--font-weight-base-beta);
+  margin-bottom: var(--gup-spacing-component-default);
+}
+
+/* Shared form elements spacing */
+
+.gup-file-upload > .gup-form-hint {
+  display: block;
+  margin-bottom: var(--gup-component-3);
+}
+
+.gup-file-upload > .gup-form-error {
+  margin-bottom: var(--gup-component-3);
+}
+
+/* Upload button wrapper */
+
+.gup-file-upload__input-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gup-color-brand-xhigh);
+  border-radius: var(--gup-radius-button);
+  padding: var(--gup-component-0) var(--gup-component-5);
+  align-self: flex-start;
+}
+
+.gup-file-upload__input-wrapper:focus-within {
+  outline: 6px solid var(--gup-color-states-base-focus-ring);
+  outline-offset: 3px;
+}
+
+/* Trigger (decorative, pointer-events: none) */
+
+.gup-file-upload__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gup-component-4);
+  padding-block: var(--gup-component-3);
+  color: var(--gup-color-brand-xhigh);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.gup-file-upload__trigger-icon {
+  flex-shrink: 0;
+}
+
+/* Native input overlay */
+
+.gup-file-upload__input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* File list */
+
+.gup-file-upload__file-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: var(--gup-spacing-text-to-component);
+  background-color: var(--gup-color-background-overcanvas);
+  border-radius: var(--gup-component-3);
+  overflow: hidden;
+}
+
+.gup-file-upload__file-list:empty {
+  display: none;
+}
+
+/* File items */
+
+.gup-file-upload__file-item {
+  display: flex;
+  align-items: center;
+  gap: var(--gup-component-4);
+  padding-inline: var(--gup-component-5);
+  padding-block: var(--gup-component-3);
+}
+
+.gup-file-upload__file-item + .gup-file-upload__file-item {
+  border-top: 1px solid var(--gup-color-states-base-border);
+}
+
+.gup-file-upload__file-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gup-component-1);
+  flex: 1;
+  min-width: 0;
+}
+
+.gup-file-upload__file-name {
+  color: var(--gup-color-content-primary);
+  font-weight: var(--font-weight-base-beta);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gup-file-upload__file-subtitle {
+  color: var(--gup-color-content-secondary);
+  font-size: var(--font-size-300);
+}
+
+/* Delete button */
+
+.gup-file-upload__file-delete {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: var(--gup-component-1);
+  cursor: pointer;
+  color: var(--gup-color-brand-xhigh);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: var(--gup-radius-component-default);
+}
+
+.gup-file-upload__file-delete:focus-visible {
+  outline: 6px solid var(--gup-color-states-base-focus-ring);
+  outline-offset: 3px;
+}
+
+/* Error */
+
+.gup-file-upload--error {
+  --_label-color: var(--gup-color-negative-medium);
+}
+
+.gup-file-upload--error .gup-file-upload__input-wrapper {
+  border-color: var(--gup-color-negative-medium);
+}
+
+.gup-file-upload--error .gup-file-upload__trigger {
+  color: var(--gup-color-negative-medium);
+}

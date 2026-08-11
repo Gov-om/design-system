@@ -1,0 +1,271 @@
+/**
+ * GUP Stepper - Class-based approach
+ *
+ * Accessible step indicator using a semantic <ol> list.
+ * Mark the active step with aria-current="step" on the <li>.
+ * For expandable content use a native <details>/<summary> as the body element.
+ *
+ * Usage (static / progress indicator):
+ * <ol class="gup-stepper" aria-label="Application progress">
+ *   <li class="gup-stepper__item gup-stepper__item--done">
+ *     <div class="gup-stepper__marker">
+ *       <div class="gup-stepper__marker-inner"></div>
+ *     </div>
+ *     <div class="gup-stepper__body">
+ *       <span class="gup-stepper__label">Step 1</span>
+ *     </div>
+ *   </li>
+ * </ol>
+ *
+ * Usage (expandable - add gup-stepper--expandable to the ol):
+ * <li class="gup-stepper__item">
+ *   <div class="gup-stepper__marker"><div class="gup-stepper__marker-inner">1</div></div>
+ *   <details class="gup-stepper__body">
+ *     <summary class="gup-stepper__label">
+ *       Step title
+ *       <span class="gup-stepper__toggle" aria-hidden="true"></span>
+ *     </summary>
+ *     <div class="gup-stepper__content">Step content here…</div>
+ *   </details>
+ * </li>
+ *
+ * Modifier classes:
+ * - gup-stepper__item--done      (completed step - shows check icon)
+ * - gup-stepper__item--selected  (current step - filled brand circle)
+ * - gup-stepper--expandable      (adds dividers; use <details> as body)
+ *
+ * Layout note (static):
+ * padding-block on the item keeps circle and label aligned.
+ * The ::after line on the item bridges item-to-item.
+ *
+ * Layout note (expandable):
+ * No padding on the item - spacing comes from the label (summary).
+ * margin-top: component-8 matches the web component track spacing.
+ * The connecting line lives on .gup-stepper__marker (which stretches to
+ * the full item height), so it runs from below the circle to the divider
+ * border at the bottom of each item without crossing it.
+ */
+
+.gup-stepper {
+  --_step-size: var(--gup-component-8);
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Static item */
+.gup-stepper__item {
+  position: relative;
+  display: flex;
+  gap: var(--gup-component-6);
+  align-items: flex-start;
+  padding-block: var(--gup-component-4);
+}
+
+/* Connecting line (static): runs from below circle to top of next circle */
+.gup-stepper__item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  inset-inline-start: calc(var(--_step-size) / 2);
+  width: 1px;
+  top: calc(var(--gup-component-4) + var(--_step-size));
+  bottom: calc(-1 * var(--gup-component-4));
+  background-color: var(--gup-color-border-medium);
+}
+
+/* Marker (circle) */
+.gup-stepper__marker {
+  flex-shrink: 0;
+}
+
+.gup-stepper__marker-inner {
+  width: var(--_step-size);
+  height: var(--_step-size);
+  border-radius: var(--gup-radius-component-full);
+  border: 1px solid var(--gup-color-border-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-base-beta);
+  font-size: var(--font-size-400);
+  color: var(--gup-color-content-primary);
+}
+
+/* Inside a details panel: de-emphasise non-active labels and marker numbers */
+.gup-details .gup-stepper__item:not(.gup-stepper__item--selected) .gup-stepper__label,
+.gup-details .gup-stepper__item:not(.gup-stepper__item--selected) .gup-stepper__marker-inner {
+  color: var(--gup-color-content-tertiary);
+}
+
+/* Done: green circle with check icon via CSS mask */
+.gup-stepper__item--done .gup-stepper__marker-inner {
+  border-color: var(--gup-color-positive-high);
+  background-color: var(--gup-color-positive-xlow);
+}
+
+.gup-stepper__item--done .gup-stepper__marker-inner::after {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: var(--gup-color-positive-high);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+/* Selected (current): brand-filled circle */
+.gup-stepper__item--selected .gup-stepper__marker-inner {
+  border-color: var(--gup-color-brand-high);
+  background-color: var(--gup-color-brand-high);
+  color: var(--gup-color-content-inverted-primary);
+}
+
+/* Body */
+.gup-stepper__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.gup-stepper__label {
+  display: block;
+  font-size: var(--font-size-550);
+  font-weight: var(--font-weight-base-beta);
+  line-height: 1.4;
+  color: var(--gup-color-content-primary);
+}
+
+.gup-stepper__content {
+  margin-top: var(--gup-component-3);
+  color: var(--gup-color-content-primary);
+  font-size: var(--font-size-400);
+  line-height: var(--line-height-500);
+}
+
+/*  Expandable variant (uses native <details> as .gup-stepper__body) */
+.gup-stepper--expandable {
+  border-bottom: 1px solid var(--gup-color-border-medium);
+}
+
+.gup-stepper--expandable .gup-stepper__item {
+  align-items: flex-start;
+  padding-block: 0;
+  margin-top: var(--gup-component-8);
+}
+
+.gup-stepper--expandable .gup-stepper__item:not(:last-child)::after {
+  bottom: calc(-1 * (var(--gup-component-8) + var(--gup-component-4)));
+}
+
+.gup-stepper--expandable .gup-stepper__item:last-child::after {
+  content: '';
+  position: absolute;
+  inset-inline-start: calc(var(--_step-size) / 2);
+  width: 1px;
+  top: calc(var(--gup-component-4) + var(--_step-size));
+  bottom: 0;
+  background-color: var(--gup-color-border-medium);
+}
+
+.gup-stepper--expandable .gup-stepper__marker {
+  padding-top: var(--gup-component-4);
+}
+
+.gup-stepper--expandable .gup-stepper__item:not(:last-child) .gup-stepper__body {
+  border-bottom: 1px solid var(--gup-color-border-medium);
+}
+
+/* Wizard mode: items start open, show/hide controls are omitted from the HTML.
+   The summary remains interactive - users can still click to collapse/expand. */
+
+/* <details> / <summary> styling */
+details.gup-stepper__body > summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+details.gup-stepper__body > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.gup-stepper__body > summary::marker {
+  display: none;
+}
+
+details.gup-stepper__body > summary.gup-stepper__label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gup-component-3);
+  padding: var(--gup-component-4) var(--gup-component-0) var(--gup-component-7) var(--gup-component-0);
+  font-size: var(--font-size-600);
+  line-height: 32px;
+  letter-spacing: -0.48px;
+  border-radius: var(--gup-radius-component-small);
+  cursor: pointer;
+}
+
+details.gup-stepper__body > summary.gup-stepper__label:hover {
+  background-color: var(--gup-color-states-secondary-hover);
+}
+
+details.gup-stepper__body > summary.gup-stepper__label:focus-visible {
+  outline: 4px solid var(--gup-color-states-base-focus-ring);
+  outline-offset: 3px;
+}
+
+.gup-stepper__toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--gup-component-3);
+  flex-shrink: 0;
+  color: var(--gup-color-content-link);
+  font-size: var(--font-size-400);
+  font-weight: 400;
+  line-height: var(--line-height-500);
+}
+
+/* Icon: add-circle-outline (collapsed) / remove-circle-outline (expanded) */
+.gup-stepper__toggle::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background-color: var(--gup-color-content-link);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+/* Text label */
+.gup-stepper__toggle::after {
+  content: 'Show';
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+details.gup-stepper__body[open] .gup-stepper__toggle::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E");
+}
+
+details.gup-stepper__body[open] .gup-stepper__toggle::after {
+  content: 'Hide';
+}
+
+details.gup-stepper__body > .gup-stepper__content {
+  padding-bottom: var(--gup-padding-lg);
+  margin-top: 0;
+}
