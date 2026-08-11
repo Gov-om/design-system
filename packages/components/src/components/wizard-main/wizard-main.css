@@ -6,7 +6,7 @@
 }
 
 .inner {
-  max-width: 632px;
+  max-width: var(--gup-wizard-main--max-width, 632px);
   margin-inline: auto;
   padding-top: var(--gup-component-9);
   padding-bottom: 64px;
