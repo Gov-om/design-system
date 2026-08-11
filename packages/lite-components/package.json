@@ -1,6 +1,6 @@
 {
   "name": "@govom/lite-components",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Oman GUP Lite Components - class-based styles for native HTML elements",
   "type": "module",
   "main": "./dist/index.js",
