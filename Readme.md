@@ -8,11 +8,11 @@ A framework-agnostic web component library for Oman government digital services,
 
 | Package | Description | Version |
 |---|---|---|
-| `@govom/components` | Core web components library | 3.26.0 |
-| `@govom/react` | React wrapper components (for React <19) | 1.5.0 |
-| `@govom/angular` | Angular Forms compatibility layer | 0.0.3 |
-| `@govom/tokens` | Design tokens (colors, typography, spacing) | 0.2.2 |
-| `@govom/icons` | Icon library (Material Design + flags) | 0.2.0 |
+| [`@govom/components`](https://www.npmjs.com/package/@govom/components) | Core web components library | [![npm](https://img.shields.io/npm/v/@govom/components)](https://www.npmjs.com/package/@govom/components) |
+| [`@govom/react`](https://www.npmjs.com/package/@govom/react) | React wrapper components (for React <19) | [![npm](https://img.shields.io/npm/v/@govom/react)](https://www.npmjs.com/package/@govom/react) |
+| [`@govom/angular`](https://www.npmjs.com/package/@govom/angular) | Angular Forms compatibility layer | [![npm](https://img.shields.io/npm/v/@govom/angular)](https://www.npmjs.com/package/@govom/angular) |
+| [`@govom/tokens`](https://www.npmjs.com/package/@govom/tokens) | Design tokens (colors, typography, spacing) | [![npm](https://img.shields.io/npm/v/@govom/tokens)](https://www.npmjs.com/package/@govom/tokens) |
+| [`@govom/icons`](https://www.npmjs.com/package/@govom/icons) | Icon library (Material Design + flags) | [![npm](https://img.shields.io/npm/v/@govom/icons)](https://www.npmjs.com/package/@govom/icons) |
 
 ## Installation
 
