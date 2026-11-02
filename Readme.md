@@ -2,7 +2,7 @@
 
 A framework-agnostic web component library for Oman government digital services, built with [Lit](https://lit.dev/) and PostCSS.
 
-[Storybook](https://storybook.service.gov.om/) · [Wiki](<!-- link to be added -->)
+[Storybook](https://storybook.service.gov.om/) · [Wiki](https://design-system.service.gov.om/home)
 
 ## Packages
 
