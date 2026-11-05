@@ -1,7 +1,6 @@
 export { default as Accordion } from './accordion';
 export { default as AccordionItem } from './accordion-item';
 export { default as AccordionItemAction } from './accordion-item-action';
-export { default as AddRowPattern } from './add-row-pattern';
 export { default as Avatar } from './avatar';
 export { default as Badge } from './badge';
 export { default as BadgeChip } from './badge-chip';
@@ -13,7 +12,6 @@ export { default as ButtonGroup } from './button-group';
 export { default as Callout } from './callout';
 export { default as Checkbox } from './checkbox';
 export { default as ContentHeader } from './content-header';
-export { default as CreditCardPaymentPattern } from './credit-card-payment-pattern';
 export { default as DataSheet } from './data-sheet';
 export { default as DataTable } from './data-table';
 export { default as Details } from './details';
