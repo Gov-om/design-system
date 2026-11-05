@@ -30,9 +30,9 @@ export class FileItem extends GupComponent {
       <div class="inner">
         ${this.thumbnailSrc ? html`<img src="${this.thumbnailSrc}" alt="${this.thumbnailAlt || ''}" class="thumbnail">` : ''}
         <div class="meta">
-          <h2 class="title">
+          <p class="title">
             ${this.url ? html`<a href="${this.url}" download="${this.fileName}" class="link">${this.fileName}</a>` : this.fileName}
-          </h2>
+          </p>
           <small class="subtitle">${this.subtitle}</small>
         </div>
         <slot></slot>

@@ -3,11 +3,15 @@
   width: 100%;
 }
 
+.scroll-container {
+  overflow-x: auto;
+  position: relative;
+}
+
 .table {
   border-collapse: collapse;
   border-spacing: 0;
   width: 100%;
-  overflow: auto;
   display: table;
 }
 

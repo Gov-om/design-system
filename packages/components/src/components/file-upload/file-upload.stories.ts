@@ -282,6 +282,11 @@ export const RTL: Story = {
   render: (args) => template(args),
   args: {
     'default-slot': 'رفع ملف',
+    'file-input-label': 'اختر ملفًا',
+    'item-delete-label': 'إزالة الملف',
+    // The placeholder can sit anywhere in the string, so the announcement follows Arabic word order
+    'file-added-announcement': 'تم إضافة {files}',
+    'file-removed-announcement': 'تم إزالة {file}',
   },
   parameters: {
     direction: 'rtl',

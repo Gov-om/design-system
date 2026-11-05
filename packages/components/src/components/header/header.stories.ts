@@ -22,7 +22,7 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
-  excludeStories: ['headerTemplate'],
+  excludeStories: ['headerTemplate', 'headerActionLabelStyles'],
 } as Meta;
 
 export const headerTemplate: TemplateResult = html`
@@ -40,6 +40,38 @@ export const headerTemplate: TemplateResult = html`
   </gup-track>
 `;
 
+export const headerActionLabelStyles: TemplateResult = html`
+  <style>
+    /* Header action labels are visually hidden by default and revealed from 750px up, as in the templates */
+    .header-action-label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (min-width: 750px) {
+      .header-action-label {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        clip: auto;
+        white-space: normal;
+      }
+    }
+  </style>
+`;
+
 export const Default: Story = {
-  render: (args) => template(args, headerTemplate),
+  render: (args) => html`
+    ${headerActionLabelStyles}
+    ${template(args, headerTemplate)}
+  `,
 };

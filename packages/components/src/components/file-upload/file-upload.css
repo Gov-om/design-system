@@ -57,6 +57,10 @@
   --gup-icon--fill-color: var(--gup-color-brand-xhigh);
 }
 
+.status {
+  @mixin screenreader-text;
+}
+
 /**
 * The native input is not set to display:none
 * because it needs to still be focusable and accessible.

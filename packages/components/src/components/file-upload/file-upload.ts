@@ -42,8 +42,18 @@ export class FileUpload extends FormControlMixin(GupComponent) {
   /** The label seen on the upload button */
   @property({ attribute: 'file-input-label' }) fileInputLabel = 'Choose file';
 
-  /** The label seen on the delete file button */
+  /** The label of the delete file button. The file name is appended so each button names the file it removes */
   @property({ attribute: 'item-delete-label' }) itemDeleteLabel = 'Remove the file';
+
+  /**
+   * Announced when files are added. `{files}` is replaced with the file names.
+   * Defaults to English like every other label here - pass a translated string with the
+   * placeholder wherever the target language needs it.
+   */
+  @property({ attribute: 'file-added-announcement' }) fileAddedAnnouncement = '{files} added';
+
+  /** Announced when a file is removed. `{file}` is replaced with the file name. Translate as above */
+  @property({ attribute: 'file-removed-announcement' }) fileRemovedAnnouncement = '{file} removed';
 
   /** The file types that the input should accept. Written as a comma-separated list of MIME types */
   @property() accept = '';
@@ -86,6 +96,8 @@ export class FileUpload extends FormControlMixin(GupComponent) {
   @state() private _uploadedFiles: FileUploadFileType[] = [];
 
   @state() private _showError: boolean = false;
+
+  @state() private _announcement = '';
 
   /**
    * Sets or gets the files to display with rich attributes such as thumbnails
@@ -221,6 +233,7 @@ export class FileUpload extends FormControlMixin(GupComponent) {
     this.validationTarget.setCustomValidity(this.errorMessage || 'An error occurred');
     this.setValue(this.getNativeFormValue());
     this.reportValidity();
+    this.announce(this.errorMessage || '');
   }
 
   async forceCustomSizeValidationError() {
@@ -229,6 +242,7 @@ export class FileUpload extends FormControlMixin(GupComponent) {
     this.validationTarget.setCustomValidity(this.sizeValidationMessage || 'An error occurred');
     this.setValue(this.getNativeFormValue());
     this.reportValidity();
+    this.announce(this.sizeValidationMessage || '');
   }
 
   async clearCustomError() {
@@ -275,6 +289,7 @@ export class FileUpload extends FormControlMixin(GupComponent) {
         if (filesArray.length === files.length) {
           this.clearCustomError();
           this.uploadedFiles = [...this.uploadedFiles, ...filesArray];
+          this.announce(this.fileAddedAnnouncement.replace('{files}', filesArray.map((f) => f.file.name).join(', ')));
           this.onChange(this.uploadedFiles);
         }
       };
@@ -282,18 +297,51 @@ export class FileUpload extends FormControlMixin(GupComponent) {
     });
   };
 
+  /**
+   * Adding and removing files changes the page without moving focus, so a screenreader would
+   * otherwise get no feedback. Clearing the region before writing to it means an identical
+   * consecutive message is still announced.
+   */
+  private announce(message: string) {
+    if (isEmpty(message)) {
+      return;
+    }
+    this._announcement = '';
+    window.setTimeout(() => {
+      this._announcement = message;
+    }, 100);
+  }
+
   private deleteFile = (file: File) => {
     if (!this._uploadedFiles) {
       return;
     }
     const uploadedFiles = this._uploadedFiles.filter((f: FileUploadFileType) => f.file.name !== file.name);
     this._uploadedFiles = uploadedFiles;
+    this.syncNativeInput(uploadedFiles);
 
     const newValue = uploadedFiles.map((f: FileUploadFileType) => f.file);
     this.updateValue(newValue);
+    this.announce(this.fileRemovedAnnouncement.replace('{file}', file.name));
     this.onDelete(file);
     this.onChange(this._uploadedFiles);
   };
+
+  /**
+   * The native input keeps its own FileList, which is what the file picker compares a new selection
+   * against. Without this it still holds a deleted file, so re-selecting that same file fires no
+   * change event and it can never be added back. Rebuilding the list from the remaining files, rather
+   * than clearing it outright, keeps the input's own FileList in step with the uploaded files - it is
+   * what `valueMissing` and so the `required` validity is read from.
+   */
+  private syncNativeInput(uploadedFiles: FileUploadFileType[]) {
+    if (!this.validationTarget) {
+      return;
+    }
+    const dataTransfer = new DataTransfer();
+    uploadedFiles.forEach((f: FileUploadFileType) => dataTransfer.items.add(f.file));
+    this.validationTarget.files = dataTransfer.files;
+  }
 
   private updateValue(newValue: File[]) {
     this._value = newValue;
@@ -348,7 +396,7 @@ export class FileUpload extends FormControlMixin(GupComponent) {
               thumbnail-src="${(this.allowThumbnails && item.thumbnail?.src) || ''}"
               thumbnail-alt="${(this.allowThumbnails && item.thumbnail?.alt) || ''}"
             >
-              <gup-button @gup-click="${() => this.deleteFile(item.file)}" with-icon-only label="${this.itemDeleteLabel}" appearance="text">
+              <gup-button @gup-click="${() => this.deleteFile(item.file)}" with-icon-only label="${this.itemDeleteLabel} ${item.file.name}" appearance="text">
                 <gup-icon icon-name="delete-forever" height="24" width="24" class="delete-icon"></gup-icon>
               </gup-button>
             </gup-file-item>
@@ -366,15 +414,21 @@ export class FileUpload extends FormControlMixin(GupComponent) {
             <gup-icon icon-name="upload" height="20" width="20" class="file-input-icon"></gup-icon>
             <span class="file-input-button">${this.fileInputLabel}</span>
           </span>
-          <input id="native-input" type="file" class="native-input" accept="${this.accept}" ?multiple="${this.multiple}" ?required="${this.required}" name="${this.name}" @change="${this.handleFileChange}" aria-describedby=${getAriaDescribedBy(this.hasSlotController.test('hint'), !!this.errorMessage)}>
+          <input id="native-input" type="file" class="native-input" accept="${this.accept}" ?multiple="${this.multiple}" ?required="${this.required}" name="${this.name}" @change="${this.handleFileChange}" aria-invalid="${this.hasError ? 'true' : 'false'}" aria-describedby=${getAriaDescribedBy(this.hasSlotController.test('hint'), this.hasError)}>
         </div>
         <slot name="extra-action"></slot>
       </gup-track>
     `;
   }
 
+  /** Whether an error message is currently shown, from either the error prop or size validation */
+  private get hasError() {
+    return !isEmpty(this.errorMessage) || (this._showError && !isEmpty(this.sizeValidationMessage));
+  }
+
   render() {
     return html`
+      <div class="status" role="status" aria-live="polite">${this._announcement}</div>
       ${this.renderLabel()}
       ${this.renderHint()}
       ${this.renderErrorMessage()}

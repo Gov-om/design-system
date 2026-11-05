@@ -41,7 +41,7 @@ export const WithIconButton: Story = {
     ${template(
       args,
       html`
-        <gup-button @gup-click="${(e: CustomEvent) => console.log(e)}" with-icon-only label="Remove the file" appearance="text">
+        <gup-button @gup-click="${(e: CustomEvent) => console.log(e)}" with-icon-only label="Remove the file ${args['file-name']}" appearance="text">
           <gup-icon icon-name="delete-forever" height="24" width="24"></gup-icon>
         </gup-button>
     `

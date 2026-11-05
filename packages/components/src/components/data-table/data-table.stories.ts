@@ -20,6 +20,8 @@ import '../dropdown/dropdown-field/dropdown-field';
 import '../dropdown/dropdown-menu/dropdown-menu';
 import '../dropdown/dropdown-menu-item/dropdown-menu-item';
 import '../checkbox/checkbox';
+import '../screenreader-text/screenreader-text';
+import '../track/track';
 import '../radio-button/radio-button';
 import '../radio-button-group/radio-button-group';
 import { type DataTable } from './data-table';
@@ -124,7 +126,10 @@ const applicationStatusRowsHtml = `  <gup-table-cell type="header" style="width:
   <!-- ... more rows ... -->`;
 
 const bulkActionRowsHtml = `  <gup-table-cell type="header" style="width: 160px">
-    <gup-checkbox size="s" id="select-all-checkbox">Licences id</gup-checkbox>
+    <gup-track gap="0" vertical-alignment="center">
+      <gup-checkbox size="s" id="select-all-checkbox"><gup-screenreader-text>Select all</gup-screenreader-text></gup-checkbox>
+      <span>Licences id</span>
+    </gup-track>
   </gup-table-cell>
   <gup-table-cell type="header">Licences Name</gup-table-cell>
   <gup-table-cell type="header">First Issue Date</gup-table-cell>
@@ -144,14 +149,17 @@ const bulkActionRowsHtml = `  <gup-table-cell type="header" style="width: 160px"
   <!-- ... more rows ... -->`;
 
 const rowActionRowsHtml = `  <gup-table-cell type="header" style="width: 160px">
-    <gup-checkbox size="s" id="select-all-row-action">Licences id</gup-checkbox>
+    <gup-track gap="0" vertical-alignment="center">
+      <gup-checkbox size="s" id="select-all-row-action"><gup-screenreader-text>Select all</gup-screenreader-text></gup-checkbox>
+      <span>Licences id</span>
+    </gup-track>
   </gup-table-cell>
   <gup-table-cell type="header">Licences Name</gup-table-cell>
   <gup-table-cell type="header">First Issue Date</gup-table-cell>
   <gup-table-cell type="header">Governate</gup-table-cell>
   <gup-table-cell type="header">Wilayat</gup-table-cell>
   <gup-table-cell type="header">Village</gup-table-cell>
-  <gup-table-cell type="header" style="width: 140px"><span class="visually-hidden">Actions</span></gup-table-cell>
+  <gup-table-cell type="header" style="width: 140px"><gup-screenreader-text>Actions</gup-screenreader-text></gup-table-cell>
   <gup-table-row>
     <gup-table-cell style="width: 160px">
       <gup-checkbox size="s" class="row-action-checkbox">00000000</gup-checkbox>
@@ -661,14 +669,17 @@ const handleHeaderCheckboxChange = (headerSelector: string, rowSelector: string,
 // All rows have checkboxes with Licence ID as label, header has select-all checkbox
 const bulkActionRows: TemplateResult = html`
   <gup-table-cell type="header" style="width: 160px">
-    <gup-checkbox
-      size="s"
-      id="select-all-checkbox"
-      checked
-      @gup-change=${(e: CustomEvent) => {
-        handleHeaderCheckboxChange('#select-all-checkbox', '.row-checkbox', e.detail);
-      }}
-    >Licences id</gup-checkbox>
+    <gup-track gap="0" vertical-alignment="center">
+      <gup-checkbox
+        size="s"
+        id="select-all-checkbox"
+        checked
+        @gup-change=${(e: CustomEvent) => {
+          handleHeaderCheckboxChange('#select-all-checkbox', '.row-checkbox', e.detail);
+        }}
+      ><gup-screenreader-text>Select all</gup-screenreader-text></gup-checkbox>
+      <span>Licences id</span>
+    </gup-track>
   </gup-table-cell>
   <gup-table-cell type="header">Licences Name</gup-table-cell>
   <gup-table-cell type="header">First Issue Date</gup-table-cell>
@@ -721,20 +732,23 @@ const bulkActionRows: TemplateResult = html`
 // Each row has checkboxes and action links at the end
 const rowActionRows: TemplateResult = html`
   <gup-table-cell type="header" style="width: 160px">
-    <gup-checkbox
-      size="s"
-      id="select-all-row-action"
-      @gup-change=${(e: CustomEvent) => {
-        handleHeaderCheckboxChange('#select-all-row-action', '.row-action-checkbox', e.detail);
-      }}
-    >Licences id</gup-checkbox>
+    <gup-track gap="0" vertical-alignment="center">
+      <gup-checkbox
+        size="s"
+        id="select-all-row-action"
+        @gup-change=${(e: CustomEvent) => {
+          handleHeaderCheckboxChange('#select-all-row-action', '.row-action-checkbox', e.detail);
+        }}
+      ><gup-screenreader-text>Select all</gup-screenreader-text></gup-checkbox>
+      <span>Licences id</span>
+    </gup-track>
   </gup-table-cell>
   <gup-table-cell type="header">Licences Name</gup-table-cell>
   <gup-table-cell type="header">First Issue Date</gup-table-cell>
   <gup-table-cell type="header">Governate</gup-table-cell>
   <gup-table-cell type="header">Wilayat</gup-table-cell>
   <gup-table-cell type="header">Village</gup-table-cell>
-  <gup-table-cell type="header" style="width: 140px"><span class="visually-hidden">Actions</span></gup-table-cell>
+  <gup-table-cell type="header" style="width: 140px"><gup-screenreader-text>Actions</gup-screenreader-text></gup-table-cell>
   <gup-table-row>
     <gup-table-cell style="width: 160px">
       <gup-checkbox size="s" class="row-action-checkbox" @gup-change=${() => updateHeaderCheckbox('#select-all-row-action', '.row-action-checkbox')}>00000000</gup-checkbox>

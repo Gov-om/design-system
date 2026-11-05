@@ -10,7 +10,7 @@ import '../track/track';
 import './content-header';
 import { type ContentHeader } from './content-header';
 import { html } from 'lit';
-import { headerTemplate } from '../header/header.stories';
+import { headerActionLabelStyles, headerTemplate } from '../header/header.stories';
 
 const { args, argTypes, template } = getWcStorybookHelpers('gup-content-header');
 type Story = StoryObj<ContentHeader & typeof args>;
@@ -30,6 +30,7 @@ export default {
 
 export const Default: Story = {
   render: (args) => html`
+    ${headerActionLabelStyles}
     <gup-header>
       ${headerTemplate}
     </gup-header>
@@ -61,6 +62,7 @@ export const WithSubtitleAsSlot: Story = {
 
 export const WithPageSummary: Story = {
   render: (args) => html`
+    ${headerActionLabelStyles}
     <gup-header>
       ${headerTemplate}
     </gup-header>
@@ -75,6 +77,7 @@ export const WithPageSummary: Story = {
 
 export const WithDefaultSlot: Story = {
   render: (args) => html`
+    ${headerActionLabelStyles}
     <gup-header>
       ${headerTemplate}
     </gup-header>
@@ -90,6 +93,7 @@ export const WithDefaultSlot: Story = {
 
 export const WithBreadcrumbs: Story = {
   render: (args) => html`
+    ${headerActionLabelStyles}
     <gup-header>
       ${headerTemplate}
     </gup-header>
@@ -110,6 +114,7 @@ export const WithBreadcrumbs: Story = {
 
 export const WithAllSlots: Story = {
   render: (args) => html`
+    ${headerActionLabelStyles}
     <gup-header>
       ${headerTemplate}
     </gup-header>
@@ -127,6 +132,7 @@ export const WithAllSlots: Story = {
 
 export const WithCustomBackground: Story = {
   render: (args) => html`
+    ${headerActionLabelStyles}
     <gup-header>
       ${headerTemplate}
     </gup-header>

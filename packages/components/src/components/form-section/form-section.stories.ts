@@ -20,8 +20,8 @@ export default {
   args: {
     ...args,
     'default-slot':
-      'Tell her you just want to talk. It has nothing to do with mating. Ah, the Breakfast Club soundtrack! File not found. I was having the most wonderful dream. Except you were there, and you were there, and you were there, and you were there, and you were there, and you were there! Bender! Ship!',
-    'title-slot': 'Section 1 saw refused would step wall gently handle hair various welcome manufacturing',
+      'Enter your details exactly as they appear on your civil ID card. We use this information to confirm your identity and to contact you about your application.',
+    'title-slot': 'Personal details',
   },
 } as Meta;
 

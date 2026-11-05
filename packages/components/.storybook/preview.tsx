@@ -91,11 +91,19 @@ const backgrounds = [
   },
 ];
 
+const gradientContrastConfig = {
+  rules: [{ id: 'color-contrast', selector: '*:not(gup-header, gup-header *, .gup-lite-header, .gup-lite-header *)' }],
+};
+
 const preview: Preview = {
   parameters: {
     axe: {
       // Disable aria-prohibited-attr rule globally to handle flag icons with decorative aria-labels
       disabledRules: ['aria-prohibited-attr'],
+      config: gradientContrastConfig,
+    },
+    a11y: {
+      config: gradientContrastConfig,
     },
     controls: {
       matchers: {
@@ -139,8 +147,8 @@ const preview: Preview = {
           'Design tokens',
           'Components',
           ['Layout', ['Header'], 'Forms', ['Form list']],
-          'Lite Components',
-          ['Installation'],
+          'Lite Components - WIP',
+          ['Getting Started', 'Installation'],
         ],
       },
     },
@@ -209,7 +217,7 @@ const preview: Preview = {
     withActions<WebComponentsRenderer>,
     (Story, context) => {
       const direction = context.parameters?.direction || 'ltr';
-      document.documentElement.dir = direction;
+      context.canvasElement.dir = direction;
 
       const updatedArgs = {
         ...context.args,

@@ -74,58 +74,96 @@ export default {
   },
 } as Meta;
 
-export const Default: StoryObj = {
-  render: () => html`
-    <gup-form-section>
-      <span slot="title">Enter card details</span>
-      <gup-form-list>
-        <div>
-          <gup-input-field name="card-number" type="text" inputmode="numeric">
-            Card number
-          </gup-input-field>
-          <div style="margin-top: var(--gup-spacing-component-default, 12px);">
-            <gup-track direction="horizontal" gap="3">
-              ${visaSvg}
-              ${mastercardSvg}
-              ${applePaySvg}
-              ${paypalSvg}
-              ${amexSvg}
-              ${unionpaySvg}
-              ${jcbSvg}
-            </gup-track>
-          </div>
-          <p style="margin-top: var(--gup-spacing-component-default, 12px); font-size: 16px; line-height: 24px; color: var(--gup-color-content-secondary);">
-            Accepted credit and debit card types
-          </p>
-        </div>
+type CardLabels = {
+  title: string;
+  cardNumber: string;
+  acceptedTypes: string;
+  expiryDate: string;
+  expiryExample: string;
+  month: string;
+  year: string;
+  nameOnCard: string;
+  securityCode: string;
+  securityCodeHint: string;
+};
 
-        <div>
-          <p style="font-size: 16px; font-weight: 700; line-height: 24px; color: var(--gup-color-content-primary); margin: 0;">
-            Expiry date
-          </p>
-          <p style="font-size: 16px; line-height: 24px; color: var(--gup-color-content-secondary); margin: var(--gup-spacing-component-default, 12px) 0;">
-            For Example, 10/20
-          </p>
-          <gup-track direction="horizontal" gap="3" vertical-alignment="bottom">
-            <gup-input-field name="expiry-month" type="text" inputmode="numeric" style="width: 100px;">
-              Month
-            </gup-input-field>
-            <span style="font-size: 20px; font-weight: 700; line-height: 28px; padding: 10px 0; color: var(--gup-color-content-primary);">/</span>
-            <gup-input-field name="expiry-year" type="text" inputmode="numeric" style="width: 100px;">
-              Year
-            </gup-input-field>
+const enLabels: CardLabels = {
+  title: 'Enter card details',
+  cardNumber: 'Card number',
+  acceptedTypes: 'Accepted credit and debit card types',
+  expiryDate: 'Expiry date',
+  expiryExample: 'For Example, 10/20',
+  month: 'Month',
+  year: 'Year',
+  nameOnCard: 'Name on card',
+  securityCode: 'Card security code',
+  securityCodeHint: 'The last 3 numbers on the back of the card',
+};
+
+const arLabels: CardLabels = {
+  title: 'أدخل بيانات البطاقة',
+  cardNumber: 'رقم البطاقة',
+  acceptedTypes: 'أنواع بطاقات الائتمان والخصم المقبولة',
+  expiryDate: 'تاريخ الانتهاء',
+  expiryExample: 'على سبيل المثال، 10/20',
+  month: 'الشهر',
+  year: 'السنة',
+  nameOnCard: 'الاسم على البطاقة',
+  securityCode: 'رمز أمان البطاقة',
+  securityCodeHint: 'الأرقام الثلاثة الأخيرة على ظهر البطاقة',
+};
+
+const renderCardPayment = (t: CardLabels) => html`
+  <gup-form-section>
+    <span slot="title">${t.title}</span>
+    <gup-form-list>
+      <div>
+        <gup-input-field name="card-number" type="text" inputmode="numeric"> ${t.cardNumber} </gup-input-field>
+        <div style="margin-top: var(--gup-spacing-component-default, 12px);">
+          <gup-track direction="horizontal" gap="3">
+            ${visaSvg} ${mastercardSvg} ${applePaySvg} ${paypalSvg} ${amexSvg} ${unionpaySvg} ${jcbSvg}
           </gup-track>
         </div>
+        <p
+          style="margin-top: var(--gup-spacing-component-default, 12px); font-size: 16px; line-height: 24px; color: var(--gup-color-content-secondary);"
+        >
+          ${t.acceptedTypes}
+        </p>
+      </div>
 
-        <gup-input-field name="name-on-card" type="text">
-          Name on card
-        </gup-input-field>
+      <div>
+        <p style="font-size: 16px; font-weight: 700; line-height: 24px; color: var(--gup-color-content-primary); margin: 0;">
+          ${t.expiryDate}
+        </p>
+        <p
+          style="font-size: 16px; line-height: 24px; color: var(--gup-color-content-secondary); margin: var(--gup-spacing-component-default, 12px) 0;"
+        >
+          ${t.expiryExample}
+        </p>
+        <gup-track direction="horizontal" gap="3" vertical-alignment="bottom">
+          <gup-input-field name="expiry-month" type="text" inputmode="numeric" style="width: 100px;"> ${t.month} </gup-input-field>
+          <span style="font-size: 20px; font-weight: 700; line-height: 28px; padding: 10px 0; color: var(--gup-color-content-primary);">/</span>
+          <gup-input-field name="expiry-year" type="text" inputmode="numeric" style="width: 100px;"> ${t.year} </gup-input-field>
+        </gup-track>
+      </div>
 
-          <gup-input-field name="card-security-code" type="text" inputmode="numeric" style="width: 200px;">
-            Card security code
-            <p slot="hint" style="min-width: 330px;">The last 3 numbers on the back of the card</p>
-          </gup-input-field>
-      </gup-form-list>
-    </gup-form-section>
-  `,
+      <gup-input-field name="name-on-card" type="text"> ${t.nameOnCard} </gup-input-field>
+
+      <gup-input-field name="card-security-code" type="text" inputmode="numeric" style="width: 200px;">
+        ${t.securityCode}
+        <p slot="hint" style="min-width: 330px;">${t.securityCodeHint}</p>
+      </gup-input-field>
+    </gup-form-list>
+  </gup-form-section>
+`;
+
+export const Default: StoryObj = {
+  render: () => renderCardPayment(enLabels),
+};
+
+export const RTL: StoryObj = {
+  render: () => renderCardPayment(arLabels),
+  parameters: {
+    direction: 'rtl',
+  },
 };
