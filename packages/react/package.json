@@ -1,6 +1,6 @@
 {
   "name": "@govom/react",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Oman GUP React components library",
   "main": "./src/index.js",
   "module": "./src/index.js",

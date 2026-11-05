@@ -1,3 +1,26 @@
+## 1.6.1 (2026-11-05)
+
+
+### 🩹 Fixes
+
+- **all:** sync lockfile and restore react workspace link for @govom/components
+
+- **react:** removed unwanted AddRowPattern/CreditCardPaymentPattern exports
+
+- **react:** restored @govom/components workspace link
+
+
+### 🧹 Chores
+
+- update lock file for Angular 19.2.x peer deps
+
+- **release:** publish
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
 ## 1.6.0 (2026-02-19)
 
 
