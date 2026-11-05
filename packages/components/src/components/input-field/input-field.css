@@ -169,18 +169,20 @@
 :host([type="date"]) .field-inner-wrapper,
 :host([type="time"]) .field-inner-wrapper,
 :host([type="tel"]) .field-inner-wrapper,
-:host([type="email"]) .field-inner-wrapper {
+:host([type="email"]) .field-inner-wrapper,
+:host([type="url"]) .field-inner-wrapper {
   direction: inherit;
 }
 
 :host([type="tel"]) .input,
-:host([type="email"]) .input {
+:host([type="email"]) .input,
+:host([type="url"]) .input {
   direction: ltr;
+  text-align: match-parent;
+  text-align: -webkit-match-parent;
 }
 
 .input[type="date"]:dir(rtl),
-.input[type="time"]:dir(rtl),
-.input[type="tel"]:dir(rtl),
-.input[type="email"]:dir(rtl) {
+.input[type="time"]:dir(rtl) {
   text-align: right;
 }

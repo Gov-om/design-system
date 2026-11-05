@@ -1,15 +1,3 @@
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
 gup-data-table gup-table-cell {
   background-color: var(--gup-color-states-base-bg, #ffffff);
 }
@@ -470,7 +458,8 @@ align-self: stretch;
   flex-direction: column;
   gap: 12px;
   height: 64px;
-  width: 875px;
+  width: 100%;
+  max-width: 875px;
 }
 
 .skeleton-title {
@@ -495,12 +484,14 @@ align-self: stretch;
 
 .skeleton-search {
   height: 40px;
-  width: 495px;
+  width: 100%;
+  max-width: 495px;
   border-radius: 10px;
 }
 
 .skeleton-buttons {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   justify-content: flex-end;
 }
@@ -515,7 +506,10 @@ align-self: stretch;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  overflow: hidden;
+
+  /* The placeholder row is wider than a small screen. Scroll it like the real table does,
+     rather than letting it widen the page. */
+  overflow: auto hidden;
   width: 100%;
 }
 
@@ -595,6 +589,7 @@ align-self: stretch;
 
 .skeleton-pagination-controls {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 

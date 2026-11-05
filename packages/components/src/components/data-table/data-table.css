@@ -316,6 +316,8 @@ gup-button{
 
 .pagination-container {
   display: flex;
+  flex-wrap: wrap;
+  gap: var(--gup-spacing-component-default, 12px);
   justify-content: space-between;
   align-items: center;
   width: 100%;

@@ -3,7 +3,6 @@ import {
   Accordion as AccordionComponent,
   AccordionItem as AccordionItemComponent,
   AccordionItemAction as AccordionItemActionComponent,
-  AddRowPattern as AddRowPatternComponent,
   Avatar as AvatarComponent,
   Badge as BadgeComponent,
   BadgeChip as BadgeChipComponent,
@@ -15,7 +14,6 @@ import {
   Callout as CalloutComponent,
   Checkbox as CheckboxComponent,
   ContentHeader as ContentHeaderComponent,
-  CreditCardPaymentPattern as CreditCardPaymentPatternComponent,
   DataSheet as DataSheetComponent,
   DataTable as DataTableComponent,
   Details as DetailsComponent,
@@ -73,7 +71,6 @@ declare module '@govom/react' {
   export const Accordion: ReactWebComponent<AccordionComponent>;
   export const AccordionItem: ReactWebComponent<AccordionItemComponent>;
   export const AccordionItemAction: ReactWebComponent<AccordionItemActionComponent>;
-  export const AddRowPattern: ReactWebComponent<AddRowPatternComponent>;
   export const Avatar: ReactWebComponent<AvatarComponent>;
   export const Badge: ReactWebComponent<BadgeComponent>;
   export const BadgeChip: ReactWebComponent<BadgeChipComponent>;
@@ -85,7 +82,6 @@ declare module '@govom/react' {
   export const Callout: ReactWebComponent<CalloutComponent>;
   export const Checkbox: ReactWebComponent<CheckboxComponent>;
   export const ContentHeader: ReactWebComponent<ContentHeaderComponent>;
-  export const CreditCardPaymentPattern: ReactWebComponent<CreditCardPaymentPatternComponent>;
   export const DataSheet: ReactWebComponent<DataSheetComponent>;
   export const DataTable: ReactWebComponent<DataTableComponent>;
   export const Details: ReactWebComponent<DetailsComponent>;

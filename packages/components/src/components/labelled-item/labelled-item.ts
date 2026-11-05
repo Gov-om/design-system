@@ -17,10 +17,10 @@ export class LabelledItem extends GupComponent {
   render() {
     return html`
       <div class="inner">
-        <div class="label" id="label">
+        <div class="label">
           <slot name="label"></slot>
         </div>
-        <gup-track class="content" aria-labelledby="label" gap="2" vertical-alignment="center">
+        <gup-track class="content" gap="2" vertical-alignment="center">
           <slot name="icon"></slot>
           <slot></slot>
         </gup-track>

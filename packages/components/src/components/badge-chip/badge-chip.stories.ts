@@ -38,8 +38,7 @@ export const Default: Story = {
 export const WithTooMuchText: Story = {
   ...Default,
   args: {
-    'default-slot':
-      'I asked you to know that Fry death took only fifteen seconds, yet the pain was so intense, that it felt to him like fifteen years. And it goes without saying, it caused him to empty his bowels',
+    'default-slot': 'Your application has been received and is waiting for review by the licensing department',
   },
 };
 

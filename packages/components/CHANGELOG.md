@@ -1,3 +1,100 @@
+## 3.33.1 (2026-10-29)
+
+
+### 🩹 Fixes
+
+- **components:** the WithLabelledItems and RTL stories now show the omani rial symbol in Data sheet
+
+- **components:** standard and lite: email, phone and URL, filled and empty RTL directions fixed
+
+
+### 📝 Documentation Changes
+
+- **components:** Header story and all six content-header stories that show a header now collapse the header buttons to icons on mobile, the same as the templates
+
+- **components:** errors now display one per line in both LTR and RTL in Banner stories
+
+- **components:** the  dummy text is replaced in wizard-main, form-section and badge-chip
+
+- **components:** made label match the visible selected-option text in Dropdown menu stories
+
+
+### ❤️  Thank You
+
+- devops
+- Ekaterina Loginova
+
+## 3.33.0 (2026-09-16)
+
+
+### 🚀 Features
+
+- **docs:** review template is now enriched with the payment banner
+
+
+### 🩹 Fixes
+
+- **components:** review action, back button, pagination, RTL
+
+- **components:** keep Storybook-only CSS out of template markup
+
+- **components:** announce file upload rejections and translate the RTL story
+
+
+### ❤️  Thank You
+
+- Ekaterina Loginova
+
+## 3.32.0 (2026-09-02)
+
+
+### 🚀 Features
+
+- **components:** hide header action labels on small screens
+
+- **components:** added an Arabic right-to-left version with a mobile friendly, cancel free header and stacked action buttons in confirmation page template
+
+- **components:** added CSS variable for width management in wizard-main component
+
+- **components:** added beta version of lite-components for test run with MOL
+
+- **lite-components:** move class sources into the package and repoint storybook
+
+- **components:** added a Review template
+
+- **components:** add RTL stories for patterns and templates
+
+
+### 🩹 Fixes
+
+- **components:** mirror date, time, phone and email input fields in RTL
+
+- **components:** give data-table select-all headers an accessible name
+
+- **components:** give data-table select-all headers an accessible name
+
+- **lite-components:** give stepper numbers a passing contrast ratio
+
+- **docs:** keep the story shell override out of docs pages
+
+- **components:** let wide tables scroll instead of the page
+
+
+### 🛠️ Refactorings
+
+- **components:** scope the fullscreen height override to the templates
+
+
+### 📝 Documentation Changes
+
+- **components:** updated confirmation template with optional additional button
+
+
+### ❤️  Thank You
+
+- branko129
+- Ekaterina Loginova
+
 ## 3.31.0 (2026-07-14)
 
 

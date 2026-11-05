@@ -54,7 +54,7 @@ const itemsTemplate = html`
     value="item4"
   ></gup-dropdown-menu-item>
   <gup-dropdown-menu-item label="Item number 5" value="item5"></gup-dropdown-menu-item>
-  <gup-dropdown-menu-item label="Item number 6" value="item6">
+  <gup-dropdown-menu-item label="Item number 6 with some HTML" value="item6">
     Item number 6 with some <em>HTML</em>
   </gup-dropdown-menu-item>
 `;

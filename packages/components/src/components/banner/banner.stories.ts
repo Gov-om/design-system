@@ -7,8 +7,8 @@ import { type Banner } from './banner';
 import '../button-group/button-group';
 import '../button/button';
 import '../icon/icon';
-import '../rich-text/rich-text';
 import '../link/link';
+import '../track/track';
 
 const { events, args, argTypes, template } = getWcStorybookHelpers('gup-banner');
 type Story = StoryObj<Banner & typeof args>;
@@ -132,13 +132,13 @@ export const WithFormError: Story = {
     template(
       args,
       html`
-        <gup-rich-text slot="action-buttons">
-          <ul>
-            <li>
-              <b><gup-link severity="danger" href="#form-item-error">Please enter upload Previous Qualification Certificate (PhD)</gup-link></b>
-            </li>
-          </ul>
-        </gup-rich-text>
+        <div slot="action-buttons">
+          <gup-track direction="vertical" gap="2">
+            <b><gup-link severity="danger" href="#full-name">Enter your full name</gup-link></b>
+            <b><gup-link severity="danger" href="#phone-number">Enter a phone number, like +96812345678</gup-link></b>
+            <b><gup-link severity="danger" href="#certificate">Upload your Previous Qualification Certificate (PhD)</gup-link></b>
+          </gup-track>
+        </div>
       `
     ),
   args: {

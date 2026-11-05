@@ -31,22 +31,24 @@ export class Table extends GupComponent {
 
   render() {
     return html`
-      <div role="table" class="table">
-        <!-- thead -->
-        ${
-          this.hasHeader()
-            ? html`
-          <div role="rowgroup" class="table-section table-section--type-header">
-            <div role="row" class="table-row">
-              <slot name="head-cells"></slot>
+      <div class="scroll-container" tabindex="0">
+        <div role="table" class="table">
+          <!-- thead -->
+          ${
+            this.hasHeader()
+              ? html`
+            <div role="rowgroup" class="table-section table-section--type-header">
+              <div role="row" class="table-row">
+                <slot name="head-cells"></slot>
+              </div>
             </div>
+          `
+              : ''
+          }
+          <!-- tbody -->
+          <div role="rowgroup" class="table-section table-section--type-body">
+            <slot name="body-rows"></slot>
           </div>
-        `
-            : ''
-        }
-        <!-- tbody -->
-        <div role="rowgroup" class="table-section table-section--type-body">
-          <slot name="body-rows"></slot>
         </div>
       </div>
     `;

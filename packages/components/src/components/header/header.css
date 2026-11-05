@@ -4,10 +4,11 @@
 
   /* Inside of flex container, this makes sure the logo overhang is still visible */
   position: relative;
+  background: linear-gradient(180deg, var(--gup-color-background-gradient-1-start) -66.34%, var(--gup-color-background-gradient-1-end) 100%);
 }
 
 .inner {
-  background: var(--gup-color-background-navigation-bar) linear-gradient(180deg, #eff5ff -66.34%, #f7f5f1 100%);
+  background: var(--gup-color-background-navigation-bar);
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid var(--gup-color-border-low);

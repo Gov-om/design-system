@@ -38,6 +38,7 @@ type ConfirmationLabels = {
   plateNoAndCode: string;
   goToDashboard: string;
   downloadCertificate: string;
+  giveFeedback: string;
 };
 
 const enLabels: ConfirmationLabels = {
@@ -57,6 +58,7 @@ const enLabels: ConfirmationLabels = {
   plateNoAndCode: 'Plate No. & Code',
   goToDashboard: 'Go to Gov.om Dashboard',
   downloadCertificate: 'Download Certificate',
+  giveFeedback: 'Give Feedback',
 };
 
 const arLabels: ConfirmationLabels = {
@@ -76,6 +78,7 @@ const arLabels: ConfirmationLabels = {
   plateNoAndCode: 'رقم اللوحة والرمز',
   goToDashboard: 'الذهاب إلى لوحة تحكم Gov.om',
   downloadCertificate: 'تحميل الشهادة',
+  giveFeedback: 'تقديم الملاحظات',
 };
 
 const renderConfirmationPage = (t: ConfirmationLabels) => html`
@@ -111,7 +114,7 @@ const renderConfirmationPage = (t: ConfirmationLabels) => html`
       }
     }
   </style>
-  <div style="display: flex; flex-direction: column; height: 100%">
+  <div style="display: flex; flex-direction: column; min-height: 100vh">
     <gup-header nav-aria-label="Service Navigation Header">
       <!-- Empty start slot keeps the header logo centered -->
       <span slot="start"></span>
@@ -125,7 +128,7 @@ const renderConfirmationPage = (t: ConfirmationLabels) => html`
     <gup-content-header page-title="${t.serviceName}">
       <div slot="page-summary">${t.referenceNumber} <strong>0000000000</strong></div>
     </gup-content-header>
-    <gup-wizard-main>
+    <gup-wizard-main style="flex: 1">
       <gup-track direction="vertical" gap="9">
         <gup-track direction="vertical" gap="4">
           <h2 style="font-size: 28px; font-weight: 700; line-height: 40px; letter-spacing: -0.56px; color: var(--gup-color-content-primary);">${t.title}</h2>
@@ -168,6 +171,7 @@ const renderConfirmationPage = (t: ConfirmationLabels) => html`
         <gup-button-group direction="vertical-on-mobile">
           <gup-button appearance="primary">${t.goToDashboard}</gup-button>
           <gup-button appearance="secondary">${t.downloadCertificate}</gup-button>
+          <gup-button appearance="text" kind="link" type="button">${t.giveFeedback}</gup-button>
         </gup-button-group>
       </gup-track>
     </gup-wizard-main>
